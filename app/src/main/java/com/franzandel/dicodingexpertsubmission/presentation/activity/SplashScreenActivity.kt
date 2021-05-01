@@ -1,10 +1,9 @@
-package com.franzandel.dicodingexpertsubmission.presentation
+package com.franzandel.dicodingexpertsubmission.presentation.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.franzandel.dicodingexpertsubmission.MainActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.core.extension.goTo
 
