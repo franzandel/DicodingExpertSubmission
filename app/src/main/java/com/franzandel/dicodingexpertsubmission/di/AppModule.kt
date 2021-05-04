@@ -1,8 +1,14 @@
 package com.franzandel.dicodingexpertsubmission.di
 
+import com.franzandel.dicodingexpertsubmission.BuildConfig
+import com.google.gson.Gson
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 /**
  * Created by Franz Andel on 01/05/21.
@@ -10,16 +16,18 @@ import dagger.hilt.android.components.ActivityComponent
  */
 
 @Module
-@InstallIn(ActivityComponent::class)
+@InstallIn(SingletonComponent::class)
 object AppModule {
 
-//    @Provides
-//    fun provideAnalyticsService(
-//        // Potential dependencies of this type
-//    ): AnalyticsService {
-//        return Retrofit.Builder()
-//            .baseUrl("https://example.com")
-//            .build()
-//            .create(AnalyticsService::class.java)
-//    }
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.GAMES_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+    @Provides
+    @Singleton
+    fun provideGson(): Gson = Gson()
 }

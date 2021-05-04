@@ -1,8 +1,11 @@
 package com.franzandel.dicodingexpertsubmission.di
 
+import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
+import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThreadImpl
+import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.components.SingletonComponent
 
 /**
  * Created by Franz Andel on 01/05/21.
@@ -10,25 +13,10 @@ import dagger.hilt.android.components.ActivityComponent
  */
 
 @Module
-@InstallIn(ActivityComponent::class)
+@InstallIn(SingletonComponent::class)
 abstract class AppAbstractModule {
-//    @Binds
-//    abstract fun bindAppUseCase(
-//        useCaseImpl: AppUseCaseImpl
-//    ): AppUseCase
-//
-//    @Binds
-//    abstract fun bindAppRepository(
-//        repositoryImpl: AppRepositoryImpl
-//    ): AppRepository
-//
-//    @Binds
-//    abstract fun bindAppLocalData(
-//        localData: AppLocalDataImpl
-//    ): AppLocalData
-//
-//    @Binds
-//    abstract fun bindAppRemoteData(
-//        remoteData: AppRemoteDataImpl
-//    ): AppRemoteData
+    @Binds
+    abstract fun bindCoroutineThread(
+        coroutineThreadImpl: CoroutineThreadImpl
+    ): CoroutineThread
 }
