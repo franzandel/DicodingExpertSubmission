@@ -1,8 +1,8 @@
 package com.franzandel.dicodingexpertsubmission.data.remote.model
 
-data class ScreenshotsDTO(
+data class ScreenshotsResponseDTO(
     val count: Int,
     val next: Any?,
     val previous: Any?,
-    val results: List<ResultDTO>
+    val results: List<ResultResponseDTO>
 )

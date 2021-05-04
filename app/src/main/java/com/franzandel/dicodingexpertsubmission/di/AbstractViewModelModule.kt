@@ -6,13 +6,13 @@ import com.franzandel.dicodingexpertsubmission.data.local.AppLocalData
 import com.franzandel.dicodingexpertsubmission.data.local.AppLocalDataImpl
 import com.franzandel.dicodingexpertsubmission.data.remote.AppRemoteData
 import com.franzandel.dicodingexpertsubmission.data.remote.AppRemoteDataImpl
-import com.franzandel.dicodingexpertsubmission.data.remote.mapper.ResponseMapper
-import com.franzandel.dicodingexpertsubmission.data.remote.mapper.ResultMapper
-import com.franzandel.dicodingexpertsubmission.data.remote.model.ResultDTO
-import com.franzandel.dicodingexpertsubmission.data.remote.model.ScreenshotsDTO
+import com.franzandel.dicodingexpertsubmission.data.remote.mapper.ResultResponseMapper
+import com.franzandel.dicodingexpertsubmission.data.remote.mapper.ScreenshotsResponseMapper
+import com.franzandel.dicodingexpertsubmission.data.remote.model.ResultResponseDTO
+import com.franzandel.dicodingexpertsubmission.data.remote.model.ScreenshotsResponseDTO
 import com.franzandel.dicodingexpertsubmission.data.repository.AppRepositoryImpl
-import com.franzandel.dicodingexpertsubmission.domain.model.Result
-import com.franzandel.dicodingexpertsubmission.domain.model.Screenshots
+import com.franzandel.dicodingexpertsubmission.domain.model.ResultResponse
+import com.franzandel.dicodingexpertsubmission.domain.model.ScreenshotsResponse
 import com.franzandel.dicodingexpertsubmission.domain.repository.AppRepository
 import com.franzandel.dicodingexpertsubmission.domain.usecase.AppUseCase
 import com.franzandel.dicodingexpertsubmission.domain.usecase.AppUseCaseImpl
@@ -46,13 +46,13 @@ abstract class AbstractViewModelModule {
 
     @Binds
     abstract fun bindResultMapper(
-        resultMapper: ResultMapper
-    ): BaseMapper<ResultDTO, Result>
+        resultMapper: ResultResponseMapper
+    ): BaseMapper<ResultResponseDTO, ResultResponse>
 
     @Binds
     abstract fun bindResponseMapper(
-        responseMapper: ResponseMapper
-    ): BaseResponseMapper<ScreenshotsDTO, Screenshots>
+        responseMapper: ScreenshotsResponseMapper
+    ): BaseResponseMapper<ScreenshotsResponseDTO, ScreenshotsResponse>
 
     @Binds
     abstract fun bindAppRemoteData(
