@@ -1,6 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.data.remote.network
 
-import com.franzandel.dicodingexpertsubmission.data.remote.model.ScreenshotsDTO
+import com.franzandel.dicodingexpertsubmission.data.remote.model.ScreenshotsResponseDTO
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,5 +16,5 @@ interface AppService {
     suspend fun getGameScreenshots(
         @Path("game_id") gameId: String,
         @Query("key") apiKey: String
-    ): Response<ScreenshotsDTO>
+    ): Response<ScreenshotsResponseDTO>
 }

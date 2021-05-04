@@ -1,6 +1,6 @@
-package com.franzandel.dicodingexpertsubmission.domain.model
+package com.franzandel.dicodingexpertsubmission.data.remote.model
 
-data class Result(
+data class ResultResponseDTO(
     val height: Int,
     val id: Int,
     val image: String,
