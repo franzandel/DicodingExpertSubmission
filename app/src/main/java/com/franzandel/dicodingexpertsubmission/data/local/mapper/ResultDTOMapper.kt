@@ -1,8 +1,8 @@
-package com.franzandel.dicodingexpertsubmission.data.remote.mapper
+package com.franzandel.dicodingexpertsubmission.data.local.mapper
 
 import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
-import com.franzandel.dicodingexpertsubmission.data.remote.model.ResultResponseDTO
-import com.franzandel.dicodingexpertsubmission.domain.model.remote.ResultResponse
+import com.franzandel.dicodingexpertsubmission.data.local.model.ResultDTO
+import com.franzandel.dicodingexpertsubmission.domain.model.local.Result
 import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
@@ -12,11 +12,11 @@ import javax.inject.Inject
  */
 
 @ViewModelScoped
-class ResultResponseMapper @Inject constructor() : BaseMapper<ResultResponseDTO, ResultResponse>() {
+class ResultDTOMapper @Inject constructor() : BaseMapper<Result, ResultDTO>() {
 
-    override fun map(dataModel: ResultResponseDTO): ResultResponse =
+    override fun map(dataModel: Result): ResultDTO =
         with(dataModel) {
-            ResultResponse(
+            ResultDTO(
                 height = height,
                 id = id,
                 image = image,

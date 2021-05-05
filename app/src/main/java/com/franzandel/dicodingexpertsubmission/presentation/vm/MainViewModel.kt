@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
 import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.core.wrapper.response
-import com.franzandel.dicodingexpertsubmission.domain.model.ScreenshotsResponse
+import com.franzandel.dicodingexpertsubmission.core.wrapper.result
+import com.franzandel.dicodingexpertsubmission.domain.model.local.Screenshots
 import com.franzandel.dicodingexpertsubmission.domain.usecase.AppUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -24,8 +24,8 @@ class MainViewModel @Inject constructor(
     private val thread: CoroutineThread
 ) : ViewModel() {
 
-    private val _gameScreenshots = MutableLiveData<ScreenshotsResponse>()
-    val gameScreenshots: LiveData<ScreenshotsResponse> = _gameScreenshots
+    private val _gameScreenshots = MutableLiveData<Screenshots>()
+    val gameScreenshots: LiveData<Screenshots> = _gameScreenshots
 
     private val _gameScreenshotsError = MutableLiveData<String>()
     val gameScreenshotsError: LiveData<String> = _gameScreenshotsError
@@ -33,7 +33,7 @@ class MainViewModel @Inject constructor(
     fun getGameScreenshots(gameId: String) {
         viewModelScope.launch(thread.background()) {
             when (val result = useCase.getGameScreenshots(gameId)) {
-                is Result.Success -> _gameScreenshots.postValue(result.response)
+                is Result.Success -> _gameScreenshots.postValue(result.result)
                 is Result.Error -> _gameScreenshotsError.postValue(result.error.localizedMessage)
             }
         }

@@ -1,5 +1,7 @@
 package com.franzandel.dicodingexpertsubmission.di
 
+import com.franzandel.dicodingexpertsubmission.data.local.dao.ScreenshotsDao
+import com.franzandel.dicodingexpertsubmission.data.local.db.GamesDatabase
 import com.franzandel.dicodingexpertsubmission.data.remote.network.AppService
 import dagger.Module
 import dagger.Provides
@@ -20,4 +22,9 @@ object ViewModelModule {
     @ViewModelScoped
     fun provideAppService(retrofit: Retrofit): AppService =
         retrofit.create(AppService::class.java)
+
+    @Provides
+    @ViewModelScoped
+    fun provideScreenshotsDao(database: GamesDatabase): ScreenshotsDao =
+        database.screenshotsDao()
 }

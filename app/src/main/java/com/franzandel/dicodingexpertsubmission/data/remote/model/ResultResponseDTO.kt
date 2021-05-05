@@ -1,9 +1,12 @@
 package com.franzandel.dicodingexpertsubmission.data.remote.model
 
+import com.google.gson.annotations.SerializedName
+
 data class ResultResponseDTO(
     val height: Int,
     val id: Int,
     val image: String,
-    val is_deleted: Boolean,
+    @SerializedName("is_deleted")
+    val isDeleted: Boolean,
     val width: Int
 )
