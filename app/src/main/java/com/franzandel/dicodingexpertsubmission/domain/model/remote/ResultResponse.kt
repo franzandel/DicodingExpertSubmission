@@ -1,9 +1,9 @@
-package com.franzandel.dicodingexpertsubmission.domain.model
+package com.franzandel.dicodingexpertsubmission.domain.model.remote
 
 data class ResultResponse(
     val height: Int,
     val id: Int,
     val image: String,
-    val is_deleted: Boolean,
+    val isDeleted: Boolean,
     val width: Int
 )

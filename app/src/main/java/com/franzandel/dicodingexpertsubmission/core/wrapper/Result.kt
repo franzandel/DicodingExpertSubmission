@@ -10,5 +10,5 @@ sealed class Result<out T> {
     data class Error(val error: Exception, val errorCode: Int = -1) : Result<Nothing>()
 }
 
-val <T> Result.Success<T>.response: T
+val <T> Result.Success<T>.result: T
     get() = this.data ?: throw Exception("data is null")

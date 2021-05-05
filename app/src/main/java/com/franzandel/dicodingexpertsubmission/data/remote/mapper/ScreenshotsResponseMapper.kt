@@ -4,8 +4,8 @@ import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.core.mapper.BaseResponseMapper
 import com.franzandel.dicodingexpertsubmission.data.remote.model.ResultResponseDTO
 import com.franzandel.dicodingexpertsubmission.data.remote.model.ScreenshotsResponseDTO
-import com.franzandel.dicodingexpertsubmission.domain.model.ResultResponse
-import com.franzandel.dicodingexpertsubmission.domain.model.ScreenshotsResponse
+import com.franzandel.dicodingexpertsubmission.domain.model.remote.ResultResponse
+import com.franzandel.dicodingexpertsubmission.domain.model.remote.ScreenshotsResponse
 import com.google.gson.Gson
 import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
