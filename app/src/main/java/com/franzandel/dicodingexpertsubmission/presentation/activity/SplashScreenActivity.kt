@@ -21,7 +21,7 @@ class SplashScreenActivity : AppCompatActivity() {
     private fun delayOneSecond() {
         Handler(Looper.getMainLooper()).postDelayed({
             kotlin.run {
-                goTo(MainActivity::class.java)
+                goTo(DashboardActivity::class.java)
                 finish()
             }
         }, TIME_OUT)
