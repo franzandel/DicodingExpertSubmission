@@ -7,35 +7,35 @@ import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
 import com.franzandel.dicodingexpertsubmission.core.presentation.BaseViewModel
 import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
 import com.franzandel.dicodingexpertsubmission.core.wrapper.result
-import com.franzandel.dicodingexpertsubmission.domain.model.local.Screenshots
-import com.franzandel.dicodingexpertsubmission.domain.usecase.AppUseCase
+import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.Games
+import com.franzandel.dicodingexpertsubmission.domain.usecase.HomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
- * Created by Franz Andel on 01/05/21.
+ * Created by Franz Andel on 06/05/21.
  * Android Engineer
  */
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
-    private val useCase: AppUseCase,
+class HomeViewModel @Inject constructor(
+    private val useCase: HomeUseCase,
     private val thread: CoroutineThread
 ) : BaseViewModel() {
 
-    private val _gameScreenshots = MutableLiveData<Screenshots>()
-    val gameScreenshots: LiveData<Screenshots> = _gameScreenshots
+    private val _games = MutableLiveData<Games>()
+    val games: LiveData<Games> = _games
 
-    private val _gameScreenshotsError = MutableLiveData<String>()
-    val gameScreenshotsError: LiveData<String> = _gameScreenshotsError
+    private val _gamesError = MutableLiveData<String>()
+    val gameError: LiveData<String> = _gamesError
 
-    fun getGameScreenshots(gameId: String) {
+    fun getAllGames() {
         _loadingResult.value = true
         viewModelScope.launch(thread.background()) {
-            when (val result = useCase.getGameScreenshots(gameId)) {
-                is Result.Success -> _gameScreenshots.postValue(result.result)
-                is Result.Error -> _gameScreenshotsError.postValue(result.error.localizedMessage)
+            when (val result = useCase.getAllGames()) {
+                is Result.Success -> _games.postValue(result.result)
+                is Result.Error -> _gamesError.postValue(result.error.localizedMessage)
             }
             _loadingResult.postValue(false)
         }
