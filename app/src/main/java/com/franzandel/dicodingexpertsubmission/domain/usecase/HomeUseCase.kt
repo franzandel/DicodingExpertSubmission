@@ -1,7 +1,7 @@
 package com.franzandel.dicodingexpertsubmission.domain.usecase
 
 import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.Games
+import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 
 /**
  * Created by Franz Andel on 07/05/21.
@@ -9,5 +9,5 @@ import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.Game
  */
 
 interface HomeUseCase {
-    suspend fun getAllGames(): Result<Games>
+    suspend fun getAllGames(): Result<List<GamesResultUI>>
 }

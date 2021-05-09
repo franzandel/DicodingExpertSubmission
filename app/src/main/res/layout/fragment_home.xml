@@ -7,18 +7,18 @@
     tools:context=".presentation.fragment.HomeFragment">
 
     <include
-        android:id="@+id/layoutError"
+        android:id="@+id/layout_error"
         layout="@layout/layout_error"
         android:visibility="gone" />
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/ablMovies"
+        android:id="@+id/abl_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:liftOnScroll="true">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/mtbMovies"
+            android:id="@+id/mtb_home"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/menu_home"
@@ -27,7 +27,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMovies"
+        android:id="@+id/rv_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -35,6 +35,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_dashboard" />
+        tools:listitem="@layout/item_home" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

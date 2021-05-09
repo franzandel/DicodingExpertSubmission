@@ -5,11 +5,11 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivError"
+        android:id="@+id/iv_error"
         android:layout_width="wrap_content"
         android:layout_height="400dp"
         android:src="@drawable/ic_error"
-        app:layout_constraintBottom_toTopOf="@+id/btnTryAgain"
+        app:layout_constraintBottom_toTopOf="@+id/btn_try_again"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,7 +17,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnTryAgain"
+        android:id="@+id/btn_try_again"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_8"
@@ -29,5 +29,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivError" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_error" />
 </androidx.constraintlayout.widget.ConstraintLayout>

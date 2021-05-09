@@ -5,6 +5,8 @@ import com.franzandel.dicodingexpertsubmission.data.remote.mapper.response.*
 import com.franzandel.dicodingexpertsubmission.data.remote.model.response.*
 import com.franzandel.dicodingexpertsubmission.data.remote.network.HomeService
 import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.*
+import com.franzandel.dicodingexpertsubmission.domain.repository.mapper.response.GamesResultsUIMapper
+import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,6 +22,10 @@ import retrofit2.Retrofit
 @Module
 @InstallIn(ViewModelComponent::class)
 object HomeVMModule {
+
+    @Provides
+    fun provideGamesResultsUIMapper(): BaseMapper<List<GamesResult>, List<GamesResultUI>> =
+        GamesResultsUIMapper()
 
     @Provides
     fun provideTagsMapper(): BaseMapper<List<TagDTO>, List<Tag>> = TagsMapper()

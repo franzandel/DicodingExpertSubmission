@@ -7,8 +7,8 @@ import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
 import com.franzandel.dicodingexpertsubmission.core.presentation.BaseViewModel
 import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
 import com.franzandel.dicodingexpertsubmission.core.wrapper.result
-import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.Games
 import com.franzandel.dicodingexpertsubmission.domain.usecase.HomeUseCase
+import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,8 +24,8 @@ class HomeViewModel @Inject constructor(
     private val thread: CoroutineThread
 ) : BaseViewModel() {
 
-    private val _games = MutableLiveData<Games>()
-    val games: LiveData<Games> = _games
+    private val _games = MutableLiveData<List<GamesResultUI>>()
+    val games: LiveData<List<GamesResultUI>> = _games
 
     private val _gamesError = MutableLiveData<String>()
     val gameError: LiveData<String> = _gamesError
