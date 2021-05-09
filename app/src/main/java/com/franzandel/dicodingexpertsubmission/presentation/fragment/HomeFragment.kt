@@ -2,8 +2,8 @@ package com.franzandel.dicodingexpertsubmission.presentation.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.core.extension.hide
 import com.franzandel.dicodingexpertsubmission.core.extension.observe
@@ -12,6 +12,8 @@ import com.franzandel.dicodingexpertsubmission.core.extension.showShareMessage
 import com.franzandel.dicodingexpertsubmission.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.databinding.FragmentHomeBinding
 import com.franzandel.dicodingexpertsubmission.databinding.LayoutErrorBinding
+import com.franzandel.dicodingexpertsubmission.presentation.adapter.HomeAdapter
+import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import com.franzandel.dicodingexpertsubmission.presentation.vm.HomeViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,9 +29,9 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
 
     private lateinit var errorViewBinding: LayoutErrorBinding
 
-//    private val adapter by lazy {
-//        MoviesAdapter(requireContext())
-//    }
+    private val adapter by lazy {
+        HomeAdapter()
+    }
 
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -51,32 +53,31 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
     }
 
     private fun setupObservers() {
-        viewLifecycleOwner.observe(viewModel.games) {
+        viewLifecycleOwner.observe(viewModel.games) { gamesResults ->
             viewBinding.layoutError.root.hide()
-            viewBinding.ablMovies.show()
-            viewBinding.rvMovies.show()
-            Toast.makeText(requireContext(), "SHOWN", Toast.LENGTH_SHORT).show()
-//            setupRV(movies)
+            viewBinding.ablHome.show()
+            viewBinding.rvHome.show()
+            setupRV(gamesResults)
         }
 
         viewLifecycleOwner.observe(viewModel.gameError) {
             viewBinding.layoutError.root.show()
-            viewBinding.ablMovies.hide()
-            viewBinding.rvMovies.hide()
+            viewBinding.ablHome.hide()
+            viewBinding.rvHome.hide()
         }
     }
 
-//    private fun setupRV(movies: List<Movie>) {
-//        viewBinding.rvMovies.layoutManager = GridLayoutManager(
-//            requireContext(),
-//            GRID_SPAN_COUNT
-//        )
-//        viewBinding.rvMovies.adapter = adapter
-//        adapter.submitList(movies)
-//    }
+    private fun setupRV(gamesResults: List<GamesResultUI>) {
+        viewBinding.rvHome.layoutManager = GridLayoutManager(
+            requireContext(),
+            GRID_SPAN_COUNT
+        )
+        viewBinding.rvHome.adapter = adapter
+        adapter.submitList(gamesResults)
+    }
 
     private fun setupListeners() {
-        viewBinding.mtbMovies.setOnMenuItemClickListener { menuItem ->
+        viewBinding.mtbHome.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_share -> {
                     requireActivity().showShareMessage()
