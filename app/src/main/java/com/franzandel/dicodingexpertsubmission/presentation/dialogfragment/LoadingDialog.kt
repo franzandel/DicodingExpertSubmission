@@ -43,7 +43,7 @@ class LoadingDialog : DialogFragment() {
 
     fun show(fragmentManager: FragmentManager) {
         if (!isAdded)
-            showNow(fragmentManager, TAG)
+            show(fragmentManager, TAG)
     }
 
     fun hide() {

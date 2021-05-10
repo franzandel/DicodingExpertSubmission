@@ -27,15 +27,12 @@ class HomeViewModel @Inject constructor(
     private val _games = MutableLiveData<List<GamesResultUI>>()
     val games: LiveData<List<GamesResultUI>> = _games
 
-    private val _gamesError = MutableLiveData<String>()
-    val gameError: LiveData<String> = _gamesError
-
     fun getAllGames() {
         _loadingResult.value = true
         viewModelScope.launch(thread.background()) {
             when (val result = useCase.getAllGames()) {
                 is Result.Success -> _games.postValue(result.result)
-                is Result.Error -> _gamesError.postValue(result.error.localizedMessage)
+                is Result.Error -> _errorResult.postValue(result.error.localizedMessage)
             }
             _loadingResult.postValue(false)
         }
