@@ -1,9 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.presentation.vh
 
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.databinding.ItemHomeBinding
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 
@@ -28,12 +25,11 @@ class HomeVH(private val itemHomeBinding: ItemHomeBinding) :
             cpiRatings.progress = gamesResult.rating.toInt()
 
             cvHome.setOnClickListener {
-                Toast.makeText(itemView.context, "Go to Detail", Toast.LENGTH_LONG).show()
-//                val navDirections =
-//                    MoviesFragmentDirections.actionNavigationMoviesToDetailFragment()
+                val navDirections =
+                    HomeFragmentDirections.actionNavigationHomeToDetailFragment()
 //                navDirections.movies = movies.toTypedArray()
 //                navDirections.currentPosition = adapterPosition
-//                findNavController(root).navigate(navDirections)
+                findNavController(root).navigate(navDirections)
             }
         }
     }
