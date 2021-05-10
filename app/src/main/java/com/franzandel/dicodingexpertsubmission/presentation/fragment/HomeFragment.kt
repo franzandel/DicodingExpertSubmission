@@ -60,7 +60,7 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
             setupRV(gamesResults)
         }
 
-        viewLifecycleOwner.observe(viewModel.gameError) {
+        viewLifecycleOwner.observe(viewModel.errorResult) {
             viewBinding.layoutError.root.show()
             viewBinding.ablHome.hide()
             viewBinding.rvHome.hide()

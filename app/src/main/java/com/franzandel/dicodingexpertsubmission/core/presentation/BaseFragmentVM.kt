@@ -6,7 +6,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.franzandel.dicodingexpertsubmission.presentation.dialogfragment.LoadingDialog
-import java.lang.ref.WeakReference
 
 /**
  * Created by Franz Andel on 14/03/21.
@@ -15,21 +14,21 @@ import java.lang.ref.WeakReference
 
 abstract class BaseFragmentVM<VM : ViewModel, VB : ViewBinding> : BaseFragment<VB>() {
 
-    private val loadingDialog = WeakReference(LoadingDialog.newInstance())
+    private val loadingDialog = LoadingDialog.newInstance()
 
     abstract fun getVM(): VM
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         setupObserver(getVM() as BaseViewModel)
+        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun setupObserver(viewModel: BaseViewModel) {
         viewModel.loadingResult.observe(viewLifecycleOwner, Observer {
             if (it)
-                loadingDialog.get()?.show(requireActivity().supportFragmentManager)
+                loadingDialog.show(requireActivity().supportFragmentManager)
             else
-                loadingDialog.get()?.hide()
+                loadingDialog.hide()
         })
     }
 }

@@ -14,6 +14,6 @@ abstract class BaseViewModel : ViewModel() {
     protected val _errorResult = MutableLiveData<String>()
     val errorResult: LiveData<String> = _errorResult
 
-    protected val _loadingResult = MutableLiveData<Boolean>()
+    protected val _loadingResult = MutableLiveData<Boolean>(false)
     val loadingResult: LiveData<Boolean> = _loadingResult
 }
