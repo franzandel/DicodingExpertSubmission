@@ -16,10 +16,18 @@ class GamesResultsUIMapper @Inject constructor() :
     BaseMapper<List<GamesResult>, List<GamesResultUI>>() {
 
     override fun map(dataModel: List<GamesResult>): List<GamesResultUI> =
-        dataModel.map {
-            with(it) {
+        dataModel.map { gamesResult ->
+            with(gamesResult) {
                 GamesResultUI(
-                    name, rating, backgroundImage
+                    name,
+                    rating,
+                    backgroundImage,
+                    released,
+                    platforms.map { it.platform.name },
+                    genres.map { it.name },
+                    stores.map { it.store.name },
+                    tags.map { it.name },
+                    shortScreenshots.map { it.image }
                 )
             }
         }

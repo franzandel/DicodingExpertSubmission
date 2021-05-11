@@ -13,16 +13,30 @@ import com.google.gson.reflect.TypeToken
 class ListConverter {
 
     @TypeConverter
-    fun fromCountryLangList(value: List<ResultDTO>): String {
+    fun fromResultDTOList(value: List<ResultDTO>): String {
         val gson = Gson()
         val type = object : TypeToken<List<ResultDTO>>() {}.type
         return gson.toJson(value, type)
     }
 
     @TypeConverter
-    fun toCountryLangList(value: String): List<ResultDTO> {
+    fun fromStringList(value: List<String>): String {
+        val gson = Gson()
+        val type = object : TypeToken<List<String>>() {}.type
+        return gson.toJson(value, type)
+    }
+
+    @TypeConverter
+    fun toResultDTOList(value: String): List<ResultDTO> {
         val gson = Gson()
         val type = object : TypeToken<List<ResultDTO>>() {}.type
+        return gson.fromJson(value, type)
+    }
+
+    @TypeConverter
+    fun toStringList(value: String): List<String> {
+        val gson = Gson()
+        val type = object : TypeToken<List<String>>() {}.type
         return gson.fromJson(value, type)
     }
 }

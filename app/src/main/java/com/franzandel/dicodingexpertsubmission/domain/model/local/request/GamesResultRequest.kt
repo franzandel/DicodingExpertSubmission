@@ -1,15 +1,11 @@
-package com.franzandel.dicodingexpertsubmission.presentation.model
-
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+package com.franzandel.dicodingexpertsubmission.domain.model.local.request
 
 /**
- * Created by Franz Andel on 08/05/21.
+ * Created by Franz Andel on 11/05/21.
  * Android Engineer
  */
 
-@Parcelize
-data class GamesResultUI(
+data class GamesResultRequest(
     val name: String,
     val rating: Double,
     val backgroundImage: String,
@@ -19,4 +15,4 @@ data class GamesResultUI(
     val stores: List<String>,
     val tags: List<String>,
     val shortScreenshots: List<String>
-) : Parcelable
+)

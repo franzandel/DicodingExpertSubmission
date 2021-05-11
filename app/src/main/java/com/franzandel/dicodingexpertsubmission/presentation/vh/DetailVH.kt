@@ -1,6 +1,8 @@
 package com.franzandel.dicodingexpertsubmission.presentation.vh
 
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.databinding.ItemDetailBinding
 
 /**

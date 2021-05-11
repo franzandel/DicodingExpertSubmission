@@ -33,5 +33,9 @@
         android:id="@+id/detailFragment"
         android:name="com.franzandel.dicodingexpertsubmission.presentation.fragment.DetailFragment"
         android:label="DetailFragment"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="gamesResult"
+            app:argType="com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI" />
+    </fragment>
 </navigation>
