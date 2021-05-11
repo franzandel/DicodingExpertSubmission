@@ -47,6 +47,7 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
 
     private fun setupUI() = with(viewBinding) {
         toolbarDetail.title = gamesResult.name
+        tvReleased.text = gamesResult.released
         tvPlatforms.text = gamesResult.platforms.toMultiLineString()
         tvGenres.text = gamesResult.genres.toMultiLineString()
         tvStores.text = gamesResult.stores.toMultiLineString()

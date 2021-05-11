@@ -27,6 +27,7 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
+    <string name="detail_released_title">Release Date</string>
     <string name="detail_platforms_title">Platforms</string>
     <string name="detail_genres_title">Genres</string>
     <string name="detail_stores_title">Stores</string>
