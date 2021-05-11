@@ -7,8 +7,22 @@ package com.franzandel.dicodingexpertsubmission.core.extension
 
 fun List<String>.toMultiLineString(): String {
     var multiLineString = ""
-    forEach {
-        multiLineString += "$it\n"
+    forEachIndexed { index, text ->
+        multiLineString += if (index == size - 1)
+            text
+        else
+            "$text\n"
+    }
+    return multiLineString
+}
+
+fun List<String>.toCommaString(): String {
+    var multiLineString = ""
+    forEachIndexed { index, text ->
+        multiLineString += if (index == size - 1)
+            text
+        else
+            "$text, "
     }
     return multiLineString
 }
