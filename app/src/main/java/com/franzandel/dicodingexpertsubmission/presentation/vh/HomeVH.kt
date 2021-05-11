@@ -1,7 +1,11 @@
 package com.franzandel.dicodingexpertsubmission.presentation.vh
 
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.databinding.ItemHomeBinding
+import com.franzandel.dicodingexpertsubmission.presentation.fragment.HomeFragmentDirections
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 
 /**
@@ -26,9 +30,7 @@ class HomeVH(private val itemHomeBinding: ItemHomeBinding) :
 
             cvHome.setOnClickListener {
                 val navDirections =
-                    HomeFragmentDirections.actionNavigationHomeToDetailFragment()
-//                navDirections.movies = movies.toTypedArray()
-//                navDirections.currentPosition = adapterPosition
+                    HomeFragmentDirections.actionNavigationHomeToDetailFragment(gamesResult)
                 findNavController(root).navigate(navDirections)
             }
         }

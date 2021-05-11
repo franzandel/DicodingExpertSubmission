@@ -2,9 +2,9 @@ package com.franzandel.dicodingexpertsubmission.core.presentation
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
+import com.franzandel.dicodingexpertsubmission.core.extension.observe
 import com.franzandel.dicodingexpertsubmission.presentation.dialogfragment.LoadingDialog
 
 /**
@@ -24,11 +24,11 @@ abstract class BaseFragmentVM<VM : ViewModel, VB : ViewBinding> : BaseFragment<V
     }
 
     private fun setupObserver(viewModel: BaseViewModel) {
-        viewModel.loadingResult.observe(viewLifecycleOwner, Observer {
+        viewLifecycleOwner.observe(viewModel.loadingResult) {
             if (it)
                 loadingDialog.show(requireActivity().supportFragmentManager)
             else
                 loadingDialog.hide()
-        })
+        }
     }
 }

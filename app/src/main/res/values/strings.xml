@@ -26,4 +26,13 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="detail_platforms_title">Platforms</string>
+    <string name="detail_genres_title">Genres</string>
+    <string name="detail_stores_title">Stores</string>
+    <string name="detail_tags_title">Tags</string>
+    <string name="detail_favorite_added">Favorite Added!</string>
+    <string name="detail_favorite_added_view">View</string>
+    <string name="detail_favorite_removed">Favorite Removed!</string>
+    <string name="detail_favorite_removed_undo">Undo</string>
 </resources>
