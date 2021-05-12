@@ -15,7 +15,10 @@ import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 class FavoriteVH(private val itemFavoriteBinding: ItemFavoriteBinding) :
     RecyclerView.ViewHolder(itemFavoriteBinding.root) {
 
-    fun bind(gamesResult: GamesResultUI) {
+    fun bind(
+        gamesResult: GamesResultUI,
+        onDeleteClick: (gamesResult: GamesResultUI) -> Unit
+    ) {
         with(itemFavoriteBinding) {
             Glide.with(itemView.context)
                 .load(gamesResult.backgroundImage)
@@ -29,6 +32,10 @@ class FavoriteVH(private val itemFavoriteBinding: ItemFavoriteBinding) :
             tvGenres.text = gamesResult.genres.toCommaString()
             tvRatings.text = gamesResult.rating.toString()
             cpiRatings.progress = gamesResult.rating.toInt()
+
+            ivDelete.setOnClickListener {
+                onDeleteClick.invoke(gamesResult)
+            }
 //
 //            cvHome.setOnClickListener {
 //                val navDirections =

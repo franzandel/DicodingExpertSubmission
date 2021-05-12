@@ -1,5 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.data.local
 
+import NETWORK_PAGE_SIZE
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -41,7 +42,8 @@ class FavoriteLocalDataImpl @Inject constructor(
 
         return Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
-            pagingSourceFactory = { FavoritePagingSource(dao) }
+//            pagingSourceFactory = { FavoritePagingSource(dao) }
+            pagingSourceFactory = { dao.getGamesResult() }
         ).flow.map {
             it.map { gamesResultEntity ->
                 mapper.map(gamesResultEntity)
