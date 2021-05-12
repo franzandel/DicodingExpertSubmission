@@ -1,5 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.data.local.dao
 
+import androidx.paging.PagingSource
 import androidx.room.*
 import com.franzandel.dicodingexpertsubmission.data.local.model.GamesResultEntity
 
@@ -16,9 +17,9 @@ interface FavoriteDao {
     @Delete
     suspend fun deleteGamesResult(gamesResultEntity: GamesResultEntity): Int
 
-    @Query("SELECT * FROM tbl_games_result")
-    suspend fun getGamesResult(): List<GamesResultEntity>
+    //    suspend fun getGamesResult(): List<GamesResultEntity>
 //    suspend fun getGamesResult(): Flow<List<GamesResultEntity>>
 //    suspend fun getGamesResult(): DataSource.Factory<Int, GamesResultEntity>
-//    suspend fun getGamesResult(): PagingSource<Int, GamesResultEntity>
+    @Query("SELECT * FROM tbl_games_result")
+    fun getGamesResult(): PagingSource<Int, GamesResultEntity>
 }

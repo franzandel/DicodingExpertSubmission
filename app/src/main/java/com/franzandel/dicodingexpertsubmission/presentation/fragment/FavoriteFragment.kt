@@ -2,9 +2,11 @@ package com.franzandel.dicodingexpertsubmission.presentation.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.map
+import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
 import com.franzandel.dicodingexpertsubmission.core.extension.observe
 import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
@@ -14,6 +16,7 @@ import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesR
 import com.franzandel.dicodingexpertsubmission.presentation.adapter.FavoriteAdapter
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import com.franzandel.dicodingexpertsubmission.presentation.vm.FavoriteViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,7 +32,9 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
     @Inject
     lateinit var mapper: BaseMapper<GamesResultRequest, GamesResultUI>
 
-    private val adapter = FavoriteAdapter()
+    private val adapter = FavoriteAdapter { gamesResult ->
+        showDeleteConfirmationDialog(gamesResult)
+    }
 
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -66,6 +71,19 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
 //                }
 //            }
 //        }
+    }
+
+    private fun showDeleteConfirmationDialog(gamesResult: GamesResultUI) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.favorite_confirmation_delete_title))
+            .setMessage(getString(R.string.favorite_confirmation_delete_description))
+            .setNegativeButton(getString(R.string.favorite_confirmation_negative_button), null)
+            .setPositiveButton(getString(R.string.favorite_confirmation_positive_button)) { _, _ ->
+//                deletedBookmarkMovieResponse = bookmarkMovieResponse
+//                bookmarkMoviesVM.deleteMovieFromBookmark(bookmarkMovieResponse.id)
+                Toast.makeText(requireContext(), "Delete Yes clicked", Toast.LENGTH_SHORT).show()
+            }
+            .show()
     }
 
 
