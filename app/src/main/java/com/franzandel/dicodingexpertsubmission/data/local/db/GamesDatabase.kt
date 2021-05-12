@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.franzandel.dicodingexpertsubmission.data.local.dao.DetailDao
+import com.franzandel.dicodingexpertsubmission.data.local.dao.FavoriteDao
 import com.franzandel.dicodingexpertsubmission.data.local.dao.ScreenshotsDao
 import com.franzandel.dicodingexpertsubmission.data.local.model.GamesResultEntity
 import com.franzandel.dicodingexpertsubmission.data.local.model.ScreenshotsDTO
@@ -22,4 +23,5 @@ import com.franzandel.dicodingexpertsubmission.data.local.model.ScreenshotsDTO
 abstract class GamesDatabase : RoomDatabase() {
     abstract fun screenshotsDao(): ScreenshotsDao
     abstract fun homeDao(): DetailDao
+    abstract fun favoriteDao(): FavoriteDao
 }
