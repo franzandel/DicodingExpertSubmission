@@ -36,14 +36,6 @@ class FavoriteVH(private val itemFavoriteBinding: ItemFavoriteBinding) :
             ivDelete.setOnClickListener {
                 onDeleteClick.invoke(gamesResult)
             }
-//
-//            cvHome.setOnClickListener {
-//                val navDirections =
-//                    HomeFragmentDirections.actionNavigationHomeToDetailFragment()
-////                navDirections.movies = movies.toTypedArray()
-////                navDirections.currentPosition = adapterPosition
-//                findNavController(root).navigate(navDirections)
-//            }
         }
     }
 }

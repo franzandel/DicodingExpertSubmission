@@ -15,15 +15,7 @@ import com.franzandel.dicodingexpertsubmission.presentation.vh.FavoriteVH
 
 class FavoriteAdapter(
     private val onDeleteClick: (gamesResult: GamesResultUI) -> Unit
-) :
-//    BaseAdapter<String, FavoriteVH, ItemDetailBinding>(FavoriteDiffCallback()) {
-    PagingDataAdapter<GamesResultUI, FavoriteVH>(FavoriteDiffCallback()) {
-
-//    override fun getViewBinding(parent: ViewGroup): ItemDetailBinding =
-//        ItemDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//
-//    override fun getViewHolder(viewBinding: ItemDetailBinding): FavoriteVH =
-//        FavoriteVH(viewBinding)
+) : PagingDataAdapter<GamesResultUI, FavoriteVH>(FavoriteDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteVH {
         val itemFavoriteBinding =

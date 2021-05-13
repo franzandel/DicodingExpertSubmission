@@ -2,13 +2,14 @@ package com.franzandel.dicodingexpertsubmission.presentation.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.map
 import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
 import com.franzandel.dicodingexpertsubmission.core.extension.observe
+import com.franzandel.dicodingexpertsubmission.core.extension.show
+import com.franzandel.dicodingexpertsubmission.core.extension.showShareMessage
 import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.databinding.FragmentFavoriteBinding
@@ -16,7 +17,9 @@ import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesR
 import com.franzandel.dicodingexpertsubmission.presentation.adapter.FavoriteAdapter
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import com.franzandel.dicodingexpertsubmission.presentation.vm.FavoriteViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -43,34 +46,68 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
         FragmentFavoriteBinding.inflate(layoutInflater, container, false)
 
     override fun onFragmentCreated() {
+        showBottomNavigation()
         setupAdapter()
+        setupListeners()
         setupObservers()
     }
 
-    private fun setupAdapter() {
-        viewBinding.rvBookmarkMovies.adapter = adapter
+    private fun showBottomNavigation() {
+        val bottomNavigation = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavigation.show()
     }
 
-    private fun setupObservers() = with(viewLifecycleOwner) {
-        lifecycleScope.launch(thread.main()) {
-            observe(viewModel.getFavoriteGames()) {
-                lifecycleScope.launch(thread.main()) {
-                    val pagedGamesResultUI = it.map { gamesResultRequest ->
-                        mapper.map(gamesResultRequest)
-                    }
+    private fun setupAdapter() {
+        viewBinding.rvFavorite.adapter = adapter
+    }
 
-                    adapter.submitData(pagedGamesResultUI)
+    private fun setupListeners() {
+        viewBinding.mtbFavorite.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_share -> {
+                    requireActivity().showShareMessage()
+                    true
                 }
+                else -> false
             }
         }
+    }
 
-//        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-//            viewModel.getFavoriteGames().collectLatest {
-//                withContext(Dispatchers.Main) {
-//                    adapter.submitData(it)
-//                }
-//            }
-//        }
+    private fun setupObservers() {
+        with(viewLifecycleOwner) {
+            // TODO: 13/05/21 QUERY IS STILL IN MAIN THREAD
+            lifecycleScope.launch(thread.main()) {
+                observe(viewModel.getFavoriteGames()) {
+                    lifecycleScope.launch(thread.main()) {
+                        val pagedGamesResultUI = it.map { gamesResultRequest ->
+                            mapper.map(gamesResultRequest)
+                        }
+
+                        adapter.submitData(pagedGamesResultUI)
+                    }
+                }
+            }
+
+            observe(viewModel.deleteGamesResults) { gamesResult ->
+                val snackbar = Snackbar.make(
+                    requireView(),
+                    getString(R.string.favorite_delete_success),
+                    Snackbar.LENGTH_LONG
+                )
+                snackbar.setAction(getString(R.string.favorite_delete_undo)) {
+                    viewModel.insertGamesResults(gamesResult)
+                }
+                snackbar.show()
+            }
+
+            observe(viewModel.insertGamesResults) {
+                Snackbar.make(
+                    requireView(),
+                    getString(R.string.favorite_delete_undo_success),
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     private fun showDeleteConfirmationDialog(gamesResult: GamesResultUI) {
@@ -79,9 +116,7 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
             .setMessage(getString(R.string.favorite_confirmation_delete_description))
             .setNegativeButton(getString(R.string.favorite_confirmation_negative_button), null)
             .setPositiveButton(getString(R.string.favorite_confirmation_positive_button)) { _, _ ->
-//                deletedBookmarkMovieResponse = bookmarkMovieResponse
-//                bookmarkMoviesVM.deleteMovieFromBookmark(bookmarkMovieResponse.id)
-                Toast.makeText(requireContext(), "Delete Yes clicked", Toast.LENGTH_SHORT).show()
+                viewModel.deleteGamesResults(gamesResult)
             }
             .show()
     }
