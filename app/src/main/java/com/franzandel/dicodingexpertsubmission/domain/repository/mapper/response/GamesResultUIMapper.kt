@@ -3,7 +3,7 @@ package com.franzandel.dicodingexpertsubmission.domain.repository.mapper.respons
 import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
-import dagger.hilt.android.scopes.ActivityScoped
+import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 /**
@@ -11,7 +11,7 @@ import javax.inject.Inject
  * Android Engineer
  */
 
-@ActivityScoped
+@ViewModelScoped
 class GamesResultUIMapper @Inject constructor() :
     BaseMapper<GamesResultRequest, GamesResultUI>() {
 
