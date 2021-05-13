@@ -2,9 +2,12 @@ package com.franzandel.dicodingexpertsubmission.presentation.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.map
 import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
+import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.core.presentation.BaseViewModel
 import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
 import com.franzandel.dicodingexpertsubmission.core.wrapper.result
@@ -23,11 +26,16 @@ import javax.inject.Inject
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
     private val useCase: FavoriteUseCase,
-    private val thread: CoroutineThread
+    private val thread: CoroutineThread,
+    private val mapper: BaseMapper<GamesResultRequest, GamesResultUI>
 ) : BaseViewModel() {
 
-    suspend fun getFavoriteGames(): LiveData<PagingData<GamesResultRequest>> =
-        useCase.getGamesResults()
+    suspend fun getFavoriteGames(): LiveData<PagingData<GamesResultUI>> =
+        Transformations.map(useCase.getGamesResults()) {
+            it.map { gamesResultRequest ->
+                mapper.map(gamesResultRequest)
+            }
+        }
 
     private val _insertGamesResults = MutableLiveData<Unit>()
     val insertGamesResults: LiveData<Unit> = _insertGamesResults

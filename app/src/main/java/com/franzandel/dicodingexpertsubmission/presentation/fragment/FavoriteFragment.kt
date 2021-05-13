@@ -4,16 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.map
 import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
 import com.franzandel.dicodingexpertsubmission.core.extension.observe
 import com.franzandel.dicodingexpertsubmission.core.extension.show
 import com.franzandel.dicodingexpertsubmission.core.extension.showShareMessage
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.databinding.FragmentFavoriteBinding
-import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
 import com.franzandel.dicodingexpertsubmission.presentation.adapter.FavoriteAdapter
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import com.franzandel.dicodingexpertsubmission.presentation.vm.FavoriteViewModel
@@ -31,9 +28,6 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
 
     @Inject
     lateinit var thread: CoroutineThread
-
-    @Inject
-    lateinit var mapper: BaseMapper<GamesResultRequest, GamesResultUI>
 
     private val adapter = FavoriteAdapter { gamesResult ->
         showDeleteConfirmationDialog(gamesResult)
@@ -79,11 +73,7 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
             lifecycleScope.launch(thread.main()) {
                 observe(viewModel.getFavoriteGames()) {
                     lifecycleScope.launch(thread.main()) {
-                        val pagedGamesResultUI = it.map { gamesResultRequest ->
-                            mapper.map(gamesResultRequest)
-                        }
-
-                        adapter.submitData(pagedGamesResultUI)
+                        adapter.submitData(it)
                     }
                 }
             }
