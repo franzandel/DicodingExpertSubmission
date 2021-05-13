@@ -43,4 +43,7 @@
     <string name="favorite_confirmation_delete_description">Can\'t be retrieved once deleted</string>
     <string name="favorite_confirmation_negative_button">Cancel</string>
     <string name="favorite_confirmation_positive_button">Delete</string>
+    <string name="favorite_delete_success">Favorite Game deleted!</string>
+    <string name="favorite_delete_undo">Undo</string>
+    <string name="favorite_delete_undo_success">Undo success!</string>
 </resources>

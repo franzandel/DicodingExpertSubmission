@@ -17,9 +17,6 @@ interface FavoriteDao {
     @Delete
     suspend fun deleteGamesResult(gamesResultEntity: GamesResultEntity): Int
 
-    //    suspend fun getGamesResult(): List<GamesResultEntity>
-//    suspend fun getGamesResult(): Flow<List<GamesResultEntity>>
-//    suspend fun getGamesResult(): DataSource.Factory<Int, GamesResultEntity>
     @Query("SELECT * FROM tbl_games_result")
     fun getGamesResult(): PagingSource<Int, GamesResultEntity>
 }

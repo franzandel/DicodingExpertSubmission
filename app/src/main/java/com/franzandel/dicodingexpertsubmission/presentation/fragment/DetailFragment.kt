@@ -2,8 +2,8 @@ package com.franzandel.dicodingexpertsubmission.presentation.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.franzandel.dicodingexpertsubmission.R
@@ -83,10 +83,9 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
                 Snackbar.LENGTH_LONG
             )
             snackbar.setAction(getString(R.string.detail_favorite_added_view)) {
-//                val navDirections =
-//                    DetailFragmentDirections.actionDetailFragmentToBookmarkActivity()
-//                Navigation.findNavController(it).navigate(navDirections)
-                Toast.makeText(requireContext(), "Go to Favorite", Toast.LENGTH_SHORT).show()
+                val navDirections =
+                    DetailFragmentDirections.actionDetailFragmentToNavigationFavorite()
+                Navigation.findNavController(it).navigate(navDirections)
             }
             snackbar.show()
         }
