@@ -1,24 +1,32 @@
 package com.franzandel.dicodingexpertsubmission.data.remote
 
-import com.franzandel.dicodingexpertsubmission.BuildConfig
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseResponseMapper
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.core.wrapper.suspendTryCatch
-import com.franzandel.dicodingexpertsubmission.data.remote.model.response.GamesDTO
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.map
+import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
+import com.franzandel.dicodingexpertsubmission.data.consts.PaginationConsts.NETWORK_PAGE_SIZE
+import com.franzandel.dicodingexpertsubmission.data.remote.model.response.GamesResultDTO
 import com.franzandel.dicodingexpertsubmission.data.remote.network.HomeService
-import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.Games
+import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.GamesResult
 import dagger.hilt.android.scopes.ViewModelScoped
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @ViewModelScoped
 class HomeRemoteDataImpl @Inject constructor(
     private val service: HomeService,
-    private val mapper: BaseResponseMapper<GamesDTO, Games>
+    private val mapper: BaseMapper<GamesResultDTO, GamesResult>
 ) : HomeRemoteData {
 
-    override suspend fun getAllGames(): Result<Games> =
-        suspendTryCatch {
-            val screenshotsDTO = service.getAllGames(BuildConfig.GAMES_API_KEY)
-            mapper.mapResponse(screenshotsDTO)
+    override suspend fun getAllGames(): Flow<PagingData<GamesResult>> =
+        Pager(
+            config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
+            pagingSourceFactory = { HomePagingSource(service) }
+        ).flow.map {
+            it.map { gamesResultDTO ->
+                mapper.map(gamesResultDTO)
+            }
         }
 }

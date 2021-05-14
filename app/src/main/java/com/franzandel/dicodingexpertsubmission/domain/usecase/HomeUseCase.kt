@@ -1,7 +1,8 @@
 package com.franzandel.dicodingexpertsubmission.domain.usecase
 
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
+import androidx.paging.PagingData
+import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.GamesResult
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by Franz Andel on 07/05/21.
@@ -9,5 +10,5 @@ import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
  */
 
 interface HomeUseCase {
-    suspend fun getAllGames(): Result<List<GamesResultUI>>
+    suspend fun getAllGames(): Flow<PagingData<GamesResult>>
 }

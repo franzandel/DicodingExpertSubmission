@@ -1,7 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.data.remote.network
 
 import com.franzandel.dicodingexpertsubmission.data.remote.model.response.GamesDTO
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -13,6 +12,8 @@ import retrofit2.http.Query
 interface HomeService {
     @GET("games")
     suspend fun getAllGames(
-        @Query("key") apiKey: String
-    ): Response<GamesDTO>
+        @Query("key") apiKey: String,
+        @Query("page") page: Int,
+        @Query("page_size") pageSize: Int
+    ): GamesDTO
 }

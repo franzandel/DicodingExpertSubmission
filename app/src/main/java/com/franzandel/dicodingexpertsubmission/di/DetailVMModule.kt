@@ -20,5 +20,5 @@ object DetailVMModule {
     @Provides
     @ViewModelScoped
     fun provideDetailDao(database: GamesDatabase): DetailDao =
-        database.homeDao()
+        database.detailDao()
 }

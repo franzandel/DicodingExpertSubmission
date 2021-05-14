@@ -1,7 +1,8 @@
 package com.franzandel.dicodingexpertsubmission.data.remote
 
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.Games
+import androidx.paging.PagingData
+import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.GamesResult
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by Franz Andel on 07/05/21.
@@ -9,5 +10,5 @@ import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.Game
  */
 
 interface HomeRemoteData {
-    suspend fun getAllGames(): Result<Games>
+    suspend fun getAllGames(): Flow<PagingData<GamesResult>>
 }

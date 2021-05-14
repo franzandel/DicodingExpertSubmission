@@ -1,16 +1,15 @@
 package com.franzandel.dicodingexpertsubmission.presentation.vm
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
+import androidx.paging.cachedIn
+import androidx.paging.map
+import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.core.presentation.BaseViewModel
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.core.wrapper.result
+import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.GamesResult
 import com.franzandel.dicodingexpertsubmission.domain.usecase.HomeUseCase
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 /**
@@ -21,20 +20,13 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val useCase: HomeUseCase,
-    private val thread: CoroutineThread
+    private val mapper: BaseMapper<GamesResult, GamesResultUI>
 ) : BaseViewModel() {
 
-    private val _games = MutableLiveData<List<GamesResultUI>>()
-    val games: LiveData<List<GamesResultUI>> = _games
-
-    fun getAllGames() {
-        _loadingResult.value = true
-        viewModelScope.launch(thread.background()) {
-            when (val result = useCase.getAllGames()) {
-                is Result.Success -> _games.postValue(result.result)
-                is Result.Error -> _errorResult.postValue(result.error.localizedMessage)
+    suspend fun getAllGames() =
+        useCase.getAllGames().map {
+            it.map { gamesResult ->
+                mapper.map(gamesResult)
             }
-            _loadingResult.postValue(false)
-        }
-    }
+        }.cachedIn(viewModelScope)
 }
