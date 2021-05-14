@@ -12,21 +12,6 @@
     <string name="share_message_title">Let\'s share this apps to your friends!</string>
     <string name="share_message_description">Know more info about Games at <b>Games House</b> in Google Play Store</string>
 
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-
     <string name="detail_released_title">Release Date</string>
     <string name="detail_platforms_title">Platforms</string>
     <string name="detail_genres_title">Genres</string>
@@ -46,4 +31,16 @@
     <string name="favorite_delete_success">Favorite Game deleted!</string>
     <string name="favorite_delete_undo">Undo</string>
     <string name="favorite_delete_undo_success">Undo success!</string>
+
+    <string name="settings_reminder_header">Reminder</string>
+    <string name="settings_reminder_key">reminder</string>
+    <string name="settings_reminder_title">Reminder</string>
+    <string name="settings_reminder_off">OFF</string>
+    <string name="settings_reminder_on">ON</string>
+    <string name="settings_reminder_time_key">reminder_time</string>
+    <string name="settings_reminder_time_title">Reminder time</string>
+    <string name="settings_reminder_time_default_value">08:00</string>
+    <string name="settings_theme_header">Themes</string>
+    <string name="settings_theme_key">theme</string>
+    <string name="settings_theme_title">App Theme</string>
 </resources>
