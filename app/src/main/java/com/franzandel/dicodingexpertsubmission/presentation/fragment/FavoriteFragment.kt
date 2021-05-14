@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -69,12 +70,9 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
 
     private fun setupObservers() {
         with(viewLifecycleOwner) {
-            // TODO: 13/05/21 QUERY IS STILL IN MAIN THREAD
-            lifecycleScope.launch(thread.main()) {
-                observe(viewModel.getFavoriteGames()) {
-                    lifecycleScope.launch(thread.main()) {
-                        adapter.submitData(it)
-                    }
+            lifecycleScope.launch(thread.background()) {
+                viewModel.getFavoriteGames().collect {
+                    adapter.submitData(it)
                 }
             }
 

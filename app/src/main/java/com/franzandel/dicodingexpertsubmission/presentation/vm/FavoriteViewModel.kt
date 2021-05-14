@@ -2,7 +2,6 @@ package com.franzandel.dicodingexpertsubmission.presentation.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.map
@@ -15,6 +14,8 @@ import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesR
 import com.franzandel.dicodingexpertsubmission.domain.usecase.FavoriteUseCase
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,8 +31,8 @@ class FavoriteViewModel @Inject constructor(
     private val mapper: BaseMapper<GamesResultRequest, GamesResultUI>
 ) : BaseViewModel() {
 
-    suspend fun getFavoriteGames(): LiveData<PagingData<GamesResultUI>> =
-        Transformations.map(useCase.getGamesResults()) {
+    suspend fun getFavoriteGames(): Flow<PagingData<GamesResultUI>> =
+        useCase.getGamesResults().map {
             it.map { gamesResultRequest ->
                 mapper.map(gamesResultRequest)
             }
