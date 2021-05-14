@@ -11,6 +11,8 @@ import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.*
 import com.franzandel.dicodingexpertsubmission.domain.repository.HomeRepository
 import com.franzandel.dicodingexpertsubmission.domain.usecase.HomeUseCase
 import com.franzandel.dicodingexpertsubmission.domain.usecase.HomeUseCaseImpl
+import com.franzandel.dicodingexpertsubmission.presentation.mapper.GamesResultUIMapper
+import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -24,6 +26,12 @@ import dagger.hilt.android.components.ViewModelComponent
 @Module
 @InstallIn(ViewModelComponent::class)
 abstract class HomeAbstractVMModule {
+
+    @Binds
+    abstract fun bindGamesResultUIMapper(
+        gamesResultUIMapper: GamesResultUIMapper
+    ): BaseMapper<GamesResult, GamesResultUI>
+
     @Binds
     abstract fun bindHomeUseCase(
         homeUseCaseImpl: HomeUseCaseImpl
@@ -73,4 +81,9 @@ abstract class HomeAbstractVMModule {
     abstract fun bindGamesMapper(
         gamesMapper: GamesMapper
     ): BaseResponseMapper<GamesDTO, Games>
+
+    @Binds
+    abstract fun bindGamesResultMapper(
+        gamesResultMapper: GamesResultMapper
+    ): BaseMapper<GamesResultDTO, GamesResult>
 }

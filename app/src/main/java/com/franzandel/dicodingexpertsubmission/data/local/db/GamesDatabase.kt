@@ -22,6 +22,6 @@ import com.franzandel.dicodingexpertsubmission.data.local.model.ScreenshotsDTO
 @TypeConverters(ListConverter::class)
 abstract class GamesDatabase : RoomDatabase() {
     abstract fun screenshotsDao(): ScreenshotsDao
-    abstract fun homeDao(): DetailDao
+    abstract fun detailDao(): DetailDao
     abstract fun favoriteDao(): FavoriteDao
 }

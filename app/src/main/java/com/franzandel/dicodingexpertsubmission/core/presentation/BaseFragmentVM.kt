@@ -14,7 +14,7 @@ import com.franzandel.dicodingexpertsubmission.presentation.dialogfragment.Loadi
 
 abstract class BaseFragmentVM<VM : ViewModel, VB : ViewBinding> : BaseFragment<VB>() {
 
-    private val loadingDialog = LoadingDialog.newInstance()
+    protected val loadingDialog = LoadingDialog.newInstance()
 
     abstract fun getVM(): VM
 
