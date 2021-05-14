@@ -1,7 +1,5 @@
 package com.franzandel.dicodingexpertsubmission.domain.usecase
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
 import androidx.paging.PagingData
 import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
@@ -9,6 +7,7 @@ import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesR
 import com.franzandel.dicodingexpertsubmission.domain.repository.FavoriteRepository
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import dagger.hilt.android.scopes.ViewModelScoped
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @ViewModelScoped
@@ -27,6 +26,6 @@ class FavoriteUseCaseImpl @Inject constructor(
         return repository.deleteGamesResults(gamesResultRequest)
     }
 
-    override suspend fun getGamesResults(): LiveData<PagingData<GamesResultRequest>> =
-        repository.getGamesResults().asLiveData()
+    override suspend fun getGamesResults(): Flow<PagingData<GamesResultRequest>> =
+        repository.getGamesResults()
 }
