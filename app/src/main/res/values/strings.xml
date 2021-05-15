@@ -40,7 +40,13 @@
     <string name="settings_reminder_time_key">reminder_time</string>
     <string name="settings_reminder_time_title">Reminder time</string>
     <string name="settings_reminder_time_default_value">08:00</string>
+    <string name="settings_reminder_success_turned_on">Successfully turn on</string>
+    <string name="settings_reminder_success_turned_off">Successfully turn off</string>
+    <string name="settings_reminder_success_change_time">Successfully change time</string>
     <string name="settings_theme_header">Themes</string>
     <string name="settings_theme_key">theme</string>
     <string name="settings_theme_title">App Theme</string>
+
+    <string name="pn_daily_reminder_title">Games House</string>
+    <string name="pn_daily_reminder_description">Come, let\'s check the latest update about games</string>
 </resources>

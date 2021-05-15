@@ -21,7 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.activity.DashboardActivity" />
+        <activity
+            android:name=".presentation.activity.DashboardActivity"
+            android:launchMode="singleTask" />
+
+        <receiver
+            android:name=".core.receiver.DailyAlarmReceiver"
+            android:exported="false" />
     </application>
 
 </manifest>
