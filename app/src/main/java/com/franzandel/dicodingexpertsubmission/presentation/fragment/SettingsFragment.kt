@@ -3,6 +3,10 @@ package com.franzandel.dicodingexpertsubmission.presentation.fragment
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.widget.TimePicker
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
@@ -21,6 +25,10 @@ class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetL
 
     private val pReminderTime by lazy {
         findPreference<Preference>(getString(R.string.settings_reminder_time_key))!!
+    }
+
+    private val lpTheme by lazy {
+        findPreference<ListPreference>(getString(R.string.settings_theme_key))!!
     }
 
     private val preferences by lazy {
@@ -55,6 +63,19 @@ class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetL
 
         pReminderTime.setOnPreferenceClickListener {
             requireContext().showTimePickerDialog(this)
+            true
+        }
+
+        lpTheme.setOnPreferenceChangeListener { _, selectedMode ->
+            val themes = requireContext().resources.getStringArray(R.array.theme_values)
+
+            val mode = when (selectedMode.toString()) {
+                themes.first() -> MODE_NIGHT_NO
+                themes[1] -> MODE_NIGHT_YES
+                else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+            }
+
+            AppCompatDelegate.setDefaultNightMode(mode)
             true
         }
     }
