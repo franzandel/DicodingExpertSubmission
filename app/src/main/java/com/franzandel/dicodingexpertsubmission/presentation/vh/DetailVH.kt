@@ -20,18 +20,6 @@ class DetailVH(private val itemDetailBinding: ItemDetailBinding) :
                 .centerCrop()
                 .placeholder(R.drawable.ic_image_not_found)
                 .into(ivDetail)
-
-//            tvTitle.text = gamesResult.name
-//            tvRatings.text = gamesResult.rating.toString()
-//            cpiRatings.progress = gamesResult.rating.toInt()
-//
-//            cvHome.setOnClickListener {
-//                val navDirections =
-//                    HomeFragmentDirections.actionNavigationHomeToDetailFragment()
-////                navDirections.movies = movies.toTypedArray()
-////                navDirections.currentPosition = adapterPosition
-//                findNavController(root).navigate(navDirections)
-//            }
         }
     }
 }
