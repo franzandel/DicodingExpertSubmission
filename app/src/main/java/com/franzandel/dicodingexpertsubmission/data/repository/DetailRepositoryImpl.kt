@@ -1,6 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.data.repository
 
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
+import com.franzandel.core.wrapper.Result
 import com.franzandel.dicodingexpertsubmission.data.local.DetailLocalData
 import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
 import com.franzandel.dicodingexpertsubmission.domain.repository.DetailRepository

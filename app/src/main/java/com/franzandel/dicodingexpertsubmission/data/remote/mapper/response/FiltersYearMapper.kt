@@ -1,6 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.data.remote.mapper.response
 
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
+import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.data.remote.model.response.FiltersYearChildDTO
 import com.franzandel.dicodingexpertsubmission.data.remote.model.response.FiltersYearDTO
 import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.FiltersYear

@@ -6,8 +6,8 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
+import com.franzandel.core.extension.goTo
 import com.franzandel.dicodingexpertsubmission.R
-import com.franzandel.dicodingexpertsubmission.core.extension.goTo
 
 class SplashScreenActivity : AppCompatActivity() {
 

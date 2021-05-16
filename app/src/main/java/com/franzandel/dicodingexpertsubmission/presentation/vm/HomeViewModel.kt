@@ -3,8 +3,8 @@ package com.franzandel.dicodingexpertsubmission.presentation.vm
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
-import com.franzandel.dicodingexpertsubmission.core.presentation.BaseViewModel
+import com.franzandel.core.mapper.BaseMapper
+import com.franzandel.core.presentation.BaseViewModel
 import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.GamesResult
 import com.franzandel.dicodingexpertsubmission.domain.usecase.HomeUseCase
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI

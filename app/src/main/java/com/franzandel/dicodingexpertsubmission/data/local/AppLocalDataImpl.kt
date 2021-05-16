@@ -1,9 +1,9 @@
 package com.franzandel.dicodingexpertsubmission.data.local
 
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
-import com.franzandel.dicodingexpertsubmission.core.mapper.mapLocalResponse
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.core.wrapper.suspendTryCatch
+import com.franzandel.core.mapper.BaseMapper
+import com.franzandel.core.mapper.mapLocalResponse
+import com.franzandel.core.wrapper.Result
+import com.franzandel.core.wrapper.suspendTryCatch
 import com.franzandel.dicodingexpertsubmission.data.local.dao.ScreenshotsDao
 import com.franzandel.dicodingexpertsubmission.data.local.model.ScreenshotsDTO
 import com.franzandel.dicodingexpertsubmission.domain.model.local.Screenshots

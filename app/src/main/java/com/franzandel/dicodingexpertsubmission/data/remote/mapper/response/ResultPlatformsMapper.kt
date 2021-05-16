@@ -1,6 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.data.remote.mapper.response
 
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
+import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.data.remote.model.response.ResultPlatformChildDTO
 import com.franzandel.dicodingexpertsubmission.data.remote.model.response.ResultPlatformDTO
 import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.ResultPlatform

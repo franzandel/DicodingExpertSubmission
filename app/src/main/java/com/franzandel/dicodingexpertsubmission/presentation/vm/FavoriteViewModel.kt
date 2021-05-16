@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
-import com.franzandel.dicodingexpertsubmission.core.presentation.BaseViewModel
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.core.wrapper.result
+import com.franzandel.core.coroutine.CoroutineThread
+import com.franzandel.core.mapper.BaseMapper
+import com.franzandel.core.presentation.BaseViewModel
+import com.franzandel.core.wrapper.Result
+import com.franzandel.core.wrapper.result
 import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
 import com.franzandel.dicodingexpertsubmission.domain.usecase.FavoriteUseCase
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI

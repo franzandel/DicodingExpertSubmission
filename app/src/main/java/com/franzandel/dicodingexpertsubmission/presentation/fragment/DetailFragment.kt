@@ -6,11 +6,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.franzandel.core.extension.hide
+import com.franzandel.core.extension.observe
+import com.franzandel.core.extension.toMultiLineString
+import com.franzandel.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.R
-import com.franzandel.dicodingexpertsubmission.core.extension.hide
-import com.franzandel.dicodingexpertsubmission.core.extension.observe
-import com.franzandel.dicodingexpertsubmission.core.extension.toMultiLineString
-import com.franzandel.dicodingexpertsubmission.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.databinding.FragmentDetailBinding
 import com.franzandel.dicodingexpertsubmission.presentation.adapter.DetailAdapter
 import com.franzandel.dicodingexpertsubmission.presentation.vm.DetailViewModel

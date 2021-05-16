@@ -1,7 +1,7 @@
 package com.franzandel.dicodingexpertsubmission.di
 
-import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
-import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThreadImpl
+import com.franzandel.core.coroutine.CoroutineThread
+import com.franzandel.dicodingexpertsubmission.external.coroutine.CoroutineThreadImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

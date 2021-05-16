@@ -26,7 +26,7 @@
             android:launchMode="singleTask" />
 
         <receiver
-            android:name=".core.receiver.DailyAlarmReceiver"
+            android:name=".external.receiver.DailyAlarmReceiver"
             android:exported="false" />
     </application>
 

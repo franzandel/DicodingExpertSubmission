@@ -1,6 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.domain.repository.mapper.response
 
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
+import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.domain.model.remote.response.GamesResult
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
 import dagger.hilt.android.scopes.ViewModelScoped

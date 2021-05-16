@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.franzandel.core.coroutine.CoroutineThread
+import com.franzandel.core.extension.observe
+import com.franzandel.core.extension.show
+import com.franzandel.core.extension.showShareMessage
+import com.franzandel.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.R
-import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
-import com.franzandel.dicodingexpertsubmission.core.extension.observe
-import com.franzandel.dicodingexpertsubmission.core.extension.show
-import com.franzandel.dicodingexpertsubmission.core.extension.showShareMessage
-import com.franzandel.dicodingexpertsubmission.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.databinding.FragmentFavoriteBinding
 import com.franzandel.dicodingexpertsubmission.presentation.adapter.FavoriteAdapter
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
@@ -60,7 +60,10 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
         viewBinding.mtbFavorite.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_share -> {
-                    requireActivity().showShareMessage()
+                    requireActivity().showShareMessage(
+                        getString(R.string.share_message_title),
+                        getString(R.string.share_message_description)
+                    )
                     true
                 }
                 else -> false

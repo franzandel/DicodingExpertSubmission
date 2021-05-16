@@ -2,7 +2,7 @@ package com.franzandel.dicodingexpertsubmission.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.franzandel.dicodingexpertsubmission.core.presentation.BaseAdapter
+import com.franzandel.core.presentation.BaseAdapter
 import com.franzandel.dicodingexpertsubmission.databinding.ItemDetailBinding
 import com.franzandel.dicodingexpertsubmission.presentation.diffcallback.DetailDiffCallback
 import com.franzandel.dicodingexpertsubmission.presentation.vh.DetailVH

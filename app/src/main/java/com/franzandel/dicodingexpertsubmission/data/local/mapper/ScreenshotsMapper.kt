@@ -1,6 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.data.local.mapper
 
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
+import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.data.local.model.ResultDTO
 import com.franzandel.dicodingexpertsubmission.data.local.model.ScreenshotsDTO
 import com.franzandel.dicodingexpertsubmission.domain.model.local.Result

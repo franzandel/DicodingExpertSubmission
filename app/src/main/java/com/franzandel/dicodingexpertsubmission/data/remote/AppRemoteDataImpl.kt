@@ -1,9 +1,9 @@
 package com.franzandel.dicodingexpertsubmission.data.remote
 
+import com.franzandel.core.mapper.BaseResponseMapper
+import com.franzandel.core.wrapper.Result
+import com.franzandel.core.wrapper.suspendTryCatch
 import com.franzandel.dicodingexpertsubmission.BuildConfig
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseResponseMapper
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.core.wrapper.suspendTryCatch
 import com.franzandel.dicodingexpertsubmission.data.remote.model.ScreenshotsResponseDTO
 import com.franzandel.dicodingexpertsubmission.data.remote.network.AppService
 import com.franzandel.dicodingexpertsubmission.domain.model.remote.ScreenshotsResponse

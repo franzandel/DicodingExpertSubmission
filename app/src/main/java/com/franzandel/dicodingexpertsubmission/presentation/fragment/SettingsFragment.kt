@@ -10,12 +10,12 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
+import com.franzandel.core.extension.addZeroPrefix
+import com.franzandel.core.extension.getHourAndMinute
+import com.franzandel.core.extension.showImageToast
+import com.franzandel.core.extension.showTimePickerDialog
 import com.franzandel.dicodingexpertsubmission.R
-import com.franzandel.dicodingexpertsubmission.core.alarmmanager.DailyAlarmManager
-import com.franzandel.dicodingexpertsubmission.core.extension.addZeroPrefix
-import com.franzandel.dicodingexpertsubmission.core.extension.getHourAndMinute
-import com.franzandel.dicodingexpertsubmission.core.extension.showImageToast
-import com.franzandel.dicodingexpertsubmission.core.extension.showTimePickerDialog
+import com.franzandel.dicodingexpertsubmission.external.alarmmanager.DailyAlarmManager
 
 class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetListener {
 
@@ -36,7 +36,9 @@ class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetL
     }
 
     private val dailyAlarmManager by lazy {
-        DailyAlarmManager(requireContext().applicationContext)
+        DailyAlarmManager(
+            requireContext().applicationContext
+        )
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

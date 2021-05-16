@@ -1,7 +1,7 @@
 package com.franzandel.dicodingexpertsubmission.data.remote.mapper.response
 
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseResponseMapper
+import com.franzandel.core.mapper.BaseMapper
+import com.franzandel.core.mapper.BaseResponseMapper
 import com.franzandel.dicodingexpertsubmission.data.remote.model.response.FiltersDTO
 import com.franzandel.dicodingexpertsubmission.data.remote.model.response.GamesDTO
 import com.franzandel.dicodingexpertsubmission.data.remote.model.response.GamesResultDTO
