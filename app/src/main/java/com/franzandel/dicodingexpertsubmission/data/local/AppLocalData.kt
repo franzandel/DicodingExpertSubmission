@@ -1,6 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.data.local
 
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
+import com.franzandel.core.wrapper.Result
 import com.franzandel.dicodingexpertsubmission.domain.model.local.Screenshots
 
 /**

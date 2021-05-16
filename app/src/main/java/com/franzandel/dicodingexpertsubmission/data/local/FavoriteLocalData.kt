@@ -1,7 +1,7 @@
 package com.franzandel.dicodingexpertsubmission.data.local
 
 import androidx.paging.PagingData
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
+import com.franzandel.core.wrapper.Result
 import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
 import kotlinx.coroutines.flow.Flow
 

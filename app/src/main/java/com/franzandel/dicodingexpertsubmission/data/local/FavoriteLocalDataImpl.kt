@@ -4,10 +4,10 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
-import com.franzandel.dicodingexpertsubmission.core.mapper.mapLocalResponse
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.core.wrapper.suspendTryCatch
+import com.franzandel.core.mapper.BaseMapper
+import com.franzandel.core.mapper.mapLocalResponse
+import com.franzandel.core.wrapper.Result
+import com.franzandel.core.wrapper.suspendTryCatch
 import com.franzandel.dicodingexpertsubmission.data.local.dao.FavoriteDao
 import com.franzandel.dicodingexpertsubmission.data.local.model.GamesResultEntity
 import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest

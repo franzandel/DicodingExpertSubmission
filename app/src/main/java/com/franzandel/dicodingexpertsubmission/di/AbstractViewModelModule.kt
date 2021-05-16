@@ -1,7 +1,7 @@
 package com.franzandel.dicodingexpertsubmission.di
 
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseResponseMapper
+import com.franzandel.core.mapper.BaseMapper
+import com.franzandel.core.mapper.BaseResponseMapper
 import com.franzandel.dicodingexpertsubmission.data.local.AppLocalData
 import com.franzandel.dicodingexpertsubmission.data.local.AppLocalDataImpl
 import com.franzandel.dicodingexpertsubmission.data.local.mapper.ResultDTOMapper

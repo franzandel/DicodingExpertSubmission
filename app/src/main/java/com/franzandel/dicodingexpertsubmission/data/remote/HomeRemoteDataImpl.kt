@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
+import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.dicodingexpertsubmission.data.consts.PaginationConsts.NETWORK_PAGE_SIZE
 import com.franzandel.dicodingexpertsubmission.data.remote.model.response.GamesResultDTO
 import com.franzandel.dicodingexpertsubmission.data.remote.network.HomeService

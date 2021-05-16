@@ -1,7 +1,7 @@
 package com.franzandel.dicodingexpertsubmission.data.repository
 
 import androidx.paging.PagingData
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
+import com.franzandel.core.wrapper.Result
 import com.franzandel.dicodingexpertsubmission.data.local.FavoriteLocalData
 import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
 import com.franzandel.dicodingexpertsubmission.domain.repository.FavoriteRepository

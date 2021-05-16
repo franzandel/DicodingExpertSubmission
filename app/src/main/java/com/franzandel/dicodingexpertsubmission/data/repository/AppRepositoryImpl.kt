@@ -1,8 +1,8 @@
 package com.franzandel.dicodingexpertsubmission.data.repository
 
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.core.wrapper.result
+import com.franzandel.core.mapper.BaseMapper
+import com.franzandel.core.wrapper.Result
+import com.franzandel.core.wrapper.result
 import com.franzandel.dicodingexpertsubmission.data.local.AppLocalData
 import com.franzandel.dicodingexpertsubmission.data.remote.AppRemoteData
 import com.franzandel.dicodingexpertsubmission.domain.model.local.Screenshots

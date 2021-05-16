@@ -6,13 +6,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
+import com.franzandel.core.coroutine.CoroutineThread
+import com.franzandel.core.extension.hide
+import com.franzandel.core.extension.observe
+import com.franzandel.core.extension.show
+import com.franzandel.core.extension.showShareMessage
+import com.franzandel.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.R
-import com.franzandel.dicodingexpertsubmission.core.coroutine.CoroutineThread
-import com.franzandel.dicodingexpertsubmission.core.extension.hide
-import com.franzandel.dicodingexpertsubmission.core.extension.observe
-import com.franzandel.dicodingexpertsubmission.core.extension.show
-import com.franzandel.dicodingexpertsubmission.core.extension.showShareMessage
-import com.franzandel.dicodingexpertsubmission.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.databinding.FragmentHomeBinding
 import com.franzandel.dicodingexpertsubmission.databinding.LayoutErrorBinding
 import com.franzandel.dicodingexpertsubmission.presentation.adapter.HomeAdapter
@@ -107,7 +107,10 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
         viewBinding.mtbHome.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_share -> {
-                    requireActivity().showShareMessage()
+                    requireActivity().showShareMessage(
+                        getString(R.string.share_message_title),
+                        getString(R.string.share_message_description)
+                    )
                     true
                 }
                 else -> false

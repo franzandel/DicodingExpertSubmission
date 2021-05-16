@@ -1,7 +1,7 @@
 package com.franzandel.dicodingexpertsubmission.domain.usecase
 
-import com.franzandel.dicodingexpertsubmission.core.mapper.BaseMapper
-import com.franzandel.dicodingexpertsubmission.core.wrapper.Result
+import com.franzandel.core.mapper.BaseMapper
+import com.franzandel.core.wrapper.Result
 import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
 import com.franzandel.dicodingexpertsubmission.domain.repository.DetailRepository
 import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
