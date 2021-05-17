@@ -1,11 +1,11 @@
-package com.franzandel.dicodingexpertsubmission.presentation.vh
+package com.franzandel.feature_favorite.presentation.vh
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.franzandel.core.extension.toCommaString
 import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.databinding.ItemFavoriteBinding
-import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
+import com.franzandel.feature_favorite.presentation.model.GamesResultUI
 
 /**
  * Created by Franz Andel on 12/05/21.

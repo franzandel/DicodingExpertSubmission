@@ -1,8 +1,8 @@
-package com.franzandel.dicodingexpertsubmission.data.local
+package com.franzandel.feature_favorite.domain.repository
 
 import androidx.paging.PagingData
 import com.franzandel.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
+import com.franzandel.feature_favorite.domain.model.local.request.GamesResultRequest
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
  * Android Engineer
  */
 
-interface FavoriteLocalData {
+interface FavoriteRepository {
     suspend fun insertGamesResults(gamesResultRequest: GamesResultRequest): Result<Unit>
     suspend fun deleteGamesResults(gamesResultRequest: GamesResultRequest): Result<Unit>
     suspend fun getGamesResults(): Flow<PagingData<GamesResultRequest>>

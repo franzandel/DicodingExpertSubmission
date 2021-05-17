@@ -1,7 +1,7 @@
-package com.franzandel.dicodingexpertsubmission.presentation.diffcallback
+package com.franzandel.feature_favorite.presentation.diffcallback
 
 import androidx.recyclerview.widget.DiffUtil
-import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
+import com.franzandel.feature_favorite.presentation.model.GamesResultUI
 
 /**
  * Created by Franz Andel on 12/05/21.

@@ -1,8 +1,8 @@
-package com.franzandel.dicodingexpertsubmission.data.local.dao
+package com.franzandel.feature_favorite.data.local.dao
 
 import androidx.paging.PagingSource
 import androidx.room.*
-import com.franzandel.dicodingexpertsubmission.data.local.model.GamesResultEntity
+import com.franzandel.feature_favorite.data.local.model.GamesResultEntity
 
 /**
  * Created by Franz Andel on 12/05/21.

@@ -1,10 +1,10 @@
-package com.franzandel.dicodingexpertsubmission.data.repository
+package com.franzandel.feature_favorite.data.repository
 
 import androidx.paging.PagingData
 import com.franzandel.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.data.local.FavoriteLocalData
-import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
-import com.franzandel.dicodingexpertsubmission.domain.repository.FavoriteRepository
+import com.franzandel.feature_favorite.data.local.FavoriteLocalData
+import com.franzandel.feature_favorite.domain.model.local.request.GamesResultRequest
+import com.franzandel.feature_favorite.domain.repository.FavoriteRepository
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
