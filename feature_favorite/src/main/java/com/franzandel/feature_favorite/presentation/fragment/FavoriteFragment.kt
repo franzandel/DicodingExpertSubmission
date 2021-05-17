@@ -1,5 +1,6 @@
-package com.franzandel.dicodingexpertsubmission.presentation.fragment
+package com.franzandel.feature_favorite.presentation.fragment
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -10,33 +11,53 @@ import com.franzandel.core.extension.showShareMessage
 import com.franzandel.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.databinding.FragmentFavoriteBinding
-import com.franzandel.dicodingexpertsubmission.presentation.adapter.FavoriteAdapter
-import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
-import com.franzandel.dicodingexpertsubmission.presentation.vm.FavoriteViewModel
+import com.franzandel.dicodingexpertsubmission.di.AppComponent
+import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelFactory
+import com.franzandel.feature_favorite.di.DaggerFavoriteComponent
+import com.franzandel.feature_favorite.presentation.adapter.FavoriteAdapter
+import com.franzandel.feature_favorite.presentation.model.GamesResultUI
+import com.franzandel.feature_favorite.presentation.vm.FavoriteViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@AndroidEntryPoint
 class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBinding>() {
-
-    private val viewModel: FavoriteViewModel by viewModels()
 
     @Inject
     lateinit var thread: CoroutineThread
 
-    private val adapter = FavoriteAdapter { gamesResult ->
-        showDeleteConfirmationDialog(gamesResult)
-    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val viewModel: FavoriteViewModel by viewModels { viewModelFactory }
+
+    private val adapter =
+        FavoriteAdapter { gamesResult ->
+            showDeleteConfirmationDialog(gamesResult)
+        }
 
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentFavoriteBinding =
         FragmentFavoriteBinding.inflate(layoutInflater, container, false)
+
+    override fun onAttach(context: Context) {
+        DaggerFavoriteComponent.builder()
+            .context(requireContext())
+            .appComponent(
+                EntryPointAccessors.fromApplication(
+                    requireContext().applicationContext,
+                    AppComponent::class.java
+                )
+            )
+            .build()
+            .inject(this)
+        super.onAttach(context)
+    }
 
     override fun onFragmentCreated() {
         showBottomNavigation()

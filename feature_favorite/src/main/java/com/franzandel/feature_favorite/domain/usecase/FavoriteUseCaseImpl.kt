@@ -1,11 +1,11 @@
-package com.franzandel.dicodingexpertsubmission.domain.usecase
+package com.franzandel.feature_favorite.domain.usecase
 
 import androidx.paging.PagingData
 import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.core.wrapper.Result
-import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
-import com.franzandel.dicodingexpertsubmission.domain.repository.FavoriteRepository
-import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
+import com.franzandel.feature_favorite.domain.model.local.request.GamesResultRequest
+import com.franzandel.feature_favorite.domain.repository.FavoriteRepository
+import com.franzandel.feature_favorite.presentation.model.GamesResultUI
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

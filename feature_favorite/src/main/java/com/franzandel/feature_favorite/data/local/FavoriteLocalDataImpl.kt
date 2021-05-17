@@ -1,4 +1,4 @@
-package com.franzandel.dicodingexpertsubmission.data.local
+package com.franzandel.feature_favorite.data.local
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -8,9 +8,9 @@ import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.core.mapper.mapLocalResponse
 import com.franzandel.core.wrapper.Result
 import com.franzandel.core.wrapper.suspendTryCatch
-import com.franzandel.dicodingexpertsubmission.data.local.dao.FavoriteDao
-import com.franzandel.dicodingexpertsubmission.data.local.model.GamesResultEntity
-import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
+import com.franzandel.feature_favorite.data.local.dao.FavoriteDao
+import com.franzandel.feature_favorite.data.local.model.GamesResultEntity
+import com.franzandel.feature_favorite.domain.model.local.request.GamesResultRequest
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -33,14 +33,20 @@ class FavoriteLocalDataImpl @Inject constructor(
         suspendTryCatch {
             val gamesResultEntity = requestMapper.map(gamesResultRequest)
             val result = dao.insertGamesResult(gamesResultEntity)
-            mapLocalResponse(result, Unit, ERROR_INSERT_TO_DB)
+            mapLocalResponse(
+                result, Unit,
+                ERROR_INSERT_TO_DB
+            )
         }
 
     override suspend fun deleteGamesResults(gamesResultRequest: GamesResultRequest): Result<Unit> =
         suspendTryCatch {
             val gamesResultEntity = requestMapper.map(gamesResultRequest)
             val result = dao.deleteGamesResult(gamesResultEntity)
-            mapLocalResponse(result, Unit, ERROR_DELETE_FROM_DB)
+            mapLocalResponse(
+                result, Unit,
+                ERROR_DELETE_FROM_DB
+            )
         }
 
     override suspend fun getGamesResults(): Flow<PagingData<GamesResultRequest>> =

@@ -1,4 +1,4 @@
-package com.franzandel.dicodingexpertsubmission.presentation.vm
+package com.franzandel.feature_favorite.presentation.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,9 +10,9 @@ import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.core.presentation.BaseViewModel
 import com.franzandel.core.wrapper.Result
 import com.franzandel.core.wrapper.result
-import com.franzandel.dicodingexpertsubmission.domain.model.local.request.GamesResultRequest
-import com.franzandel.dicodingexpertsubmission.domain.usecase.FavoriteUseCase
-import com.franzandel.dicodingexpertsubmission.presentation.model.GamesResultUI
+import com.franzandel.feature_favorite.domain.model.local.request.GamesResultRequest
+import com.franzandel.feature_favorite.domain.usecase.FavoriteUseCase
+import com.franzandel.feature_favorite.presentation.model.GamesResultUI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
