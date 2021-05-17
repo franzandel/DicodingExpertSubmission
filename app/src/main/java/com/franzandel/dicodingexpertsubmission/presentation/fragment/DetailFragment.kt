@@ -3,18 +3,13 @@ package com.franzandel.dicodingexpertsubmission.presentation.fragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.franzandel.core.extension.hide
 import com.franzandel.core.extension.observe
-import com.franzandel.core.extension.toMultiLineString
 import com.franzandel.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.databinding.FragmentDetailBinding
 import com.franzandel.dicodingexpertsubmission.presentation.adapter.DetailAdapter
 import com.franzandel.dicodingexpertsubmission.presentation.vm.DetailViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,11 +19,11 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
 
     private val viewModel: DetailViewModel by viewModels()
 
-    private val detailFragmentArgs: DetailFragmentArgs by navArgs()
-
-    private val gamesResult by lazy {
-        detailFragmentArgs.gamesResult
-    }
+//    private val detailFragmentArgs: DetailFragmentArgs by navArgs()
+//
+//    private val gamesResult by lazy {
+//        detailFragmentArgs.gamesResult
+//    }
 
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -42,22 +37,22 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
         hideBottomNavigation()
         setupObservers()
         setupListeners()
-        viewModel.getGamesResults(gamesResult.name)
+//        viewModel.getGamesResults(gamesResult.name)
     }
 
     private fun setupUI() = with(viewBinding) {
-        toolbarDetail.title = gamesResult.name
-        tvReleased.text = gamesResult.released
-        tvPlatforms.text = gamesResult.platforms.toMultiLineString()
-        tvGenres.text = gamesResult.genres.toMultiLineString()
-        tvStores.text = gamesResult.stores.toMultiLineString()
-        tvTags.text = gamesResult.tags.toMultiLineString()
+//        toolbarDetail.title = gamesResult.name
+//        tvReleased.text = gamesResult.released
+//        tvPlatforms.text = gamesResult.platforms.toMultiLineString()
+//        tvGenres.text = gamesResult.genres.toMultiLineString()
+//        tvStores.text = gamesResult.stores.toMultiLineString()
+//        tvTags.text = gamesResult.tags.toMultiLineString()
     }
 
     private fun setupViewPager2() {
         val adapter = DetailAdapter()
         viewBinding.vpDetail.adapter = adapter
-        adapter.submitList(gamesResult.shortScreenshots)
+//        adapter.submitList(gamesResult.shortScreenshots)
     }
 
     private fun setupTabLayout() {
@@ -66,8 +61,8 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
     }
 
     private fun hideBottomNavigation() {
-        val bottomNavigation = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
-        bottomNavigation.hide()
+//        val bottomNavigation = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+//        bottomNavigation.hide()
     }
 
     private fun setupObservers() {
@@ -83,9 +78,9 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
                 Snackbar.LENGTH_LONG
             )
             snackbar.setAction(getString(R.string.detail_favorite_added_view)) {
-                val navDirections =
-                    DetailFragmentDirections.actionDetailFragmentToNavigationFavorite()
-                Navigation.findNavController(it).navigate(navDirections)
+//                val navDirections =
+//                    DetailFragmentDirections.actionDetailFragmentToNavigationFavorite()
+//                Navigation.findNavController(it).navigate(navDirections)
             }
             snackbar.show()
         }
@@ -98,7 +93,7 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
             )
             snackbar.setAction(getString(R.string.detail_favorite_removed_undo)) {
                 viewBinding.fabBookmark.isSelected = !viewBinding.fabBookmark.isSelected
-                viewModel.insertGamesResults(gamesResult)
+//                viewModel.insertGamesResults(gamesResult)
             }
             snackbar.show()
         }
@@ -112,10 +107,10 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
         fabBookmark.setOnClickListener {
             fabBookmark.isSelected = !fabBookmark.isSelected
 
-            if (fabBookmark.isSelected)
-                viewModel.insertGamesResults(gamesResult)
-            else
-                viewModel.deleteGamesResults(gamesResult)
+//            if (fabBookmark.isSelected)
+//                viewModel.insertGamesResults(gamesResult)
+//            else
+//                viewModel.deleteGamesResults(gamesResult)
         }
     }
 

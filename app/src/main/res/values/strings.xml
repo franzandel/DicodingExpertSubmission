@@ -49,4 +49,5 @@
 
     <string name="pn_daily_reminder_title">Gamer</string>
     <string name="pn_daily_reminder_description">Come, let\'s check the latest update about games</string>
+    <string name="title_feature_home">Home</string>
 </resources>

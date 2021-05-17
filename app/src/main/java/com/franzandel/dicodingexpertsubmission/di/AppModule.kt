@@ -1,9 +1,11 @@
 package com.franzandel.dicodingexpertsubmission.di
 
 import android.content.Context
+import androidx.lifecycle.ViewModel
 import androidx.room.Room
 import com.franzandel.dicodingexpertsubmission.BuildConfig
 import com.franzandel.dicodingexpertsubmission.data.local.db.GamesDatabase
+import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelFactory
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -12,6 +14,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Provider
 import javax.inject.Singleton
 
 /**
@@ -46,4 +49,9 @@ object AppModule {
             GAMES_DB_NAME
         ).fallbackToDestructiveMigration()
             .build()
+
+    @Provides
+    fun provideViewModelFactory(
+        providerMap: MutableMap<Class<out ViewModel>, Provider<ViewModel>>
+    ): ViewModelFactory = ViewModelFactory(providerMap)
 }
