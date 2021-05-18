@@ -1,37 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_navigation"
     app:startDestination="@id/navigation_home">
 
-    <fragment
+    <include-dynamic
         android:id="@+id/navigation_home"
-        android:name="com.franzandel.feature_home.presentation.fragment.HomeFragment"
-        android:label="@string/navigation_title_home"
-        tools:layout="@layout/fragment_home">
+        app:moduleName="feature_home"
+        app:graphResName="home_navigation"
+        app:graphPackage="com.franzandel.dicodingexpertsubmission.feature_home">
         <action
-            android:id="@+id/action_navigation_home_to_detailFragment"
-            app:destination="@id/detailFragment" />
-    </fragment>
+            android:id="@+id/action_navigation_home_to_navigation_detail"
+            app:destination="@id/navigation_detail" />
+    </include-dynamic>
 
-    <fragment
+    <include-dynamic
         android:id="@+id/navigation_favorite"
-        android:name="com.franzandel.feature_favorite.presentation.fragment.FavoriteFragment"
-        android:label="@string/navigation_title_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        app:moduleName="feature_favorite"
+        app:graphResName="favorite_navigation"
+        app:graphPackage="com.franzandel.dicodingexpertsubmission.feature_favorite" />
+
+    <include-dynamic
+        android:id="@+id/navigation_detail"
+        app:moduleName="feature_detail"
+        app:graphResName="detail_navigation"
+        app:graphPackage="com.franzandel.dicodingexpertsubmission.feature_detail">
+        <!--        <argument-->
+        <!--            android:name="gamesResult"-->
+        <!--            app:argType="com.franzandel.feature_home.presentation.model.GamesResultUI" />-->
+    </include-dynamic>
+
+    <!--    <fragment-->
+    <!--        app:moduleName="feature_home"-->
+    <!--        android:id="@+id/navigation_home"-->
+    <!--        android:name="com.franzandel.feature_home.presentation.fragment.HomeFragment"-->
+    <!--        android:label="@string/navigation_title_home"-->
+    <!--        tools:layout="@layout/fragment_home">-->
+    <!--&lt;!&ndash;        <action&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:id="@+id/action_navigation_home_to_detailFragment"&ndash;&gt;-->
+    <!--&lt;!&ndash;            app:destination="@id/detailFragment" />&ndash;&gt;-->
+    <!--    </fragment>-->
+
+    <!--    <fragment-->
+    <!--        app:moduleName="feature_favorite"-->
+    <!--        android:id="@+id/navigation_favorite"-->
+    <!--        android:name="com.franzandel.feature_favorite.presentation.fragment.FavoriteFragment"-->
+    <!--        android:label="@string/navigation_title_favorite"-->
+    <!--        tools:layout="@layout/fragment_favorite" />-->
 
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.franzandel.dicodingexpertsubmission.presentation.fragment.SettingsFragment"
         android:label="@string/navigation_title_settings" />
-    <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.franzandel.dicodingexpertsubmission.presentation.fragment.DetailFragment"
-        android:label="DetailFragment"
-        tools:layout="@layout/fragment_detail">
-        <action
-            android:id="@+id/action_detailFragment_to_navigation_favorite"
-            app:destination="@id/navigation_favorite" />
-    </fragment>
+    <!--    <fragment-->
+    <!--        android:id="@+id/detailFragment"-->
+    <!--        android:name="com.franzandel.feature_detail.presentation.fragment.DetailFragment"-->
+    <!--        android:label="DetailFragment"-->
+    <!--        tools:layout="@layout/fragment_detail">-->
+    <!--        <action-->
+    <!--            android:id="@+id/action_detailFragment_to_navigation_favorite"-->
+    <!--            app:destination="@id/navigation_favorite" />-->
+    <!--    </fragment>-->
 </navigation>

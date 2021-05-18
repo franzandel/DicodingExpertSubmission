@@ -51,4 +51,5 @@
     <string name="pn_daily_reminder_description">Come, let\'s check the latest update about games</string>
     <string name="title_feature_home">Home</string>
     <string name="title_feature_favorite">Favorite</string>
+    <string name="title_feature_detail">Detail</string>
 </resources>

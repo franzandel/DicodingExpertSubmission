@@ -47,7 +47,7 @@ android {
         viewBinding true
     }
 
-    dynamicFeatures = [':feature_home', ':feature_favorite']
+    dynamicFeatures = [':feature_home', ':feature_favorite', ':feature_detail']
 }
 
 dependencies {
@@ -57,6 +57,7 @@ dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.0.4'
     api 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     api 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    api "androidx.navigation:navigation-dynamic-features-fragment:2.3.5"
     api 'androidx.legacy:legacy-support-v4:1.0.0'
     api 'androidx.preference:preference-ktx:1.1.1'
     testImplementation 'junit:junit:4.+'
