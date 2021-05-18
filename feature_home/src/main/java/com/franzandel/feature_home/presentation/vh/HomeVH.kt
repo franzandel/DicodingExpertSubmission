@@ -1,5 +1,6 @@
 package com.franzandel.feature_home.presentation.vh
 
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.franzandel.dicodingexpertsubmission.R
@@ -30,6 +31,9 @@ class HomeVH(private val itemHomeBinding: ItemHomeBinding) :
 //                val navDirections =
 //                    HomeFragmentDirections.actionNavigationHomeToDetailFragment(gamesResult)
 //                findNavController(root).navigate(navDirections)
+                findNavController(root).navigate(
+                    com.franzandel.dicodingexpertsubmission.R.id.action_navigation_home_to_navigation_detail
+                )
             }
         }
     }

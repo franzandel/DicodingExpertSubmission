@@ -3,7 +3,7 @@ package com.franzandel.feature_favorite.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import com.franzandel.dicodingexpertsubmission.databinding.ItemFavoriteBinding
+import com.franzandel.feature_favorite.databinding.ItemFavoriteBinding
 import com.franzandel.feature_favorite.presentation.model.GamesResultUI
 
 /**

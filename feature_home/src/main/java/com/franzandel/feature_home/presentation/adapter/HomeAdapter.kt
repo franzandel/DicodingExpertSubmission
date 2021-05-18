@@ -18,6 +18,7 @@ class HomeAdapter : PagingDataAdapter<GamesResultUI, HomeVH>(HomeDiffCallback())
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeVH {
         val itemHomeBinding =
             ItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
         return HomeVH(itemHomeBinding)
     }
 

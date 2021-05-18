@@ -33,7 +33,7 @@ object FavoriteVMModule {
     @Provides
     @IntoMap
     @ViewModelKey(FavoriteViewModel::class)
-    fun provideHomeViewModel(
+    fun provideFavoriteViewModel(
         usecase: FavoriteUseCase,
         thread: CoroutineThread,
         mapper: BaseMapper<GamesResultRequest, GamesResultUI>

@@ -10,9 +10,9 @@ import com.franzandel.core.extension.observe
 import com.franzandel.core.extension.showShareMessage
 import com.franzandel.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.R
-import com.franzandel.dicodingexpertsubmission.databinding.FragmentFavoriteBinding
 import com.franzandel.dicodingexpertsubmission.di.AppComponent
 import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelFactory
+import com.franzandel.feature_favorite.databinding.FragmentFavoriteBinding
 import com.franzandel.feature_favorite.di.DaggerFavoriteComponent
 import com.franzandel.feature_favorite.presentation.adapter.FavoriteAdapter
 import com.franzandel.feature_favorite.presentation.model.GamesResultUI
