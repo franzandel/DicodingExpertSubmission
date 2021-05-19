@@ -1,4 +1,4 @@
-package com.franzandel.dicodingexpertsubmission.presentation.fragment
+package com.franzandel.feature_settings.presentation.fragment
 
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -14,8 +14,9 @@ import com.franzandel.core.extension.addZeroPrefix
 import com.franzandel.core.extension.getHourAndMinute
 import com.franzandel.core.extension.showImageToast
 import com.franzandel.core.extension.showTimePickerDialog
-import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.external.alarmmanager.DailyAlarmManager
+import com.franzandel.feature_settings.R
+import com.franzandel.dicodingexpertsubmission.R as AppR
 
 class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetListener {
 
@@ -28,7 +29,7 @@ class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetL
     }
 
     private val lpTheme by lazy {
-        findPreference<ListPreference>(getString(R.string.settings_theme_key))!!
+        findPreference<ListPreference>(getString(AppR.string.settings_theme_key))!!
     }
 
     private val preferences by lazy {
@@ -69,7 +70,7 @@ class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetL
         }
 
         lpTheme.setOnPreferenceChangeListener { _, selectedMode ->
-            val themes = requireContext().resources.getStringArray(R.array.theme_values)
+            val themes = requireContext().resources.getStringArray(AppR.array.theme_values)
 
             val mode = when (selectedMode.toString()) {
                 themes.first() -> MODE_NIGHT_NO

@@ -40,7 +40,6 @@ class SplashScreenActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             kotlin.run {
                 goTo(DashboardActivity::class.java)
-//                goTo(Class.forName("com.franzandel.feature_home.presentation.activity.DashboardActivity"))
                 finish()
             }
         }, TIME_OUT)

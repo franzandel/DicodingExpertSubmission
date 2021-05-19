@@ -10,9 +10,9 @@ import com.franzandel.core.extension.observe
 import com.franzandel.core.extension.show
 import com.franzandel.core.extension.showShareMessage
 import com.franzandel.core.presentation.BaseFragmentVM
-import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.di.AppComponent
 import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelFactory
+import com.franzandel.feature_favorite.R
 import com.franzandel.feature_favorite.databinding.FragmentFavoriteBinding
 import com.franzandel.feature_favorite.di.DaggerFavoriteComponent
 import com.franzandel.feature_favorite.presentation.adapter.FavoriteAdapter
@@ -84,8 +84,8 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
             when (menuItem.itemId) {
                 R.id.menu_share -> {
                     requireActivity().showShareMessage(
-                        getString(R.string.share_message_title),
-                        getString(R.string.share_message_description)
+                        getString(AppR.string.share_message_title),
+                        getString(AppR.string.share_message_description)
                     )
                     true
                 }

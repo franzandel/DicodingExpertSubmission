@@ -54,7 +54,7 @@ class NotificationHelper(private val applicationContext: Context) {
         intent: PendingIntent
     ) = this.apply {
         setAutoCancel(true)
-        setSmallIcon(R.drawable.ic_launcher_foreground)
+        setSmallIcon(R.mipmap.ic_gamer_icon_round)
         setContentTitle(title)
         setContentText(body)
         setStyle(NotificationCompat.BigTextStyle().bigText(body))
