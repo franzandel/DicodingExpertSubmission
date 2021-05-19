@@ -1,4 +1,4 @@
-package com.franzandel.dicodingexpertsubmission.presentation.vm
+package com.franzandel.core.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +11,7 @@ import javax.inject.Provider
  * Android Engineer
  */
 
+@Suppress("UNCHECKED_CAST")
 @ViewModelScoped
 class ViewModelFactory @Inject constructor(
     private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>

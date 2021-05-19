@@ -1,23 +1,24 @@
 package com.franzandel.dicodingexpertsubmission.presentation.activity
 
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.franzandel.core.extension.goTo
+import com.franzandel.core.presentation.activity.BaseActivity
 import com.franzandel.dicodingexpertsubmission.R
+import com.franzandel.dicodingexpertsubmission.databinding.ActivitySplashScreenBinding
 
-class SplashScreenActivity : AppCompatActivity() {
+class SplashScreenActivity : BaseActivity<ActivitySplashScreenBinding>() {
 
     companion object {
         private const val TIME_OUT = 1000L
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+    override fun getViewBinding(): ActivitySplashScreenBinding =
+        ActivitySplashScreenBinding.inflate(layoutInflater)
+
+    override fun onActivityCreated() {
         setupThemes()
         delayOneSecond()
     }

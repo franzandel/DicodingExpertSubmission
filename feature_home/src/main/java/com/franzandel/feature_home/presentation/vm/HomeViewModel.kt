@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.franzandel.core.mapper.BaseMapper
-import com.franzandel.core.presentation.BaseViewModel
+import com.franzandel.core.presentation.vm.BaseViewModel
 import com.franzandel.feature_home.domain.model.remote.response.GamesResult
 import com.franzandel.feature_home.domain.usecase.HomeUseCase
 import com.franzandel.feature_home.presentation.model.GamesResultUI

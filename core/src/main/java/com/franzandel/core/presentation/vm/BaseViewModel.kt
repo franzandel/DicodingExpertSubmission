@@ -1,4 +1,4 @@
-package com.franzandel.core.presentation
+package com.franzandel.core.presentation.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

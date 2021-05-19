@@ -1,5 +1,6 @@
-package com.franzandel.core.presentation
+package com.franzandel.core.presentation.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +23,13 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         container: ViewGroup?
     ): VB
 
+    abstract fun injectDependencies()
     abstract fun onFragmentCreated()
+
+    override fun onAttach(context: Context) {
+        injectDependencies()
+        super.onAttach(context)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

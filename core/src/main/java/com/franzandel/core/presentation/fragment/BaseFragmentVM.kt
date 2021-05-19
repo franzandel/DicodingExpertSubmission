@@ -1,4 +1,4 @@
-package com.franzandel.core.presentation
+package com.franzandel.core.presentation.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.franzandel.core.extension.observe
 import com.franzandel.core.presentation.dialogfragment.LoadingDialog
+import com.franzandel.core.presentation.vm.BaseViewModel
+import com.franzandel.core.presentation.vm.ViewModelFactory
+import javax.inject.Inject
 
 /**
  * Created by Franz Andel on 14/05/21.
@@ -13,6 +16,9 @@ import com.franzandel.core.presentation.dialogfragment.LoadingDialog
  */
 
 abstract class BaseFragmentVM<VM : ViewModel, VB : ViewBinding> : BaseFragment<VB>() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     protected val loadingDialog = LoadingDialog.newInstance()
 

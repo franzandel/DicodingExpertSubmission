@@ -7,7 +7,7 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.mapper.BaseMapper
-import com.franzandel.core.presentation.BaseViewModel
+import com.franzandel.core.presentation.vm.BaseViewModel
 import com.franzandel.core.wrapper.Result
 import com.franzandel.core.wrapper.result
 import com.franzandel.feature_favorite.domain.model.local.request.GamesResultRequest

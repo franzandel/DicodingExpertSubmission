@@ -1,4 +1,4 @@
-package com.franzandel.core.presentation
+package com.franzandel.core.presentation.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

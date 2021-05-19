@@ -1,6 +1,5 @@
 package com.franzandel.feature_home.presentation.fragment
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -9,9 +8,8 @@ import androidx.navigation.fragment.navArgs
 import com.franzandel.core.extension.hide
 import com.franzandel.core.extension.observe
 import com.franzandel.core.extension.toMultiLineString
-import com.franzandel.core.presentation.BaseFragmentVM
+import com.franzandel.core.presentation.fragment.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.di.AppComponent
-import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelFactory
 import com.franzandel.feature_home.R
 import com.franzandel.feature_home.databinding.FragmentDetailBinding
 import com.franzandel.feature_home.di.DaggerHomeComponent
@@ -21,13 +19,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.EntryPointAccessors
-import javax.inject.Inject
 import com.franzandel.dicodingexpertsubmission.R as AppR
 
 class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
     private val viewModel: DetailViewModel by viewModels { viewModelFactory }
 
@@ -41,20 +35,6 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentDetailBinding = FragmentDetailBinding.inflate(layoutInflater, container, false)
-
-    override fun onAttach(context: Context) {
-        DaggerHomeComponent.builder()
-            .context(requireContext())
-            .appComponent(
-                EntryPointAccessors.fromApplication(
-                    requireContext().applicationContext,
-                    AppComponent::class.java
-                )
-            )
-            .build()
-            .inject(this)
-        super.onAttach(context)
-    }
 
     override fun onFragmentCreated() {
         setupUI()
@@ -140,4 +120,17 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
     }
 
     override fun getVM(): DetailViewModel = viewModel
+
+    override fun injectDependencies() {
+        DaggerHomeComponent.builder()
+            .context(requireContext())
+            .appComponent(
+                EntryPointAccessors.fromApplication(
+                    requireContext().applicationContext,
+                    AppComponent::class.java
+                )
+            )
+            .build()
+            .inject(this)
+    }
 }
