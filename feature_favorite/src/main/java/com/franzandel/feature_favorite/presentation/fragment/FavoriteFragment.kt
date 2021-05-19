@@ -1,6 +1,5 @@
 package com.franzandel.feature_favorite.presentation.fragment
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -9,9 +8,8 @@ import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.extension.observe
 import com.franzandel.core.extension.show
 import com.franzandel.core.extension.showShareMessage
-import com.franzandel.core.presentation.BaseFragmentVM
+import com.franzandel.core.presentation.fragment.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.di.AppComponent
-import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelFactory
 import com.franzandel.feature_favorite.R
 import com.franzandel.feature_favorite.databinding.FragmentFavoriteBinding
 import com.franzandel.feature_favorite.di.DaggerFavoriteComponent
@@ -32,9 +30,6 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
     @Inject
     lateinit var thread: CoroutineThread
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
     private val viewModel: FavoriteViewModel by viewModels { viewModelFactory }
 
     private val adapter =
@@ -47,20 +42,6 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
         container: ViewGroup?
     ): FragmentFavoriteBinding =
         FragmentFavoriteBinding.inflate(layoutInflater, container, false)
-
-    override fun onAttach(context: Context) {
-        DaggerFavoriteComponent.builder()
-            .context(requireContext())
-            .appComponent(
-                EntryPointAccessors.fromApplication(
-                    requireContext().applicationContext,
-                    AppComponent::class.java
-                )
-            )
-            .build()
-            .inject(this)
-        super.onAttach(context)
-    }
 
     override fun onFragmentCreated() {
         showBottomNavigation()
@@ -137,4 +118,17 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
 
 
     override fun getVM(): FavoriteViewModel = viewModel
+
+    override fun injectDependencies() {
+        DaggerFavoriteComponent.builder()
+            .context(requireContext())
+            .appComponent(
+                EntryPointAccessors.fromApplication(
+                    requireContext().applicationContext,
+                    AppComponent::class.java
+                )
+            )
+            .build()
+            .inject(this)
+    }
 }

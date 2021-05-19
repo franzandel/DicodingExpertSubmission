@@ -1,8 +1,8 @@
 package com.franzandel.dicodingexpertsubmission.di
 
 import androidx.lifecycle.ViewModel
+import com.franzandel.core.presentation.vm.ViewModelFactory
 import com.franzandel.dicodingexpertsubmission.BuildConfig
-import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelFactory
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -37,5 +37,6 @@ object AppModule {
     @Provides
     fun provideViewModelFactory(
         providerMap: MutableMap<Class<out ViewModel>, Provider<ViewModel>>
-    ): ViewModelFactory = ViewModelFactory(providerMap)
+    ): ViewModelFactory =
+        ViewModelFactory(providerMap)
 }

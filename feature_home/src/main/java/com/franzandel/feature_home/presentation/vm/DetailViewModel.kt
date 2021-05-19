@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.franzandel.core.coroutine.CoroutineThread
-import com.franzandel.core.presentation.BaseViewModel
+import com.franzandel.core.presentation.vm.BaseViewModel
 import com.franzandel.core.wrapper.Result
 import com.franzandel.core.wrapper.result
 import com.franzandel.feature_home.domain.usecase.DetailUseCase

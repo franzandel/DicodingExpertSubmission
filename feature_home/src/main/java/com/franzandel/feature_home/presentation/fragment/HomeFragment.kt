@@ -1,6 +1,5 @@
 package com.franzandel.feature_home.presentation.fragment
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -12,9 +11,8 @@ import com.franzandel.core.extension.hide
 import com.franzandel.core.extension.observe
 import com.franzandel.core.extension.show
 import com.franzandel.core.extension.showShareMessage
-import com.franzandel.core.presentation.BaseFragmentVM
+import com.franzandel.core.presentation.fragment.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.di.AppComponent
-import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelFactory
 import com.franzandel.feature_home.R
 import com.franzandel.feature_home.databinding.FragmentHomeBinding
 import com.franzandel.feature_home.databinding.LayoutErrorBinding
@@ -38,9 +36,6 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
     @Inject
     lateinit var thread: CoroutineThread
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
     private val viewModel: HomeViewModel by viewModels { viewModelFactory }
 
     private lateinit var errorViewBinding: LayoutErrorBinding
@@ -54,20 +49,6 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
         container: ViewGroup?
     ): FragmentHomeBinding =
         FragmentHomeBinding.inflate(inflater, container, false)
-
-    override fun onAttach(context: Context) {
-        DaggerHomeComponent.builder()
-            .context(requireContext())
-            .appComponent(
-                EntryPointAccessors.fromApplication(
-                    requireContext().applicationContext,
-                    AppComponent::class.java
-                )
-            )
-            .build()
-            .inject(this)
-        super.onAttach(context)
-    }
 
     override fun onFragmentCreated() {
         errorViewBinding = viewBinding.layoutError
@@ -161,4 +142,17 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
     }
 
     override fun getVM(): HomeViewModel = viewModel
+
+    override fun injectDependencies() {
+        DaggerHomeComponent.builder()
+            .context(requireContext())
+            .appComponent(
+                EntryPointAccessors.fromApplication(
+                    requireContext().applicationContext,
+                    AppComponent::class.java
+                )
+            )
+            .build()
+            .inject(this)
+    }
 }
