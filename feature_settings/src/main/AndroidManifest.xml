@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.franzandel.feature_detail">
+    package="com.franzandel.feature_settings">
 
     <dist:module
         dist:instant="false"
-        dist:title="@string/title_feature_detail">
+        dist:title="@string/title_feature_settings">
         <dist:delivery>
             <dist:install-time />
         </dist:delivery>

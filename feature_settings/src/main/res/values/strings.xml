@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_reminder_header">Reminder</string>
+    <string name="settings_reminder_key">reminder</string>
+    <string name="settings_reminder_title">Reminder</string>
+    <string name="settings_reminder_off">OFF</string>
+    <string name="settings_reminder_on">ON</string>
+    <string name="settings_reminder_time_key">reminder_time</string>
+    <string name="settings_reminder_time_title">Reminder time</string>
+    <string name="settings_reminder_time_default_value">08:00</string>
+    <string name="settings_reminder_success_turned_on">Successfully turn on</string>
+    <string name="settings_reminder_success_turned_off">Successfully turn off</string>
+    <string name="settings_reminder_success_change_time">Successfully change time</string>
+    <string name="settings_theme_header">Themes</string>
+    <string name="settings_theme_title">App Theme</string>
+</resources>

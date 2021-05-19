@@ -24,7 +24,7 @@
             app:layout_constraintBottom_toTopOf="@+id/cpi_ratings"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_launcher_foreground" />
+            tools:src="@mipmap/ic_gamer_icon" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
