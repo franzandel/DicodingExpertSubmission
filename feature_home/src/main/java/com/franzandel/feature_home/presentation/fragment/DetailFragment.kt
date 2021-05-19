@@ -13,7 +13,6 @@ import com.franzandel.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.databinding.FragmentDetailBinding
 import com.franzandel.dicodingexpertsubmission.di.AppComponent
 import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelFactory
-import com.franzandel.feature_home.R
 import com.franzandel.feature_home.di.DaggerHomeComponent
 import com.franzandel.feature_home.presentation.adapter.DetailAdapter
 import com.franzandel.feature_home.presentation.vm.DetailViewModel
@@ -87,7 +86,8 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
     }
 
     private fun hideBottomNavigation() {
-        val bottomNavigation = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+        val bottomNavigation =
+            requireActivity().findViewById<BottomNavigationView>(AppR.id.nav_view)
         bottomNavigation.hide()
     }
 

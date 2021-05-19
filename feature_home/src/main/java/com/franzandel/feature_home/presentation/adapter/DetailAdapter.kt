@@ -8,7 +8,7 @@ import com.franzandel.feature_home.presentation.diffcallback.DetailDiffCallback
 import com.franzandel.feature_home.presentation.vh.DetailVH
 
 /**
- * Created by Franz Andel on 12/02/21.
+ * Created by Franz Andel on 12/05/21.
  * Android Engineer
  */
 

@@ -1,30 +1,29 @@
-package com.franzandel.feature_home.presentation.activity
+package com.franzandel.dicodingexpertsubmission.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.franzandel.dicodingexpertsubmission.di.AppComponent
-import com.franzandel.feature_home.R
-import com.franzandel.feature_home.databinding.ActivityDashboardBinding
-import com.franzandel.feature_home.di.DaggerHomeComponent
-import dagger.hilt.android.EntryPointAccessors
+import com.franzandel.dicodingexpertsubmission.R
+import com.franzandel.dicodingexpertsubmission.databinding.ActivityDashboardBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DaggerHomeComponent.builder()
-            .context(this)
-            .appComponent(
-                EntryPointAccessors.fromApplication(
-                    applicationContext,
-                    AppComponent::class.java
-                )
-            )
-            .build()
-            .inject(this)
+//        DaggerHomeComponent.builder()
+//            .context(this)
+//            .appComponent(
+//                EntryPointAccessors.fromApplication(
+//                    applicationContext,
+//                    AppComponent::class.java
+//                )
+//            )
+//            .build()
+//            .inject(this)
 
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
