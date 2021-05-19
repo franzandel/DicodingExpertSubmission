@@ -4,7 +4,7 @@ import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.franzandel.dicodingexpertsubmission.R
-import com.franzandel.dicodingexpertsubmission.databinding.ItemHomeBinding
+import com.franzandel.feature_home.databinding.ItemHomeBinding
 import com.franzandel.feature_home.presentation.fragment.HomeFragmentDirections
 import com.franzandel.feature_home.presentation.model.GamesResultUI
 

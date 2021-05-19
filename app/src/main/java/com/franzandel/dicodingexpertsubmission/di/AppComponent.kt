@@ -1,7 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.di
 
 import com.franzandel.core.coroutine.CoroutineThread
-import com.franzandel.dicodingexpertsubmission.data.local.db.GamesDatabase
 import com.google.gson.Gson
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
@@ -20,5 +19,4 @@ interface AppComponent {
     fun coroutineThread(): CoroutineThread
     fun retrofit(): Retrofit
     fun gson(): Gson
-    fun gamesDatabase(): GamesDatabase
 }

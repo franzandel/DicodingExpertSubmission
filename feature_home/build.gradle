@@ -1,10 +1,10 @@
 plugins {
     id 'com.android.dynamic-feature'
     id 'kotlin-android'
-    id 'kotlin-parcelize'
     id 'dagger.hilt.android.plugin'
-    id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs'
 }
 
 android {

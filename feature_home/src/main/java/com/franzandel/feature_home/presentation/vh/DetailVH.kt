@@ -3,7 +3,7 @@ package com.franzandel.feature_home.presentation.vh
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.franzandel.dicodingexpertsubmission.R
-import com.franzandel.dicodingexpertsubmission.databinding.ItemDetailBinding
+import com.franzandel.feature_home.databinding.ItemDetailBinding
 
 /**
  * Created by Franz Andel on 09/05/21.

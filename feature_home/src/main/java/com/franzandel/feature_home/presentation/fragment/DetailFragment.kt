@@ -10,9 +10,10 @@ import com.franzandel.core.extension.hide
 import com.franzandel.core.extension.observe
 import com.franzandel.core.extension.toMultiLineString
 import com.franzandel.core.presentation.BaseFragmentVM
-import com.franzandel.dicodingexpertsubmission.databinding.FragmentDetailBinding
 import com.franzandel.dicodingexpertsubmission.di.AppComponent
 import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelFactory
+import com.franzandel.feature_home.R
+import com.franzandel.feature_home.databinding.FragmentDetailBinding
 import com.franzandel.feature_home.di.DaggerHomeComponent
 import com.franzandel.feature_home.presentation.adapter.DetailAdapter
 import com.franzandel.feature_home.presentation.vm.DetailViewModel
@@ -100,10 +101,10 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
         viewLifecycleOwner.observe(viewModel.insertGamesResults) {
             val snackbar = Snackbar.make(
                 requireView(),
-                getString(AppR.string.detail_favorite_added),
+                getString(R.string.detail_favorite_added),
                 Snackbar.LENGTH_LONG
             )
-            snackbar.setAction(getString(AppR.string.detail_favorite_added_view)) {
+            snackbar.setAction(getString(R.string.detail_favorite_added_view)) {
                 findNavController().navigate(AppR.id.navigation_favorite)
             }
             snackbar.show()
@@ -112,10 +113,10 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
         viewLifecycleOwner.observe(viewModel.deleteGamesResults) {
             val snackbar = Snackbar.make(
                 requireView(),
-                getString(AppR.string.detail_favorite_removed),
+                getString(R.string.detail_favorite_removed),
                 Snackbar.LENGTH_LONG
             )
-            snackbar.setAction(getString(AppR.string.detail_favorite_removed_undo)) {
+            snackbar.setAction(getString(R.string.detail_favorite_removed_undo)) {
                 viewBinding.fabBookmark.isSelected = !viewBinding.fabBookmark.isSelected
                 viewModel.insertGamesResults(gamesResult)
             }
