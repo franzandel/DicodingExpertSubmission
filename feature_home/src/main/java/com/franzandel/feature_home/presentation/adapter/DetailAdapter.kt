@@ -3,7 +3,7 @@ package com.franzandel.feature_home.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.franzandel.core.presentation.BaseAdapter
-import com.franzandel.dicodingexpertsubmission.databinding.ItemDetailBinding
+import com.franzandel.feature_home.databinding.ItemDetailBinding
 import com.franzandel.feature_home.presentation.diffcallback.DetailDiffCallback
 import com.franzandel.feature_home.presentation.vh.DetailVH
 

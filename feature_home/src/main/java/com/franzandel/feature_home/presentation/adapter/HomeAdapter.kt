@@ -3,7 +3,7 @@ package com.franzandel.feature_home.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import com.franzandel.dicodingexpertsubmission.databinding.ItemHomeBinding
+import com.franzandel.feature_home.databinding.ItemHomeBinding
 import com.franzandel.feature_home.presentation.diffcallback.HomeDiffCallback
 import com.franzandel.feature_home.presentation.model.GamesResultUI
 import com.franzandel.feature_home.presentation.vh.HomeVH
