@@ -9,23 +9,23 @@
         android:name="com.franzandel.feature_home.presentation.fragment.HomeFragment"
         tools:layout="@layout/fragment_home"
         android:label="@string/navigation_title_home">
-        <!--        <action-->
-        <!--            android:id="@+id/action_navigation_home_to_detailFragment"-->
-        <!--            app:destination="@id/detailFragment" />-->
+        <action
+            android:id="@+id/action_navigation_home_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 
-    <!--    <fragment-->
-    <!--        android:id="@+id/detailFragment"-->
-    <!--        android:name="com.franzandel.feature_detail.presentation.fragment.DetailFragment"-->
-    <!--        android:label="DetailFragment"-->
-    <!--        tools:layout="@layout/fragment_detail">-->
-    <!--        <action-->
-    <!--            android:id="@+id/action_detailFragment_to_navigation_favorite"-->
-    <!--            app:destination="@id/navigation_favorite" />-->
-    <!--        <argument-->
-    <!--            android:name="gamesResult"-->
-    <!--            app:argType="com.franzandel.feature_home.presentation.model.GamesResultUI" />-->
-    <!--    </fragment>-->
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.franzandel.feature_home.presentation.fragment.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <!--            <action-->
+        <!--                android:id="@+id/action_detailFragment_to_navigation_favorite"-->
+        <!--                app:destination="@id/navigation_favorite" />-->
+        <argument
+            android:name="gamesResult"
+            app:argType="com.franzandel.feature_home.presentation.model.GamesResultUI" />
+    </fragment>
 
     <!--    <fragment-->
     <!--        app:moduleName="feature_favorite"-->

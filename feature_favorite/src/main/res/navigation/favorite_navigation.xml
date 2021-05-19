@@ -17,7 +17,7 @@
 
     <!--    <fragment-->
     <!--        android:id="@+id/detailFragment"-->
-    <!--        android:name="com.franzandel.feature_detail.presentation.fragment.DetailFragment"-->
+    <!--        android:name="com.franzandel.feature_home.presentation.fragment.DetailFragment"-->
     <!--        android:label="DetailFragment"-->
     <!--        tools:layout="@layout/fragment_detail">-->
     <!--        <action-->
