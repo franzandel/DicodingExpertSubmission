@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.room.Room
 import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.mapper.BaseMapper
+import com.franzandel.dicodingexpertsubmission.data.consts.DatabaseConsts
 import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelKey
 import com.franzandel.feature_favorite.data.local.dao.FavoriteDao
 import com.franzandel.feature_favorite.data.local.db.FavoriteDatabase
@@ -28,8 +29,6 @@ import dagger.multibindings.IntoMap
 @InstallIn(ViewModelComponent::class)
 object FavoriteVMModule {
 
-    private const val FAVORITE_DB_NAME = "Favorite.db"
-
     @Provides
     @IntoMap
     @ViewModelKey(FavoriteViewModel::class)
@@ -46,7 +45,7 @@ object FavoriteVMModule {
         Room.databaseBuilder(
             context,
             FavoriteDatabase::class.java,
-            FAVORITE_DB_NAME
+            DatabaseConsts.GAMER_DB_NAME
         ).fallbackToDestructiveMigration()
             .build()
 

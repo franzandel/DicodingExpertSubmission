@@ -21,6 +21,7 @@ import com.franzandel.feature_home.databinding.LayoutErrorBinding
 import com.franzandel.feature_home.di.DaggerHomeComponent
 import com.franzandel.feature_home.presentation.adapter.HomeAdapter
 import com.franzandel.feature_home.presentation.vm.HomeViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -77,8 +78,8 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
     }
 
     private fun showBottomNavigation() {
-//        val bottomNavigation = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
-//        bottomNavigation.show()
+        val bottomNavigation = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavigation.show()
     }
 
     private fun setupObservers() {

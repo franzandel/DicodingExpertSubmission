@@ -9,9 +9,9 @@
         app:moduleName="feature_home"
         app:graphResName="home_navigation"
         app:graphPackage="com.franzandel.dicodingexpertsubmission.feature_home">
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_detail"
-            app:destination="@id/navigation_detail" />
+        <!--        <action-->
+        <!--            android:id="@+id/action_navigation_home_to_navigation_detail"-->
+        <!--            app:destination="@id/navigation_detail" />-->
     </include-dynamic>
 
     <include-dynamic
@@ -25,9 +25,9 @@
         app:moduleName="feature_detail"
         app:graphResName="detail_navigation"
         app:graphPackage="com.franzandel.dicodingexpertsubmission.feature_detail">
-        <!--        <argument-->
-        <!--            android:name="gamesResult"-->
-        <!--            app:argType="com.franzandel.feature_home.presentation.model.GamesResultUI" />-->
+        <!--            <argument-->
+        <!--                android:name="gamesResult"-->
+        <!--                app:argType="com.franzandel.feature_home.presentation.model.GamesResultUI" />-->
     </include-dynamic>
 
     <!--    <fragment-->
@@ -54,7 +54,7 @@
         android:label="@string/navigation_title_settings" />
     <!--    <fragment-->
     <!--        android:id="@+id/detailFragment"-->
-    <!--        android:name="com.franzandel.feature_detail.presentation.fragment.DetailFragment"-->
+    <!--        android:name="com.franzandel.feature_home.presentation.fragment.DetailFragment"-->
     <!--        android:label="DetailFragment"-->
     <!--        tools:layout="@layout/fragment_detail">-->
     <!--        <action-->

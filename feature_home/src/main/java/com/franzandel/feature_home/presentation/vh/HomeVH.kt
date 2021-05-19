@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.databinding.ItemHomeBinding
+import com.franzandel.feature_home.presentation.fragment.HomeFragmentDirections
 import com.franzandel.feature_home.presentation.model.GamesResultUI
 
 /**
@@ -28,12 +29,18 @@ class HomeVH(private val itemHomeBinding: ItemHomeBinding) :
             cpiRatings.progress = gamesResult.rating.toInt()
 
             cvHome.setOnClickListener {
-//                val navDirections =
-//                    HomeFragmentDirections.actionNavigationHomeToDetailFragment(gamesResult)
-//                findNavController(root).navigate(navDirections)
-                findNavController(root).navigate(
-                    com.franzandel.dicodingexpertsubmission.R.id.action_navigation_home_to_navigation_detail
-                )
+                val navDirections =
+                    HomeFragmentDirections.actionNavigationHomeToDetailFragment(gamesResult)
+                findNavController(root).navigate(navDirections)
+
+//                val bundle = Bundle()
+//                bundle.putParcelable("asdf", gamesResult)
+//
+//                findNavController(root).navigate(
+////                    com.franzandel.dicodingexpertsubmission.R.id.action_navigation_home_to_navigation_detail
+//                    com.franzandel.dicodingexpertsubmission.R.id.navigation_detail, bundle
+//                )
+
             }
         }
     }
