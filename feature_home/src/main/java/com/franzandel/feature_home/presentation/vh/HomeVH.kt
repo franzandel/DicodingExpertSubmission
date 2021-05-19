@@ -32,15 +32,6 @@ class HomeVH(private val itemHomeBinding: ItemHomeBinding) :
                 val navDirections =
                     HomeFragmentDirections.actionNavigationHomeToDetailFragment(gamesResult)
                 findNavController(root).navigate(navDirections)
-
-//                val bundle = Bundle()
-//                bundle.putParcelable("asdf", gamesResult)
-//
-//                findNavController(root).navigate(
-////                    com.franzandel.dicodingexpertsubmission.R.id.action_navigation_home_to_navigation_detail
-//                    com.franzandel.dicodingexpertsubmission.R.id.navigation_detail, bundle
-//                )
-
             }
         }
     }

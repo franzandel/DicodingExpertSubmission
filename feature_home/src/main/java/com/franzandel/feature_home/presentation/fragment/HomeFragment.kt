@@ -78,7 +78,8 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
     }
 
     private fun showBottomNavigation() {
-        val bottomNavigation = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+        val bottomNavigation =
+            requireActivity().findViewById<BottomNavigationView>(AppR.id.nav_view)
         bottomNavigation.show()
     }
 

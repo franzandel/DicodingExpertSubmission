@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
 /**
- * Created by Franz Andel on 22/02/21.
+ * Created by Franz Andel on 22/05/21.
  * Android Engineer
  */
 

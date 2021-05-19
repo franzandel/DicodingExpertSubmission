@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.extension.observe
+import com.franzandel.core.extension.show
 import com.franzandel.core.extension.showShareMessage
 import com.franzandel.core.presentation.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.R
@@ -17,12 +18,14 @@ import com.franzandel.feature_favorite.di.DaggerFavoriteComponent
 import com.franzandel.feature_favorite.presentation.adapter.FavoriteAdapter
 import com.franzandel.feature_favorite.presentation.model.GamesResultUI
 import com.franzandel.feature_favorite.presentation.vm.FavoriteViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.franzandel.dicodingexpertsubmission.R as AppR
 
 class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBinding>() {
 
@@ -67,8 +70,9 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
     }
 
     private fun showBottomNavigation() {
-//        val bottomNavigation = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
-//        bottomNavigation.show()
+        val bottomNavigation =
+            requireActivity().findViewById<BottomNavigationView>(AppR.id.nav_view)
+        bottomNavigation.show()
     }
 
     private fun setupAdapter() {

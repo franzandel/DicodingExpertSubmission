@@ -2,7 +2,7 @@ package com.franzandel.feature_home.di
 
 import android.content.Context
 import com.franzandel.dicodingexpertsubmission.di.AppComponent
-import com.franzandel.feature_home.presentation.activity.DashboardActivity
+import com.franzandel.dicodingexpertsubmission.presentation.activity.DashboardActivity
 import com.franzandel.feature_home.presentation.fragment.DetailFragment
 import com.franzandel.feature_home.presentation.fragment.HomeFragment
 import dagger.BindsInstance
