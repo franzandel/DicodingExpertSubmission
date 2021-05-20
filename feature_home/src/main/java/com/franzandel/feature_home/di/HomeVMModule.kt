@@ -2,7 +2,7 @@ package com.franzandel.feature_home.di
 
 import androidx.lifecycle.ViewModel
 import com.franzandel.core.mapper.BaseMapper
-import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelKey
+import com.franzandel.core.presentation.vm.ViewModelKey
 import com.franzandel.feature_home.data.remote.mapper.response.*
 import com.franzandel.feature_home.data.remote.model.response.*
 import com.franzandel.feature_home.data.remote.network.HomeService

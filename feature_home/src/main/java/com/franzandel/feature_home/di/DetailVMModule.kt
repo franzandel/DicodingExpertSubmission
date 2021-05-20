@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.room.Room
 import com.franzandel.core.coroutine.CoroutineThread
+import com.franzandel.core.presentation.vm.ViewModelKey
 import com.franzandel.dicodingexpertsubmission.data.consts.DatabaseConsts
-import com.franzandel.dicodingexpertsubmission.presentation.vm.ViewModelKey
 import com.franzandel.feature_home.data.local.dao.DetailDao
 import com.franzandel.feature_home.data.local.db.DetailDatabase
 import com.franzandel.feature_home.domain.usecase.DetailUseCase
