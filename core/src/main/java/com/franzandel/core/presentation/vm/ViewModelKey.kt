@@ -1,4 +1,4 @@
-package com.franzandel.dicodingexpertsubmission.presentation.vm
+package com.franzandel.core.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

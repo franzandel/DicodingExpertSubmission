@@ -2,23 +2,15 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
-    id 'androidx.navigation.safeargs'
     id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs'
+    id 'dagger.hilt.android.plugin'
 }
+apply from: "$rootDir/app/base.gradle"
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
-
     defaultConfig {
         applicationId "com.franzandel.dicodingexpertsubmission"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -30,17 +22,6 @@ android {
             buildConfigField 'String', "GAMES_BASE_URL" , '"https://api.rawg.io/api/"'
             buildConfigField 'String', "GAMES_API_KEY" , '"e9414b6402c845568894a6923f8f921f"'
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    buildFeatures {
-        viewBinding true
     }
 
     dynamicFeatures = [':feature_home', ':feature_favorite', ':feature_settings']
@@ -56,12 +37,10 @@ dependencies {
     api "androidx.navigation:navigation-dynamic-features-fragment:2.3.5"
     api 'androidx.legacy:legacy-support-v4:1.0.0'
     api 'androidx.preference:preference-ktx:1.1.1'
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    api "com.google.dagger:hilt-android:2.35.1"
-    kapt "com.google.dagger:hilt-compiler:2.35.1"
 
     // by viewModels()
     api "androidx.activity:activity-ktx:1.2.3"
