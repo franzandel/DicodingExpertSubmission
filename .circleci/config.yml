@@ -16,8 +16,9 @@ commands:
   start_emulator_and_run_instrumentation_tests:
     description: "Run Instrumentation Tests"
     steps:
-      - android/run-tests:
-          test-command: ./gradlew lint testDebug --continue
+      - android/start-emulator-and-run-tests:
+          test-command: ./gradlew connectedDebugAndroidTest
+          system-image: system-images;android-25;google_apis;x86
 
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
