@@ -6,6 +6,19 @@ version: 2.1
 orbs:
   android: circleci/android@1.0.3
 
+commands:
+  run_unit_tests:
+    description: "Run Unit Tests"
+    steps:
+      - android/run-tests:
+          test-command: ./gradlew lint testDebug --continue
+
+  start_emulator_and_run_instrumentation_tests:
+    description: "Run Instrumentation Tests"
+    steps:
+      - android/run-tests:
+          test-command: ./gradlew lint testDebug --continue
+
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
   build_debug:
@@ -15,13 +28,8 @@ jobs:
 
     steps:
       - checkout
-      - android/run-tests:
-          name: Run Unit Tests
-          test-command: ./gradlew lint testDebug --continue
-      - android/start-emulator-and-run-tests:
-          name: Run Instrumentation Tests
-          test-command: ./gradlew connectedDebugAndroidTest
-          system-image: system-images;android-25;google_apis;x86
+      - run_unit_tests
+      - start_emulator_and_run_instrumentation_tests
       - run:
           name: Assemble debug build
           command: |
