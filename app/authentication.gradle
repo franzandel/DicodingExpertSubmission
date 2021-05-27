@@ -6,4 +6,7 @@ ext {
     releasePassKeystore = properties.getProperty("release_pass_keystore", "")
     releaseAliasKeystore = properties.getProperty("release_alias_keystore", "")
     gamesApiKey = properties.getProperty("games_api_key", "")
+    certPinner1 = properties.getProperty("cert_pinner_1", "")
+    certPinner2 = properties.getProperty("cert_pinner_2", "")
+    certPinner3 = properties.getProperty("cert_pinner_3", "")
 }
