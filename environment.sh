@@ -39,6 +39,6 @@ function copyEnvVarsToLocalProperties {
         echo "Display Content Fake Local Properties"
         cat $FAKE_LOCAL_PROPERTIES
 
-        ls -all $HOME/repo
+        ls -all $HOME
     fi
 }
