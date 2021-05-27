@@ -28,9 +28,9 @@ object AppModule {
     private const val TIMEOUT_TIME = 60L
     private const val gamesDomain = "api.rawg.io"
     private val certificatePinner = CertificatePinner.Builder()
-        .add(gamesDomain, "sha256/R+V29DqDnO269dFhAAB5jMlZHepWpDGuoejXJjprh7A=")
-        .add(gamesDomain, "sha256/FEzVOUp4dF3gI0ZVPRJhFbSJVXR+uQmMH65xhs1glH4=")
-        .add(gamesDomain, "sha256/Y9mvm0exBk1JoQ57f9Vm28jKo5lFm/woKcVxrYxu80o=")
+        .add(gamesDomain, BuildConfig.CERT_PINNER_1)
+        .add(gamesDomain, BuildConfig.CERT_PINNER_2)
+        .add(gamesDomain, BuildConfig.CERT_PINNER_3)
         .build()
 
     @Provides

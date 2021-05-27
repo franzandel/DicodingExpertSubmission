@@ -38,6 +38,9 @@ android {
         all {
             buildConfigField 'String', "GAMES_BASE_URL" , '"https://api.rawg.io/api/"'
             buildConfigField 'String', "GAMES_API_KEY" , "\"$gamesApiKey\""
+            buildConfigField 'String', "CERT_PINNER_1" , "\"$certPinner1\""
+            buildConfigField 'String', "CERT_PINNER_2" , "\"$certPinner2\""
+            buildConfigField 'String', "CERT_PINNER_3" , "\"$certPinner3\""
         }
     }
 

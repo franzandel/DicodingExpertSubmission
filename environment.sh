@@ -35,6 +35,9 @@ function copyEnvVarsToLocalProperties {
         echo "release_alias_keystore=$release_alias_keystore_env_var" >> $FAKE_LOCAL_PROPERTIES
         echo "release_pass_keystore=$release_pass_keystore_env_var" >> $FAKE_LOCAL_PROPERTIES
         echo "games_api_key=$games_api_key_env_var" >> $FAKE_LOCAL_PROPERTIES
+        echo "cert_pinner_1=$cert_pinner_1_env_var" >> $FAKE_LOCAL_PROPERTIES
+        echo "cert_pinner_2=$cert_pinner_2_env_var" >> $FAKE_LOCAL_PROPERTIES
+        echo "cert_pinner_3=$cert_pinner_3_env_var" >> $FAKE_LOCAL_PROPERTIES
 
         echo "Display Content Fake Local Properties"
         cat $FAKE_LOCAL_PROPERTIES
