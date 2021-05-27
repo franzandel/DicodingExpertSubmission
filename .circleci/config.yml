@@ -20,6 +20,12 @@ commands:
           test-command: ./gradlew connectedDebugAndroidTest
           system-image: system-images;android-25;google_apis;x86
 
+  create_env_file:
+    description: "Create env file"
+    steps:
+      - run:
+          name: Copy Env Vars To Local Properties
+          command: source environment.sh && copyEnvVarsToLocalProperties
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
   build_debug:
@@ -29,6 +35,7 @@ jobs:
 
     steps:
       - checkout
+      - create_env_file
       - run_unit_tests
       - start_emulator_and_run_instrumentation_tests
       - run:
@@ -42,6 +49,7 @@ jobs:
 
     steps:
       - checkout
+      - create_env_file
       - run:
           name: Assemble release build
           command: |
@@ -55,10 +63,12 @@ workflows:
   build_and_test:
     jobs:
       - build_debug:
+          context: Dicoding Expert
           filters:
             branches:
               ignore: master
       - build_release:
+          context: Dicoding Expert
           filters:
             branches:
               only: master

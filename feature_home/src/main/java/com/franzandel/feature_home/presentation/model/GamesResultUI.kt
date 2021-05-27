@@ -1,6 +1,7 @@
 package com.franzandel.feature_home.presentation.model
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -8,6 +9,7 @@ import kotlinx.android.parcel.Parcelize
  * Android Engineer
  */
 
+@Keep
 @Parcelize
 data class GamesResultUI(
     val name: String,

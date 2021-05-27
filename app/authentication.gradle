@@ -1,0 +1,9 @@
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+ext {
+    releasePassKeystore = properties.getProperty("release_pass_keystore", "")
+    releaseAliasKeystore = properties.getProperty("release_alias_keystore", "")
+    gamesApiKey = properties.getProperty("games_api_key", "")
+}

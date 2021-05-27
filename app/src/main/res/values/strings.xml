@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Gamer</string>
     <string name="navigation_title_home">Home</string>
     <string name="navigation_title_favorite">Favorite</string>
     <string name="navigation_title_settings">Settings</string>

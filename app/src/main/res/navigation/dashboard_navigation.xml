@@ -6,19 +6,19 @@
 
     <include-dynamic
         android:id="@+id/navigation_home"
-        app:graphPackage="com.franzandel.dicodingexpertsubmission.feature_home"
+        app:graphPackage="${applicationId}.feature_home"
         app:graphResName="home_navigation"
         app:moduleName="feature_home" />
 
     <include-dynamic
         android:id="@+id/navigation_favorite"
-        app:graphPackage="com.franzandel.dicodingexpertsubmission.feature_favorite"
+        app:graphPackage="${applicationId}.feature_favorite"
         app:graphResName="favorite_navigation"
         app:moduleName="feature_favorite" />
 
     <include-dynamic
         android:id="@+id/navigation_settings"
-        app:graphPackage="com.franzandel.dicodingexpertsubmission.feature_settings"
+        app:graphPackage="${applicationId}.feature_settings"
         app:graphResName="settings_navigation"
         app:moduleName="feature_settings" />
 </navigation>

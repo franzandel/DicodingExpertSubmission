@@ -63,7 +63,11 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
 
     private fun setupTabLayout() {
         // To connect ViewPager2 with TabLayout
-        TabLayoutMediator(viewBinding.tlDetail, viewBinding.vpDetail) { _, _ -> }.attach()
+        // This is required in release mode otherwise causing crash (NPE: Attempt to invoke interface method...)
+        TabLayoutMediator(viewBinding.tlDetail, viewBinding.vpDetail,
+            TabLayoutMediator.TabConfigurationStrategy { _, _ -> }).attach()
+        TabLayoutMediator(viewBinding.tlDetail, viewBinding.vpDetail,
+            TabLayoutMediator.TabConfigurationStrategy { _, _ -> }).attach()
     }
 
     private fun hideBottomNavigation() {

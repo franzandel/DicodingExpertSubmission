@@ -1,7 +1,9 @@
 package com.franzandel.feature_home.data.remote.model.response
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class TagDTO(
     @SerializedName("games_count")
     val gamesCount: Int,
