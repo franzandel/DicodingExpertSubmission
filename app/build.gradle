@@ -7,20 +7,39 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 apply from: "$rootDir/app/base.gradle"
+apply from: "$rootDir/app/authentication.gradle"
 
 android {
     defaultConfig {
         applicationId "com.franzandel.dicodingexpertsubmission"
     }
 
-    buildTypes {
+    signingConfigs {
         release {
-            minifyEnabled false
+            keyAlias releaseAliasKeystore
+            keyPassword releasePassKeystore
+            storeFile file("$rootDir/dicoding_expert_release.keystore")
+            storePassword releasePassKeystore
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            versionNameSuffix "-debug"
+            applicationIdSuffix ".debug"
+            resValue "string", "app_name", "Debug-Gamer"
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            resValue "string", "app_name", "Gamer"
         }
         all {
             buildConfigField 'String', "GAMES_BASE_URL" , '"https://api.rawg.io/api/"'
-            buildConfigField 'String', "GAMES_API_KEY" , '"e9414b6402c845568894a6923f8f921f"'
+            buildConfigField 'String', "GAMES_API_KEY" , "\"$gamesApiKey\""
         }
     }
 

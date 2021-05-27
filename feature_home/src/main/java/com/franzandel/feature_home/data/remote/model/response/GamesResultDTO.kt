@@ -1,7 +1,9 @@
 package com.franzandel.feature_home.data.remote.model.response
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class GamesResultDTO(
     val added: Int,
     @SerializedName("added_by_status")
