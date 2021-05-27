@@ -41,6 +41,7 @@ android {
             buildConfigField 'String', "CERT_PINNER_1" , "\"$certPinner1\""
             buildConfigField 'String', "CERT_PINNER_2" , "\"$certPinner2\""
             buildConfigField 'String', "CERT_PINNER_3" , "\"$certPinner3\""
+            buildConfigField 'String', "DB_KEY" , "\"$dbKey\""
         }
     }
 
@@ -75,4 +76,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     api "androidx.paging:paging-runtime-ktx:3.0.0"
+
+    api "net.zetetic:android-database-sqlcipher:4.4.2"
+    api "androidx.sqlite:sqlite-ktx:2.1.0"
 }
