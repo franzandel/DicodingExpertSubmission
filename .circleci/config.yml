@@ -63,12 +63,12 @@ workflows:
   build_and_test:
     jobs:
       - build_debug:
-          context: Dicoding_Expert_Context
+          context: Dicoding Expert Context
           filters:
             branches:
               ignore: master
       - build_release:
-          context: Dicoding_Expert_Context
+          context: Dicoding Expert Context
           filters:
             branches:
               only: master
