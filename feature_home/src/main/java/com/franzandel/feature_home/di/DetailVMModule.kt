@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.room.Room
 import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.presentation.vm.ViewModelKey
+import com.franzandel.dicodingexpertsubmission.BuildConfig
 import com.franzandel.dicodingexpertsubmission.data.consts.DatabaseConsts
 import com.franzandel.feature_home.data.local.dao.DetailDao
 import com.franzandel.feature_home.data.local.db.DetailDatabase
@@ -16,6 +17,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.multibindings.IntoMap
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 
 /**
  * Created by Franz Andel on 11/05/21.
@@ -37,13 +40,18 @@ object DetailVMModule {
 
     @Provides
     @ViewModelScoped
-    fun provideDetailDatabase(context: Context): DetailDatabase =
-        Room.databaseBuilder(
+    fun provideDetailDatabase(context: Context): DetailDatabase {
+        val passphrase = SQLiteDatabase.getBytes(BuildConfig.DB_KEY.toCharArray())
+        val supportFactory = SupportFactory(passphrase)
+
+        return Room.databaseBuilder(
             context,
             DetailDatabase::class.java,
             DatabaseConsts.GAMER_DB_NAME
         ).fallbackToDestructiveMigration()
+            .openHelperFactory(supportFactory)
             .build()
+    }
 
     @Provides
     @ViewModelScoped
