@@ -21,7 +21,7 @@
 #!/usr/bin/env bash
 
 function copyEnvVarsToLocalProperties {
-    FAKE_LOCAL_PROPERTIES=$HOME"/repo/local.properties"
+    FAKE_LOCAL_PROPERTIES=$HOME"/local.properties"
     export FAKE_LOCAL_PROPERTIES
     echo "Local Properties should exist at $FAKE_LOCAL_PROPERTIES"
 

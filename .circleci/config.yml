@@ -24,6 +24,9 @@ commands:
     description: "Create env file"
     steps:
       - run:
+          name: Check current dir
+          command: pwd
+      - run:
           name: Copy Env Vars To Local Properties
           command: source environment.sh && copyEnvVarsToLocalProperties
 jobs:
