@@ -25,8 +25,6 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             versionNameSuffix "-debug"
             applicationIdSuffix ".debug"
             resValue "string", "app_name", "Debug-Gamer"
