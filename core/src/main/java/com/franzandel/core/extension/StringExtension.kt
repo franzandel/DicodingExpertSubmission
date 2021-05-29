@@ -1,5 +1,7 @@
 package com.franzandel.core.extension
 
+import androidx.appcompat.app.AppCompatDelegate
+
 /**
  * Created by Franz Andel on 11/05/21.
  * Android Engineer
@@ -34,4 +36,14 @@ fun String.getHourAndMinute(): Pair<Int, Int> {
     val expectedHour = splittedTime.first().trim().toInt()
     val expectedMinute = splittedTime.last().trim().toInt()
     return Pair(expectedHour, expectedMinute)
+}
+
+fun String.setNightMode(themes: Array<String>) {
+    val mode = when (this) {
+        themes.first() -> AppCompatDelegate.MODE_NIGHT_NO
+        themes[1] -> AppCompatDelegate.MODE_NIGHT_YES
+        else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+    }
+
+    AppCompatDelegate.setDefaultNightMode(mode)
 }

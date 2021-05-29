@@ -42,6 +42,7 @@ android {
             buildConfigField 'String', "CERT_PINNER_2" , "\"$certPinner2\""
             buildConfigField 'String', "CERT_PINNER_3" , "\"$certPinner3\""
             buildConfigField 'String', "DB_KEY" , "\"$dbKey\""
+            buildConfigField 'String', "SESSION_KEY" , "\"$sessionKey\""
         }
     }
 
@@ -79,4 +80,7 @@ dependencies {
 
     api "net.zetetic:android-database-sqlcipher:4.4.2"
     api "androidx.sqlite:sqlite-ktx:2.1.0"
+
+    api "androidx.security:security-crypto:1.1.0-alpha03"
+    api 'com.scottyab:secure-preferences-lib:0.1.7'
 }

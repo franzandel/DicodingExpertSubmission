@@ -1,24 +1,28 @@
 package com.franzandel.feature_settings.presentation.fragment
 
 import android.app.TimePickerDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.TimePicker
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
-import com.franzandel.core.extension.addZeroPrefix
-import com.franzandel.core.extension.getHourAndMinute
-import com.franzandel.core.extension.showImageToast
-import com.franzandel.core.extension.showTimePickerDialog
+import com.franzandel.core.extension.*
+import com.franzandel.dicodingexpertsubmission.data.local.EncryptedPreferenceDataStore
+import com.franzandel.dicodingexpertsubmission.di.AppComponent
 import com.franzandel.dicodingexpertsubmission.external.alarmmanager.DailyAlarmManager
 import com.franzandel.feature_settings.R
+import com.franzandel.feature_settings.di.DaggerSettingsComponent
+import dagger.hilt.android.EntryPointAccessors
+import javax.inject.Inject
 import com.franzandel.dicodingexpertsubmission.R as AppR
 
 class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetListener {
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private val spcReminder by lazy {
         findPreference<SwitchPreferenceCompat>(getString(R.string.settings_reminder_key))!!
@@ -33,16 +37,29 @@ class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetL
     }
 
     private val preferences by lazy {
-        preferenceManager.sharedPreferences
+        EncryptedPreferenceDataStore(sharedPreferences)
     }
 
     private val dailyAlarmManager by lazy {
-        DailyAlarmManager(
-            requireContext().applicationContext
-        )
+        DailyAlarmManager(requireContext().applicationContext)
+    }
+
+    override fun onAttach(context: Context) {
+        DaggerSettingsComponent.builder()
+            .context(requireContext())
+            .appComponent(
+                EntryPointAccessors.fromApplication(
+                    requireContext().applicationContext,
+                    AppComponent::class.java
+                )
+            )
+            .build()
+            .inject(this)
+        super.onAttach(context)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.preferenceDataStore = preferences
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
         setupListeners()
         pReminderTime.summary = getReminderTime()
@@ -71,14 +88,7 @@ class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetL
 
         lpTheme.setOnPreferenceChangeListener { _, selectedMode ->
             val themes = requireContext().resources.getStringArray(AppR.array.theme_values)
-
-            val mode = when (selectedMode.toString()) {
-                themes.first() -> MODE_NIGHT_NO
-                themes[1] -> MODE_NIGHT_YES
-                else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-            }
-
-            AppCompatDelegate.setDefaultNightMode(mode)
+            selectedMode.toString().setNightMode(themes)
             true
         }
     }
@@ -89,7 +99,7 @@ class SettingsFragment : PreferenceFragmentCompat(), TimePickerDialog.OnTimeSetL
         val time = "$formattedHour:$formattedMinute"
 
         pReminderTime.summary = time
-        preferences.edit().putString(getString(R.string.settings_reminder_time_key), time).apply()
+        preferences.putString(getString(R.string.settings_reminder_time_key), time)
         dailyAlarmManager.setRepeatingAlarm(hour, minute)
 
         showCheckedToast(getString(R.string.settings_reminder_success_change_time))

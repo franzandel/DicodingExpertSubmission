@@ -19,7 +19,7 @@
     <PreferenceCategory app:title="@string/settings_theme_header">
 
         <ListPreference
-            app:defaultValue="light_mode"
+            app:defaultValue="follow_system"
             app:entries="@array/theme_entries"
             app:entryValues="@array/theme_values"
             app:key="@string/settings_theme_key"

@@ -10,4 +10,5 @@ ext {
     certPinner2 = properties.getProperty("cert_pinner_2", "")
     certPinner3 = properties.getProperty("cert_pinner_3", "")
     dbKey = properties.getProperty("db_key", "")
+    sessionKey = properties.getProperty("session_key", "")
 }

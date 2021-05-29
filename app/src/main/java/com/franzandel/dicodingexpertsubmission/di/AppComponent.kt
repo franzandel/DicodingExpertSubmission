@@ -1,5 +1,6 @@
 package com.franzandel.dicodingexpertsubmission.di
 
+import android.content.SharedPreferences
 import com.franzandel.core.coroutine.CoroutineThread
 import com.google.gson.Gson
 import dagger.hilt.EntryPoint
@@ -19,4 +20,5 @@ interface AppComponent {
     fun coroutineThread(): CoroutineThread
     fun retrofit(): Retrofit
     fun gson(): Gson
+    fun sharedPreferences(): SharedPreferences
 }
