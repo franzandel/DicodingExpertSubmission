@@ -1,3 +1,5 @@
+apply from: "$rootDir/app/dependencies_versions.gradle"
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -26,6 +28,6 @@ android {
 }
 
 dependencies {
-    implementation "com.google.dagger:hilt-android:2.35.1"
-    kapt "com.google.dagger:hilt-compiler:2.35.1"
+    implementation "com.google.dagger:hilt-android:${versions.hilt}"
+    kapt "com.google.dagger:hilt-compiler:${versions.hilt}"
 }

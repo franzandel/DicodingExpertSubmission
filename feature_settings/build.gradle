@@ -14,5 +14,5 @@ android {
 dependencies {
     implementation project(":app")
 
-    kapt "androidx.room:room-compiler:2.3.0"
+    kapt "androidx.room:room-compiler:${versions.room}"
 }
