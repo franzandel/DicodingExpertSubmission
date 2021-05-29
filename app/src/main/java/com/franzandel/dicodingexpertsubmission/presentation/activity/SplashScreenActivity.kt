@@ -1,19 +1,25 @@
 package com.franzandel.dicodingexpertsubmission.presentation.activity
 
+import android.content.SharedPreferences
 import android.os.Handler
 import android.os.Looper
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.preference.PreferenceManager
 import com.franzandel.core.extension.goTo
+import com.franzandel.core.extension.setNightMode
 import com.franzandel.core.presentation.activity.BaseActivity
 import com.franzandel.dicodingexpertsubmission.R
 import com.franzandel.dicodingexpertsubmission.databinding.ActivitySplashScreenBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SplashScreenActivity : BaseActivity<ActivitySplashScreenBinding>() {
 
     companion object {
         private const val TIME_OUT = 1000L
     }
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun getViewBinding(): ActivitySplashScreenBinding =
         ActivitySplashScreenBinding.inflate(layoutInflater)
@@ -25,16 +31,8 @@ class SplashScreenActivity : BaseActivity<ActivitySplashScreenBinding>() {
 
     private fun setupThemes() {
         val themes = resources.getStringArray(R.array.theme_values)
-        val preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-        val selectedMode = preferences.getString(getString(R.string.settings_theme_key), "")
-
-        val mode = when (selectedMode.toString()) {
-            themes.first() -> AppCompatDelegate.MODE_NIGHT_NO
-            themes[1] -> AppCompatDelegate.MODE_NIGHT_YES
-            else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-        }
-
-        AppCompatDelegate.setDefaultNightMode(mode)
+        val selectedMode = sharedPreferences.getString(getString(R.string.settings_theme_key), "")
+        selectedMode.toString().setNightMode(themes)
     }
 
     private fun delayOneSecond() {

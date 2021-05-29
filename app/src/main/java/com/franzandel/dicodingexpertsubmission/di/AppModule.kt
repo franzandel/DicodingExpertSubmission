@@ -1,12 +1,21 @@
 package com.franzandel.dicodingexpertsubmission.di
 
+import android.content.Context
+import android.content.SharedPreferences
+import android.os.Build
+import android.security.keystore.KeyGenParameterSpec
+import android.security.keystore.KeyProperties
 import androidx.lifecycle.ViewModel
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
 import com.franzandel.core.presentation.vm.ViewModelFactory
 import com.franzandel.dicodingexpertsubmission.BuildConfig
 import com.google.gson.Gson
+import com.securepreferences.SecurePreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
@@ -25,6 +34,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    private const val SESSION_NAME = "DicodingExpert Session"
     private const val TIMEOUT_TIME = 60L
     private const val gamesDomain = "api.rawg.io"
     private val certificatePinner = CertificatePinner.Builder()
@@ -55,6 +65,37 @@ object AppModule {
     @Provides
     @Singleton
     fun provideGson(): Gson = Gson()
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val keyGenParameterSpec = KeyGenParameterSpec.Builder(
+                MasterKey.DEFAULT_MASTER_KEY_ALIAS,
+                KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+            ).apply {
+                setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+                setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+                setKeySize(MasterKey.DEFAULT_AES_GCM_MASTER_KEY_SIZE)
+                setUserAuthenticationValidityDurationSeconds(15) // harus lebih besar dari 0
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    setUnlockedDeviceRequired(true)
+                }
+            }.build()
+
+            val masterKey = MasterKey.Builder(context)
+                .setKeyGenParameterSpec(keyGenParameterSpec)
+                .build()
+            EncryptedSharedPreferences
+                .create(
+                    context,
+                    SESSION_NAME,
+                    masterKey,
+                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+                )
+        } else
+            SecurePreferences(context, BuildConfig.SESSION_KEY, SESSION_NAME)
 
     @Provides
     fun provideViewModelFactory(
