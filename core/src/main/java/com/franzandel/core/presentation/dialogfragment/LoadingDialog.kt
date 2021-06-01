@@ -25,8 +25,8 @@ class LoadingDialog : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.df_loading, container)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupDialogUI()
     }
 
