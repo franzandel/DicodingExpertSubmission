@@ -8,6 +8,7 @@ import com.franzandel.core.extension.observe
 import com.franzandel.core.presentation.dialogfragment.LoadingDialog
 import com.franzandel.core.presentation.vm.BaseViewModel
 import com.franzandel.core.presentation.vm.ViewModelFactory
+import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 /**
@@ -20,7 +21,9 @@ abstract class BaseFragmentVM<VM : ViewModel, VB : ViewBinding> : BaseFragment<V
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    protected val loadingDialog = LoadingDialog.newInstance()
+    protected val loadingDialog by lazy {
+        WeakReference(LoadingDialog())
+    }
 
     abstract fun getVM(): VM
 
@@ -32,9 +35,9 @@ abstract class BaseFragmentVM<VM : ViewModel, VB : ViewBinding> : BaseFragment<V
     private fun setupObserver(viewModel: BaseViewModel) {
         viewLifecycleOwner.observe(viewModel.loadingResult) {
             if (it)
-                loadingDialog.show(requireActivity().supportFragmentManager)
+                loadingDialog.get()?.show(requireActivity().supportFragmentManager)
             else
-                loadingDialog.hide()
+                loadingDialog.get()?.hide()
         }
     }
 }

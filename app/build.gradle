@@ -54,9 +54,11 @@ dependencies {
 
     api "androidx.core:core-ktx:${versions.coreKtx}"
     api "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
+
     api "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
     api "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
     api "androidx.navigation:navigation-dynamic-features-fragment:${versions.navigation}"
+
     api "androidx.legacy:legacy-support-v4:${versions.legacySupport}"
     api "androidx.preference:preference-ktx:${versions.preferenceKtx}"
 
@@ -83,4 +85,6 @@ dependencies {
 
     api "androidx.security:security-crypto:${versions.securityCrypto}"
     api "com.scottyab:secure-preferences-lib:${versions.securePreferencesLib}"
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:${versions.leakCanary}"
 }

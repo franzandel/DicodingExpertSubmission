@@ -15,7 +15,6 @@ import com.franzandel.core.presentation.fragment.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.di.AppComponent
 import com.franzandel.feature_home.R
 import com.franzandel.feature_home.databinding.FragmentHomeBinding
-import com.franzandel.feature_home.databinding.LayoutErrorBinding
 import com.franzandel.feature_home.di.DaggerHomeComponent
 import com.franzandel.feature_home.presentation.adapter.HomeAdapter
 import com.franzandel.feature_home.presentation.vm.HomeViewModel
@@ -38,11 +37,7 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
 
     private val viewModel: HomeViewModel by viewModels { viewModelFactory }
 
-    private lateinit var errorViewBinding: LayoutErrorBinding
-
-    private val adapter by lazy {
-        HomeAdapter()
-    }
+    private val adapter get() = viewBinding.rvHome.adapter as HomeAdapter
 
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -51,7 +46,6 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
         FragmentHomeBinding.inflate(inflater, container, false)
 
     override fun onFragmentCreated() {
-        errorViewBinding = viewBinding.layoutError
         showBottomNavigation()
         setupRV()
         setupObservers()
@@ -75,9 +69,9 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
             adapter.addLoadStateListener { loadState ->
                 if (loadState.refresh is LoadState.Loading) {
                     if (!loadState.prepend.endOfPaginationReached)
-                        loadingDialog.show(requireActivity().supportFragmentManager)
+                        loadingDialog.get()?.show(requireActivity().supportFragmentManager)
                 } else {
-                    loadingDialog.hide()
+                    loadingDialog.get()?.hide()
 
                     val errorState = when {
                         loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
@@ -105,7 +99,7 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
             requireContext(),
             GRID_SPAN_COUNT
         )
-        viewBinding.rvHome.adapter = adapter
+        viewBinding.rvHome.adapter = HomeAdapter()
     }
 
     private fun setupListeners() {
@@ -122,7 +116,7 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
             }
         }
 
-        errorViewBinding.btnTryAgain.setOnClickListener {
+        viewBinding.layoutError.btnTryAgain.setOnClickListener {
             getAllGames()
         }
     }
