@@ -36,8 +36,6 @@ dependencies {
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${testVersions.kotlinxCoroutinesTest}"
     testImplementation "io.mockk:mockk:${testVersions.mockk}"
     testImplementation "com.squareup.okhttp3:mockwebserver:${testVersions.mockWebServer}"
-//    testImplementation "net.bytebuddy:byte-buddy:1.10.14"
-//    testImplementation "org.objenesis:objenesis:3.1"
 
     androidTestImplementation "androidx.test.ext:junit:${androidTestVersions.junitExt}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${androidTestVersions.espressoCore}"
