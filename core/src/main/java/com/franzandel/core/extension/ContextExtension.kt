@@ -4,6 +4,7 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.view.Gravity
 import android.widget.TextView
 import android.widget.Toast
@@ -48,11 +49,12 @@ fun Context.loadDrawable(@DrawableRes drawableId: Int): Drawable? =
 
 fun Context.loadColor(@ColorRes colorId: Int) = ContextCompat.getColor(this, colorId)
 
+@Suppress("DEPRECATION")
 fun Context.showImageToast(@DrawableRes drawable: Int, message: String) {
     val view = TextView(this).apply {
         setCompoundDrawablesWithIntrinsicBounds(drawable, 0, 0, 0)
         compoundDrawablePadding = 8F.toDp()
-        setBackgroundDrawable(loadDrawable(R.drawable.bg_rounded_toast))
+        background = loadDrawable(R.drawable.bg_rounded_toast)
         text = message
         setTextColor(loadColor(android.R.color.white))
         setPadding(8F.toDp(), 12F.toDp(), 16F.toDp(), 12F.toDp())
@@ -60,7 +62,7 @@ fun Context.showImageToast(@DrawableRes drawable: Int, message: String) {
     }
 
     Toast(this).apply {
-        this.view = view
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) this.view = view
         show()
     }
 }

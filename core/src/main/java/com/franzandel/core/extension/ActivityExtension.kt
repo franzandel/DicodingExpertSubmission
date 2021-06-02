@@ -10,8 +10,7 @@ import androidx.core.app.ShareCompat
 
 fun Activity.showShareMessage(chooserTitle: String, text: String) {
     val mimeType = "text/plain"
-    ShareCompat.IntentBuilder
-        .from(this)
+    ShareCompat.IntentBuilder(this)
         .setType(mimeType)
         .setChooserTitle(chooserTitle)
         .setText(text)

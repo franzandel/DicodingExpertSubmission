@@ -42,6 +42,10 @@ jobs:
           name: Assemble debug build
           command: |
             ./gradlew assembleDebug
+      - run:
+          name: Build debug APK
+          command: |
+            ./gradlew packageDebugUniversalApk
 
   build_release:
     executor:
@@ -54,6 +58,10 @@ jobs:
           name: Assemble release build
           command: |
             ./gradlew assembleRelease
+      - run:
+          name: Build release APK
+          command: |
+            ./gradlew packageReleaseUniversalApk
 
 workflows:
   # Below is the definition of your workflow.

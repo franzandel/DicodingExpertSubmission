@@ -66,6 +66,7 @@ object AppModule {
     @Singleton
     fun provideGson(): Gson = Gson()
 
+    @Suppress("DEPRECATION")
     @Provides
     @Singleton
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences =

@@ -2,7 +2,7 @@ package com.franzandel.feature_home.presentation.model
 
 import android.os.Parcelable
 import androidx.annotation.Keep
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * Created by Franz Andel on 08/05/21.
