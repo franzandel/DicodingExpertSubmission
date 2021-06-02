@@ -6,7 +6,7 @@ import androidx.room.Room
 import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.presentation.vm.ViewModelKey
 import com.franzandel.dicodingexpertsubmission.BuildConfig
-import com.franzandel.dicodingexpertsubmission.data.consts.DatabaseConsts
+import com.franzandel.dicodingexpertsubmission.data.consts.DatabaseConst
 import com.franzandel.feature_home.data.local.dao.DetailDao
 import com.franzandel.feature_home.data.local.db.DetailDatabase
 import com.franzandel.feature_home.domain.usecase.DetailUseCase
@@ -33,10 +33,10 @@ object DetailVMModule {
     @IntoMap
     @ViewModelKey(DetailViewModel::class)
     fun provideDetailViewModel(
-        usecase: DetailUseCase,
+        useCase: DetailUseCase,
         thread: CoroutineThread
     ): ViewModel =
-        DetailViewModel(usecase, thread)
+        DetailViewModel(useCase, thread)
 
     @Provides
     @ViewModelScoped
@@ -47,7 +47,7 @@ object DetailVMModule {
         return Room.databaseBuilder(
             context,
             DetailDatabase::class.java,
-            DatabaseConsts.GAMER_DB_NAME
+            DatabaseConst.GAMER_DB_NAME
         ).fallbackToDestructiveMigration()
             .openHelperFactory(supportFactory)
             .build()

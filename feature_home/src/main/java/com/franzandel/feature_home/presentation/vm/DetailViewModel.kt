@@ -31,7 +31,7 @@ class DetailViewModel @Inject constructor(
         viewModelScope.launch(thread.background()) {
             when (val result = useCase.insertGamesResults(gamesResultUI)) {
                 is Result.Success -> _insertGamesResults.postValue(result.result)
-                is Result.Error -> _errorResult.postValue(result.error.localizedMessage)
+                is Result.Error -> mErrorResult.postValue(result.error.localizedMessage)
             }
         }
     }
@@ -43,7 +43,7 @@ class DetailViewModel @Inject constructor(
         viewModelScope.launch(thread.background()) {
             when (val result = useCase.deleteGamesResults(gamesResultUI)) {
                 is Result.Success -> _deleteGamesResults.postValue(result.result)
-                is Result.Error -> _errorResult.postValue(result.error.localizedMessage)
+                is Result.Error -> mErrorResult.postValue(result.error.localizedMessage)
             }
         }
     }
@@ -55,7 +55,7 @@ class DetailViewModel @Inject constructor(
         viewModelScope.launch(thread.background()) {
             when (val result = useCase.getGamesResults(name)) {
                 is Result.Success -> _isFavoriteGamesResults.postValue(true)
-                is Result.Error -> _errorResult.postValue(result.error.localizedMessage)
+                is Result.Error -> mErrorResult.postValue(result.error.localizedMessage)
             }
         }
     }

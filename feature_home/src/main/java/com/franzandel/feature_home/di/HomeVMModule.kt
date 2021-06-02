@@ -32,10 +32,10 @@ object HomeVMModule {
     @IntoMap
     @ViewModelKey(HomeViewModel::class)
     fun provideHomeViewModel(
-        usecase: HomeUseCase,
+        useCase: HomeUseCase,
         mapper: BaseMapper<GamesResult, GamesResultUI>
     ): ViewModel =
-        HomeViewModel(usecase, mapper)
+        HomeViewModel(useCase, mapper)
 
     @Provides
     fun provideGamesResultsUIMapper(): BaseMapper<List<GamesResult>, List<GamesResultUI>> =

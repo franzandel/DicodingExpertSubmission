@@ -1,7 +1,6 @@
 package com.franzandel.feature_home.di
 
 import com.franzandel.core.mapper.BaseMapper
-import com.franzandel.core.mapper.BaseResponseMapper
 import com.franzandel.feature_home.data.remote.HomeRemoteData
 import com.franzandel.feature_home.data.remote.HomeRemoteDataImpl
 import com.franzandel.feature_home.data.remote.mapper.response.*
@@ -76,11 +75,6 @@ abstract class HomeAbstractVMModule {
     abstract fun bindFiltersMapper(
         filtersMapper: FiltersMapper
     ): BaseMapper<FiltersDTO, Filters>
-
-    @Binds
-    abstract fun bindGamesMapper(
-        gamesMapper: GamesMapper
-    ): BaseResponseMapper<GamesDTO, Games>
 
     @Binds
     abstract fun bindGamesResultMapper(

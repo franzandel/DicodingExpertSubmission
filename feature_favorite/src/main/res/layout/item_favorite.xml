@@ -38,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_favorite"
             app:layout_constraintTop_toTopOf="@+id/iv_favorite"
-            tools:text="The Elder Scrolls V: Skyrim" />
+            tools:text="The Elder Scrolls V: Sky rim" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_release"
@@ -73,7 +73,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_favorite"
             app:layout_constraintTop_toBottomOf="@+id/tv_platforms_title"
-            tools:text="Nintendo Switch, Xbox One, PC" />
+            tools:text="Nintendo Switch, X-box One, PC" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_genres_title"

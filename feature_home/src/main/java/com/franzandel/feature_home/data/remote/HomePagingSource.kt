@@ -3,7 +3,7 @@ package com.franzandel.feature_home.data.remote
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.franzandel.dicodingexpertsubmission.BuildConfig
-import com.franzandel.dicodingexpertsubmission.data.consts.PaginationConsts.NETWORK_PAGE_SIZE
+import com.franzandel.dicodingexpertsubmission.data.consts.PaginationConst.NETWORK_PAGE_SIZE
 import com.franzandel.feature_home.data.remote.model.response.GamesResultDTO
 import com.franzandel.feature_home.data.remote.network.HomeService
 import retrofit2.HttpException

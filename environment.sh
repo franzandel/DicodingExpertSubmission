@@ -3,7 +3,7 @@
 #
 # Android convention is to store your API keys in a local, non-versioned
 # gradle.properties file. Circle CI doesn't allow users to upload pre-populated
-# gradle.properties files to store this secret information, but instaed allows
+# gradle.properties files to store this secret information, but instead allows
 # users to store such information as environment variables.
 #
 # This script creates a local gradle.properties file on current the Circle CI

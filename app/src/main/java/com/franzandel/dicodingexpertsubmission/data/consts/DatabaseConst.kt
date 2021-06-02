@@ -5,6 +5,6 @@ package com.franzandel.dicodingexpertsubmission.data.consts
  * Android Engineer
  */
 
-object DatabaseConsts {
+object DatabaseConst {
     const val GAMER_DB_NAME = "Gamer.db"
 }
