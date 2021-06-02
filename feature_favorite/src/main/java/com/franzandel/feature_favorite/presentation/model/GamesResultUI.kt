@@ -1,7 +1,7 @@
 package com.franzandel.feature_favorite.presentation.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * Created by Franz Andel on 08/05/21.
