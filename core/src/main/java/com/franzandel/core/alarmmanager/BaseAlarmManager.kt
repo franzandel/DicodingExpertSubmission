@@ -39,14 +39,6 @@ abstract class BaseAlarmManager(protected val applicationContext: Context) {
         alarmManager.cancel(pendingIntent)
     }
 
-    fun isAlarmSet(): Boolean =
-        PendingIntent.getBroadcast(
-            applicationContext,
-            REPEAT_REQUEST_CODE,
-            getIntent(),
-            PendingIntent.FLAG_NO_CREATE
-        ) != null
-
     private fun getAlarmManager(context: Context): AlarmManager =
         context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 

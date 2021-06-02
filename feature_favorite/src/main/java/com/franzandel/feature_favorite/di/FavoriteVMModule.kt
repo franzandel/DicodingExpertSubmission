@@ -7,7 +7,7 @@ import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.core.presentation.vm.ViewModelKey
 import com.franzandel.dicodingexpertsubmission.BuildConfig
-import com.franzandel.dicodingexpertsubmission.data.consts.DatabaseConsts
+import com.franzandel.dicodingexpertsubmission.data.consts.DatabaseConst
 import com.franzandel.feature_favorite.data.local.dao.FavoriteDao
 import com.franzandel.feature_favorite.data.local.db.FavoriteDatabase
 import com.franzandel.feature_favorite.domain.model.local.request.GamesResultRequest
@@ -36,11 +36,11 @@ object FavoriteVMModule {
     @IntoMap
     @ViewModelKey(FavoriteViewModel::class)
     fun provideFavoriteViewModel(
-        usecase: FavoriteUseCase,
+        useCase: FavoriteUseCase,
         thread: CoroutineThread,
         mapper: BaseMapper<GamesResultRequest, GamesResultUI>
     ): ViewModel =
-        FavoriteViewModel(usecase, thread, mapper)
+        FavoriteViewModel(useCase, thread, mapper)
 
     @Provides
     @ViewModelScoped
@@ -51,7 +51,7 @@ object FavoriteVMModule {
         return Room.databaseBuilder(
             context,
             FavoriteDatabase::class.java,
-            DatabaseConsts.GAMER_DB_NAME
+            DatabaseConst.GAMER_DB_NAME
         ).fallbackToDestructiveMigration()
             .openHelperFactory(supportFactory)
             .build()

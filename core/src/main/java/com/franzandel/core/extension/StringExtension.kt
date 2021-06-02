@@ -30,11 +30,11 @@ fun List<String>.toCommaString(): String {
 }
 
 fun String.getHourAndMinute(): Pair<Int, Int> {
-    val splittedTime = this.split(':')
-    if (splittedTime.size > 2) throw Exception("Too many ':' characters")
+    val splitTime = this.split(':')
+    if (splitTime.size > 2) throw Exception("Too many ':' characters")
 
-    val expectedHour = splittedTime.first().trim().toInt()
-    val expectedMinute = splittedTime.last().trim().toInt()
+    val expectedHour = splitTime.first().trim().toInt()
+    val expectedMinute = splitTime.last().trim().toInt()
     return Pair(expectedHour, expectedMinute)
 }
 

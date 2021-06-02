@@ -77,10 +77,16 @@ object AppModule {
                 setBlockModes(KeyProperties.BLOCK_MODE_GCM)
                 setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
                 setKeySize(MasterKey.DEFAULT_AES_GCM_MASTER_KEY_SIZE)
-                setUserAuthenticationValidityDurationSeconds(15) // harus lebih besar dari 0
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    setUserAuthenticationParameters(
+                        15,
+                        KeyProperties.AUTH_DEVICE_CREDENTIAL
+                                or KeyProperties.AUTH_BIOMETRIC_STRONG
+                    )
+                } else
+                    setUserAuthenticationValidityDurationSeconds(15)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
                     setUnlockedDeviceRequired(true)
-                }
             }.build()
 
             val masterKey = MasterKey.Builder(context)

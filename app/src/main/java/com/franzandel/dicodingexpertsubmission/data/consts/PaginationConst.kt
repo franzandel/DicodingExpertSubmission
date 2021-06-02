@@ -5,6 +5,6 @@ package com.franzandel.dicodingexpertsubmission.data.consts
  * Android Engineer
  */
 
-object PaginationConsts {
+object PaginationConst {
     const val NETWORK_PAGE_SIZE = 10
 }

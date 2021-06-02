@@ -59,30 +59,28 @@ class HomeFragment : BaseFragmentVM<HomeViewModel, FragmentHomeBinding>() {
     }
 
     private fun setupObservers() {
-        with(viewLifecycleOwner) {
-            getAllGames()
+        getAllGames()
 
-            observe(viewModel.errorResult) {
-                showErrorPage()
-            }
+        viewLifecycleOwner.observe(viewModel.errorResult) {
+            showErrorPage()
+        }
 
-            adapter.addLoadStateListener { loadState ->
-                if (loadState.refresh is LoadState.Loading) {
-                    if (!loadState.prepend.endOfPaginationReached)
-                        loadingDialog.get()?.show(requireActivity().supportFragmentManager)
-                } else {
-                    loadingDialog.get()?.hide()
+        adapter.addLoadStateListener { loadState ->
+            if (loadState.refresh is LoadState.Loading) {
+                if (!loadState.prepend.endOfPaginationReached)
+                    loadingDialog.get()?.show(requireActivity().supportFragmentManager)
+            } else {
+                loadingDialog.get()?.hide()
 
-                    val errorState = when {
-                        loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
-                        loadState.append is LoadState.Error -> loadState.append as LoadState.Error
-                        loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
-                        else -> null
-                    }
+                val errorState = when {
+                    loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+                    loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+                    loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+                    else -> null
+                }
 
-                    errorState?.let {
-                        showErrorPage()
-                    }
+                errorState?.let {
+                    showErrorPage()
                 }
             }
         }

@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModel
 
 abstract class BaseViewModel : ViewModel() {
 
-    protected val _errorResult = MutableLiveData<String>()
-    val errorResult: LiveData<String> = _errorResult
+    protected val mErrorResult = MutableLiveData<String>()
+    val errorResult: LiveData<String> = mErrorResult
 
-    protected val _loadingResult = MutableLiveData<Boolean>()
-    val loadingResult: LiveData<Boolean> = _loadingResult
+    private val mLoadingResult = MutableLiveData<Boolean>()
+    val loadingResult: LiveData<Boolean> = mLoadingResult
 }

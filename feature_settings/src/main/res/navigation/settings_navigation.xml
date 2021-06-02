@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/navigation_settings">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/navigation_settings"
+    tools:keep="@navigation/settings_navigation">
 
     <fragment
         android:id="@+id/navigation_settings"
