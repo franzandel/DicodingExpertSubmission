@@ -13,7 +13,6 @@ import com.franzandel.testing_utils.collectDataForTest
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
@@ -31,7 +30,6 @@ import org.junit.Test
  * Android Engineer
  */
 
-@ObsoleteCoroutinesApi
 @ExperimentalCoroutinesApi
 class HomeViewModelTest {
 

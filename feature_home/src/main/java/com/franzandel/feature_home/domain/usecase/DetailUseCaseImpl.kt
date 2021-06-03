@@ -24,6 +24,6 @@ class DetailUseCaseImpl @Inject constructor(
         return repository.deleteGamesResults(gamesResultRequest)
     }
 
-    override suspend fun getGamesResults(name: String): Result<GamesResultRequest> =
+    override suspend fun getGamesResult(name: String): Result<GamesResultRequest> =
         repository.getGamesResults(name)
 }
