@@ -54,13 +54,13 @@ class HomeViewModelTest {
 
             coEvery { useCase.getAllGames() } returns flowOf(fakePagingGamesResult)
 
-            val pagingGamesResultUI = viewModel.getAllGames().first().collectDataForTest()
+            val gamesResultsUI = viewModel.getAllGames().first().collectDataForTest()
             val fakeGamesResultsUI = fakePagingGamesResults.map { gamesResult ->
                 mapper.map(gamesResult)
             }.collectDataForTest()
 
-            assertNotNull(pagingGamesResultUI)
-            assertEquals(pagingGamesResultUI.size, fakeGamesResultsUI.size)
+            assertNotNull(gamesResultsUI)
+            assertEquals(gamesResultsUI.size, fakeGamesResultsUI.size)
         }
     }
 
@@ -71,11 +71,11 @@ class HomeViewModelTest {
 
             coEvery { useCase.getAllGames() } returns emptyFlow()
 
-            val pagingGamesResultUI = viewModel.getAllGames().toList()
+            val gamesResultsUI = viewModel.getAllGames().toList()
             val fakeGamesResultsUI = fakePagingGamesResultUI.collectDataForTest()
 
-            assertNotNull(pagingGamesResultUI)
-            assertEquals(pagingGamesResultUI.size, fakeGamesResultsUI.size)
+            assertNotNull(gamesResultsUI)
+            assertEquals(gamesResultsUI.size, fakeGamesResultsUI.size)
         }
     }
 }
