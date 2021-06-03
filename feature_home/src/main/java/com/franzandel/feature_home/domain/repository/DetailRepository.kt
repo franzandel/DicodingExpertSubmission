@@ -11,5 +11,5 @@ import com.franzandel.feature_home.domain.model.local.request.GamesResultRequest
 interface DetailRepository {
     suspend fun insertGamesResults(gamesResultRequest: GamesResultRequest): Result<Unit>
     suspend fun deleteGamesResults(gamesResultRequest: GamesResultRequest): Result<Unit>
-    suspend fun getGamesResults(name: String): Result<GamesResultRequest>
+    suspend fun getGamesResult(name: String): Result<GamesResultRequest>
 }

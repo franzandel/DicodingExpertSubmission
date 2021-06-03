@@ -18,6 +18,6 @@ class DetailRepositoryImpl @Inject constructor(
     override suspend fun deleteGamesResults(gamesResultRequest: GamesResultRequest): Result<Unit> =
         localData.deleteGamesResults(gamesResultRequest)
 
-    override suspend fun getGamesResults(name: String): Result<GamesResultRequest> =
+    override suspend fun getGamesResult(name: String): Result<GamesResultRequest> =
         localData.getGamesResults(name)
 }
