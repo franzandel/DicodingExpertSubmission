@@ -49,13 +49,13 @@ class HomeViewModelTest {
     @Test
     fun `get filled games`() {
         runBlockingTest {
-            val fakePagingGamesResults = PagingData.from(RoomUtils.getGamesResults())
-            val fakePagingGamesResult = fakePagingGamesResults.filter { true }
+            val fakePagingGames = PagingData.from(RoomUtils.getGamesResults())
+            val fakePagingGame = fakePagingGames.filter { true }
 
-            coEvery { useCase.getAllGames() } returns flowOf(fakePagingGamesResult)
+            coEvery { useCase.getAllGames() } returns flowOf(fakePagingGame)
 
             val gamesResultsUI = viewModel.getAllGames().first().collectDataForTest()
-            val fakeGamesResultsUI = fakePagingGamesResults.map { gamesResult ->
+            val fakeGamesResultsUI = fakePagingGames.map { gamesResult ->
                 mapper.map(gamesResult)
             }.collectDataForTest()
 
