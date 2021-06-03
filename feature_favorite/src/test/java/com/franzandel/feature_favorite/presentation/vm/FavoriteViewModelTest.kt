@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import androidx.paging.PagingData
 import androidx.paging.filter
+import androidx.paging.map
 import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.core.wrapper.Result
@@ -12,7 +13,7 @@ import com.franzandel.feature_favorite.domain.model.local.request.GamesResultReq
 import com.franzandel.feature_favorite.domain.usecase.FavoriteUseCase
 import com.franzandel.feature_favorite.presentation.model.GamesResultUI
 import com.franzandel.feature_favorite.utils.RoomUtils
-import com.franzandel.feature_favorite.utils.collectDataForTest
+import com.franzandel.testing_utils.collectDataForTest
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify
@@ -74,7 +75,9 @@ class FavoriteViewModelTest {
             coEvery { useCase.getGamesResults() } returns flowOf(fakePagingGamesResultRequest)
 
             val pagingGamesResultUI = viewModel.getFavoriteGames().first().collectDataForTest()
-            val fakePagingGamesResultUI = fakePagingGamesResultRequests.collectDataForTest()
+            val fakePagingGamesResultUI = fakePagingGamesResultRequests.map { gamesResultRequest ->
+                mapper.map(gamesResultRequest)
+            }.collectDataForTest()
 
             Assert.assertNotNull(pagingGamesResultUI)
             Assert.assertEquals(pagingGamesResultUI.size, fakePagingGamesResultUI.size)
@@ -84,15 +87,15 @@ class FavoriteViewModelTest {
     @Test
     fun `get empty favorite games`() {
         runBlockingTest {
-            val fakePagingGamesResultRequest = PagingData.empty<GamesResultRequest>()
+            val fakePagingGamesResultUI = PagingData.empty<GamesResultUI>()
 
             coEvery { useCase.getGamesResults() } returns emptyFlow()
 
             val pagingGamesResultUI = viewModel.getFavoriteGames().toList()
-            val fakePagingGamesResultUI = fakePagingGamesResultRequest.collectDataForTest()
+            val fakeGamesResultsUI = fakePagingGamesResultUI.collectDataForTest()
 
             Assert.assertNotNull(pagingGamesResultUI)
-            Assert.assertEquals(pagingGamesResultUI.size, fakePagingGamesResultUI.size)
+            Assert.assertEquals(pagingGamesResultUI.size, fakeGamesResultsUI.size)
         }
     }
 
