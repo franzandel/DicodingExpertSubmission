@@ -1,15 +1,16 @@
 package com.franzandel.feature_home.presentation.vm
 
-import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
+import com.franzandel.core.extension.getViewModelScope
 import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.core.presentation.vm.BaseViewModel
 import com.franzandel.feature_home.domain.model.remote.response.GamesResult
 import com.franzandel.feature_home.domain.usecase.HomeUseCase
 import com.franzandel.feature_home.presentation.model.GamesResultUI
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -22,7 +23,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val useCase: HomeUseCase,
-    private val mapper: BaseMapper<GamesResult, GamesResultUI>
+    private val mapper: BaseMapper<GamesResult, GamesResultUI>,
+    private val coroutineScope: CoroutineScope? = null
 ) : BaseViewModel() {
 
     suspend fun getAllGames(): Flow<PagingData<GamesResultUI>> =
@@ -30,5 +32,5 @@ class HomeViewModel @Inject constructor(
             it.map { gamesResult ->
                 mapper.map(gamesResult)
             }
-        }.cachedIn(viewModelScope)
+        }.cachedIn(getViewModelScope(coroutineScope))
 }

@@ -1,6 +1,7 @@
-package com.franzandel.feature_favorite.utils
+package com.franzandel.testing_utils
 
 import androidx.paging.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 
 /**
@@ -8,6 +9,7 @@ import kotlinx.coroutines.test.TestCoroutineDispatcher
  * Android Engineer
  */
 
+@ExperimentalCoroutinesApi
 suspend fun <T : Any> PagingData<T>.collectDataForTest(): List<T> {
     val dcb = object : DifferCallback {
         override fun onChanged(position: Int, count: Int) {}

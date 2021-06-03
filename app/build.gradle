@@ -62,10 +62,6 @@ dependencies {
     api "androidx.legacy:legacy-support-v4:${versions.legacySupport}"
     api "androidx.preference:preference-ktx:${versions.preferenceKtx}"
 
-    // by viewModels()
-    api "androidx.activity:activity-ktx:${versions.activityKtx}"
-    api "androidx.fragment:fragment-ktx:${versions.fragmentKtx}"
-
     api "androidx.room:room-runtime:${versions.room}"
     kapt "androidx.room:room-compiler:${versions.room}"
     // optional - Kotlin Extensions and Coroutines support for Room
