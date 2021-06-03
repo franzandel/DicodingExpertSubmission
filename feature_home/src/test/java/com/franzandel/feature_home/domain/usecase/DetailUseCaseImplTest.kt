@@ -58,7 +58,7 @@ class DetailUseCaseImplTest {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
             val gamesResultUI = RoomUtils.getGamesResultUI()
-            val failedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val failedResponse = RoomUtils.ERROR_INSERT_TO_DB
 
             coEvery { repository.insertGamesResults(gamesResultRequest) } returns Result.Error(
                 Exception(failedResponse)
@@ -94,7 +94,7 @@ class DetailUseCaseImplTest {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
             val gamesResultUI = RoomUtils.getGamesResultUI()
-            val fakeFailedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val fakeFailedResponse = RoomUtils.ERROR_DELETE_FROM_DB
 
             coEvery {
                 repository.deleteGamesResults(gamesResultRequest)
@@ -126,7 +126,7 @@ class DetailUseCaseImplTest {
     fun `get games results not found`() {
         runBlockingTest {
             val gameName = "Devil May Cry"
-            val fakeFailedResponse = RoomUtils.GET_FAILED_RESPONSE
+            val fakeFailedResponse = RoomUtils.NO_DATA_FOUND
 
             coEvery { repository.getGamesResult(gameName) } returns Result.Error(
                 Exception(

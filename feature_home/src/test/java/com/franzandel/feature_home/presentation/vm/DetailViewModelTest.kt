@@ -56,7 +56,7 @@ class DetailViewModelTest {
     fun `insert games results success`() {
         runBlockingTest {
             val gamesResultUI = RoomUtils.getGamesResultUI()
-            val successResponse = Unit
+            val fakeSuccessResponse = Unit
 
             coEvery { useCase.insertGamesResults(gamesResultUI) } returns Result.Success(Unit)
             coEvery { coroutineThread.background() } returns Dispatchers.Unconfined
@@ -68,7 +68,7 @@ class DetailViewModelTest {
                 val insertGamesResults = viewModel.insertGamesResults.value
                 successObserver.onChanged(insertGamesResults)
                 Assert.assertNotNull(insertGamesResults)
-                Assert.assertEquals(successResponse, insertGamesResults)
+                Assert.assertEquals(fakeSuccessResponse, insertGamesResults)
             }
         }
     }
@@ -77,11 +77,11 @@ class DetailViewModelTest {
     fun `insert games results failed`() {
         runBlockingTest {
             val gamesResultUI = RoomUtils.getGamesResultUI()
-            val failedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val fakeFailedResponse = RoomUtils.ERROR_INSERT_TO_DB
 
             coEvery {
                 useCase.insertGamesResults(gamesResultUI)
-            } returns Result.Error(Exception(failedResponse))
+            } returns Result.Error(Exception(fakeFailedResponse))
             coEvery { coroutineThread.background() } returns Dispatchers.Unconfined
 
             viewModel.errorResult.observeForever(failedObserver)
@@ -91,7 +91,7 @@ class DetailViewModelTest {
                 val errorResult = viewModel.errorResult.value
                 failedObserver.onChanged(errorResult)
                 Assert.assertNotNull(errorResult)
-                Assert.assertEquals(failedResponse, errorResult)
+                Assert.assertEquals(fakeFailedResponse, errorResult)
             }
         }
     }
@@ -100,7 +100,7 @@ class DetailViewModelTest {
     fun `delete games results success`() {
         runBlockingTest {
             val gamesResultUI = RoomUtils.getGamesResultUI()
-            val successResponse = Unit
+            val fakeSuccessResponse = Unit
 
             coEvery { useCase.deleteGamesResults(gamesResultUI) } returns Result.Success(Unit)
             coEvery { coroutineThread.background() } returns Dispatchers.Unconfined
@@ -112,7 +112,7 @@ class DetailViewModelTest {
                 val deleteGamesResults = viewModel.deleteGamesResults.value
                 successObserver.onChanged(deleteGamesResults)
                 Assert.assertNotNull(deleteGamesResults)
-                Assert.assertEquals(successResponse, deleteGamesResults)
+                Assert.assertEquals(fakeSuccessResponse, deleteGamesResults)
             }
         }
     }
@@ -121,11 +121,11 @@ class DetailViewModelTest {
     fun `delete games results failed`() {
         runBlockingTest {
             val gamesResultUI = RoomUtils.getGamesResultUI()
-            val failedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val fakeFailedResponse = RoomUtils.ERROR_DELETE_FROM_DB
 
             coEvery {
                 useCase.deleteGamesResults(gamesResultUI)
-            } returns Result.Error(Exception(failedResponse))
+            } returns Result.Error(Exception(fakeFailedResponse))
             coEvery { coroutineThread.background() } returns Dispatchers.Unconfined
 
             viewModel.errorResult.observeForever(failedObserver)
@@ -135,7 +135,7 @@ class DetailViewModelTest {
                 val errorResult = viewModel.errorResult.value
                 failedObserver.onChanged(errorResult)
                 Assert.assertNotNull(errorResult)
-                Assert.assertEquals(failedResponse, errorResult)
+                Assert.assertEquals(fakeFailedResponse, errorResult)
             }
         }
     }
@@ -166,11 +166,11 @@ class DetailViewModelTest {
     fun `get games results not found`() {
         runBlockingTest {
             val gameName = "Devil May Cry"
-            val failedResponse = RoomUtils.GET_FAILED_RESPONSE
+            val fakeFailedResponse = RoomUtils.NO_DATA_FOUND
 
             coEvery {
                 useCase.getGamesResult(gameName)
-            } returns Result.Error(Exception(failedResponse))
+            } returns Result.Error(Exception(fakeFailedResponse))
             coEvery { coroutineThread.background() } returns Dispatchers.Unconfined
 
             viewModel.errorResult.observeForever(failedObserver)
@@ -180,7 +180,7 @@ class DetailViewModelTest {
                 val errorResult = viewModel.errorResult.value
                 failedObserver.onChanged(errorResult)
                 Assert.assertNotNull(errorResult)
-                Assert.assertEquals(failedResponse, errorResult)
+                Assert.assertEquals(fakeFailedResponse, errorResult)
             }
         }
     }

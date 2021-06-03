@@ -51,7 +51,7 @@ class DetailRepositoryImplTest {
     fun `insert games results failed`() {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
-            val failedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val failedResponse = RoomUtils.ERROR_INSERT_TO_DB
 
             coEvery { localData.insertGamesResults(gamesResultRequest) } returns Result.Error(
                 Exception(failedResponse)
@@ -85,7 +85,7 @@ class DetailRepositoryImplTest {
     fun `delete games results failed`() {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
-            val fakeFailedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val fakeFailedResponse = RoomUtils.ERROR_DELETE_FROM_DB
 
             coEvery {
                 localData.deleteGamesResults(gamesResultRequest)
@@ -117,7 +117,7 @@ class DetailRepositoryImplTest {
     fun `get games results not found`() {
         runBlockingTest {
             val gameName = "Devil May Cry"
-            val fakeFailedResponse = RoomUtils.GET_FAILED_RESPONSE
+            val fakeFailedResponse = RoomUtils.NO_DATA_FOUND
 
             coEvery { localData.getGamesResults(gameName) } returns Result.Error(
                 Exception(
