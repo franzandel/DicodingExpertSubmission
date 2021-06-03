@@ -53,7 +53,7 @@ class DetailViewModel @Inject constructor(
 
     fun getGamesResults(name: String) {
         viewModelScope.launch(thread.background()) {
-            when (val result = useCase.getGamesResults(name)) {
+            when (val result = useCase.getGamesResult(name)) {
                 is Result.Success -> _isFavoriteGamesResults.postValue(true)
                 is Result.Error -> mErrorResult.postValue(result.error.localizedMessage)
             }

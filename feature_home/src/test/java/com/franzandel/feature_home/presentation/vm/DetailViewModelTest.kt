@@ -147,7 +147,7 @@ class DetailViewModelTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
             val isFavorite = true
 
-            coEvery { useCase.getGamesResults(gameName) } returns Result.Success(gamesResultRequest)
+            coEvery { useCase.getGamesResult(gameName) } returns Result.Success(gamesResultRequest)
             coEvery { coroutineThread.background() } returns Dispatchers.Unconfined
 
             viewModel.isFavoriteGamesResults.observeForever(getFoundObserver)
@@ -169,7 +169,7 @@ class DetailViewModelTest {
             val failedResponse = RoomUtils.GET_FAILED_RESPONSE
 
             coEvery {
-                useCase.getGamesResults(gameName)
+                useCase.getGamesResult(gameName)
             } returns Result.Error(Exception(failedResponse))
             coEvery { coroutineThread.background() } returns Dispatchers.Unconfined
 

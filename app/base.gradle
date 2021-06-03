@@ -25,6 +25,15 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    // For fixing
+    // Error: Execution failed for task ':app:transformResourcesWithMergeJavaResForDebug'.
+    // More than one file was found with OS independent path 'META-INF/AL2.0'
+    configurations.all {
+        resolutionStrategy {
+            exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
+        }
+    }
 }
 
 dependencies {

@@ -12,5 +12,5 @@ import com.franzandel.feature_home.presentation.model.GamesResultUI
 interface DetailUseCase {
     suspend fun insertGamesResults(gamesResultUI: GamesResultUI): Result<Unit>
     suspend fun deleteGamesResults(gamesResultUI: GamesResultUI): Result<Unit>
-    suspend fun getGamesResults(name: String): Result<GamesResultRequest>
+    suspend fun getGamesResult(name: String): Result<GamesResultRequest>
 }
