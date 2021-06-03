@@ -74,13 +74,13 @@ class FavoriteViewModelTest {
 
             coEvery { useCase.getGamesResults() } returns flowOf(fakePagingGamesResultRequest)
 
-            val pagingGamesResultUI = viewModel.getFavoriteGames().first().collectDataForTest()
-            val fakePagingGamesResultUI = fakePagingGamesResultRequests.map { gamesResultRequest ->
+            val gamesResultsUI = viewModel.getFavoriteGames().first().collectDataForTest()
+            val fakeGamesResultsUI = fakePagingGamesResultRequests.map { gamesResultRequest ->
                 mapper.map(gamesResultRequest)
             }.collectDataForTest()
 
-            Assert.assertNotNull(pagingGamesResultUI)
-            Assert.assertEquals(pagingGamesResultUI.size, fakePagingGamesResultUI.size)
+            Assert.assertNotNull(gamesResultsUI)
+            Assert.assertEquals(gamesResultsUI.size, fakeGamesResultsUI.size)
         }
     }
 
@@ -91,11 +91,11 @@ class FavoriteViewModelTest {
 
             coEvery { useCase.getGamesResults() } returns emptyFlow()
 
-            val pagingGamesResultUI = viewModel.getFavoriteGames().toList()
+            val gamesResultsUI = viewModel.getFavoriteGames().toList()
             val fakeGamesResultsUI = fakePagingGamesResultUI.collectDataForTest()
 
-            Assert.assertNotNull(pagingGamesResultUI)
-            Assert.assertEquals(pagingGamesResultUI.size, fakeGamesResultsUI.size)
+            Assert.assertNotNull(gamesResultsUI)
+            Assert.assertEquals(gamesResultsUI.size, fakeGamesResultsUI.size)
         }
     }
 
