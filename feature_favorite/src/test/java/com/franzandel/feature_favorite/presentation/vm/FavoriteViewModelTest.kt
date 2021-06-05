@@ -124,7 +124,7 @@ class FavoriteViewModelTest {
     fun `insert games results failed`() {
         runBlockingTest {
             val gamesResultUI = RoomUtils.getGamesResultUI()
-            val failedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val failedResponse = RoomUtils.ERROR_INSERT_TO_DB
 
             coEvery {
                 useCase.insertGamesResults(gamesResultUI)
@@ -167,7 +167,7 @@ class FavoriteViewModelTest {
     fun `delete games results failed`() {
         runBlockingTest {
             val gamesResultUI = RoomUtils.getGamesResultUI()
-            val failedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val failedResponse = RoomUtils.ERROR_INSERT_TO_DB
 
             coEvery {
                 useCase.deleteGamesResults(gamesResultUI)

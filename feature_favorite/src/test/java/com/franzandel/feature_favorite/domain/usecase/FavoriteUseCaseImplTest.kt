@@ -65,7 +65,7 @@ class FavoriteUseCaseImplTest {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
             val gamesResultUI = RoomUtils.getGamesResultUI()
-            val failedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val failedResponse = RoomUtils.ERROR_INSERT_TO_DB
 
             coEvery { repository.insertGamesResults(gamesResultRequest) } returns Result.Error(
                 Exception(failedResponse)
@@ -101,7 +101,7 @@ class FavoriteUseCaseImplTest {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
             val gamesResultUI = RoomUtils.getGamesResultUI()
-            val fakeFailedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val fakeFailedResponse = RoomUtils.ERROR_INSERT_TO_DB
 
             coEvery {
                 repository.deleteGamesResults(gamesResultRequest)
