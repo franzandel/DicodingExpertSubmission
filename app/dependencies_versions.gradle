@@ -27,7 +27,7 @@ ext.testVersions = [
         coreTesting: '1.1.1',
         kotlinxCoroutinesTest: '1.5.0',
         mockk: '1.11.0',
-        mockWebServer: '3.11.0'
+        mockWebServer: '4.8.0'
 ]
 
 ext.androidTestVersions = [

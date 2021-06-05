@@ -24,9 +24,7 @@ class HomeRemoteDataImpl @Inject constructor(
         Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
             pagingSourceFactory = {
-                HomePagingSource(
-                    service
-                )
+                HomePagingSource(service)
             }
         ).flow.map {
             it.map { gamesResultDTO ->
