@@ -59,7 +59,7 @@ class FavoriteRepositoryImplTest {
     fun `insert games results failed`() {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
-            val failedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val failedResponse = RoomUtils.ERROR_INSERT_TO_DB
 
             coEvery { localData.insertGamesResults(gamesResultRequest) } returns Result.Error(
                 Exception(failedResponse)
@@ -93,7 +93,7 @@ class FavoriteRepositoryImplTest {
     fun `delete games results failed`() {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
-            val fakeFailedResponse = RoomUtils.INSERT_FAILED_RESPONSE
+            val fakeFailedResponse = RoomUtils.ERROR_INSERT_TO_DB
 
             coEvery {
                 localData.deleteGamesResults(gamesResultRequest)
