@@ -47,6 +47,14 @@ android {
     }
 
     dynamicFeatures = [':feature_home', ':feature_favorite', ':feature_settings']
+
+    sourceSets {
+        debug {
+            resources {
+                srcDirs 'src/debug/resources', 'src/test/resources'
+            }
+        }
+    }
 }
 
 dependencies {
