@@ -13,6 +13,7 @@ object RoomUtils {
 
     const val ERROR_INSERT_TO_DB = "Error insert to DB"
     const val ERROR_DELETE_FROM_DB = "Error delete from DB"
+    const val NO_DATA_FOUND = "No data found on DB"
 
     fun getGamesResultUI(): GamesResultUI =
         GamesResultUI(
