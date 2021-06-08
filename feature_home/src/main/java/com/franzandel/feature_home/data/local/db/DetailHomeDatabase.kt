@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.franzandel.dicodingexpertsubmission.data.local.ListConverter
-import com.franzandel.feature_home.data.local.dao.DetailDao
+import com.franzandel.feature_home.data.local.dao.DetailHomeDao
 import com.franzandel.feature_home.data.local.model.GamesResultEntity
 
 /**
@@ -18,6 +18,6 @@ import com.franzandel.feature_home.data.local.model.GamesResultEntity
     exportSchema = false
 )
 @TypeConverters(ListConverter::class)
-abstract class DetailDatabase : RoomDatabase() {
-    abstract fun detailDao(): DetailDao
+abstract class DetailHomeDatabase : RoomDatabase() {
+    abstract fun detailDao(): DetailHomeDao
 }

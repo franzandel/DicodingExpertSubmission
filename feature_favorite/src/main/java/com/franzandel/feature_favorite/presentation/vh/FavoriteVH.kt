@@ -17,6 +17,7 @@ class FavoriteVH(private val itemFavoriteBinding: ItemFavoriteBinding) :
 
     fun bind(
         gamesResult: GamesResultUI,
+        onItemClick: (gamesResult: GamesResultUI) -> Unit,
         onDeleteClick: (gamesResult: GamesResultUI) -> Unit
     ) {
         with(itemFavoriteBinding) {
@@ -32,6 +33,10 @@ class FavoriteVH(private val itemFavoriteBinding: ItemFavoriteBinding) :
             tvGenres.text = gamesResult.genres.toCommaString()
             tvRatings.text = gamesResult.rating.toString()
             cpiRatings.progress = gamesResult.rating.toInt()
+
+            itemView.setOnClickListener {
+                onItemClick.invoke(gamesResult)
+            }
 
             ivDelete.setOnClickListener {
                 onDeleteClick.invoke(gamesResult)

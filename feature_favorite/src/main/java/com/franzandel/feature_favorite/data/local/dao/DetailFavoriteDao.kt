@@ -1,7 +1,7 @@
-package com.franzandel.feature_home.data.local.dao
+package com.franzandel.feature_favorite.data.local.dao
 
 import androidx.room.*
-import com.franzandel.feature_home.data.local.model.GamesResultEntity
+import com.franzandel.feature_favorite.data.local.model.GamesResultEntity
 
 /**
  * Created by Franz Andel on 11/05/21.
@@ -9,7 +9,7 @@ import com.franzandel.feature_home.data.local.model.GamesResultEntity
  */
 
 @Dao
-interface DetailDao {
+interface DetailFavoriteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGamesResult(gamesResultEntity: GamesResultEntity): Long
 

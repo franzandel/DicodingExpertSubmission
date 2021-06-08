@@ -2,7 +2,7 @@ package com.franzandel.feature_home.data.local
 
 import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.core.wrapper.Result
-import com.franzandel.feature_home.data.local.dao.DetailDao
+import com.franzandel.feature_home.data.local.dao.DetailHomeDao
 import com.franzandel.feature_home.data.local.mapper.GamesResultRequestEntityMapper
 import com.franzandel.feature_home.data.local.model.GamesResultEntity
 import com.franzandel.feature_home.domain.mapper.GamesResultsEntityMapper
@@ -23,11 +23,11 @@ import org.junit.Test
  */
 
 @ExperimentalCoroutinesApi
-class DetailLocalDataImplTest {
+class DetailHomeLocalDataImplTest {
 
-    private val dao: DetailDao = mockk(relaxed = true)
+    private val dao: DetailHomeDao = mockk(relaxed = true)
 
-    private lateinit var localData: DetailLocalData
+    private lateinit var localData: DetailHomeLocalData
 
     private val requestMapper: BaseMapper<GamesResultRequest, GamesResultEntity> =
         GamesResultsEntityMapper()
@@ -36,7 +36,7 @@ class DetailLocalDataImplTest {
 
     @Before
     fun setUp() {
-        localData = DetailLocalDataImpl(dao, requestMapper, responseMapper)
+        localData = DetailHomeLocalDataImpl(dao, requestMapper, responseMapper)
     }
 
     @Test

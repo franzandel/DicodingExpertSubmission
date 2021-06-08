@@ -1,16 +1,16 @@
-package com.franzandel.feature_home.data.repository
+package com.franzandel.feature_favorite.data.repository
 
 import com.franzandel.core.wrapper.Result
-import com.franzandel.feature_home.data.local.DetailLocalData
-import com.franzandel.feature_home.domain.model.local.request.GamesResultRequest
-import com.franzandel.feature_home.domain.repository.DetailRepository
+import com.franzandel.feature_favorite.data.local.DetailFavoriteLocalData
+import com.franzandel.feature_favorite.domain.model.local.request.GamesResultRequest
+import com.franzandel.feature_favorite.domain.repository.DetailFavoriteRepository
 import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class DetailRepositoryImpl @Inject constructor(
-    private val localData: DetailLocalData
-) : DetailRepository {
+class DetailFavoriteRepositoryImpl @Inject constructor(
+    private val localData: DetailFavoriteLocalData
+) : DetailFavoriteRepository {
 
     override suspend fun insertGamesResults(gamesResultRequest: GamesResultRequest): Result<Unit> =
         localData.insertGamesResults(gamesResultRequest)

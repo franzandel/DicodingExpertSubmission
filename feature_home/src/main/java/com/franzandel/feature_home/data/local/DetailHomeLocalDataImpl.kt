@@ -4,18 +4,18 @@ import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.core.mapper.mapLocalResponse
 import com.franzandel.core.wrapper.Result
 import com.franzandel.core.wrapper.suspendTryCatch
-import com.franzandel.feature_home.data.local.dao.DetailDao
+import com.franzandel.feature_home.data.local.dao.DetailHomeDao
 import com.franzandel.feature_home.data.local.model.GamesResultEntity
 import com.franzandel.feature_home.domain.model.local.request.GamesResultRequest
 import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class DetailLocalDataImpl @Inject constructor(
-    private val dao: DetailDao,
+class DetailHomeLocalDataImpl @Inject constructor(
+    private val dao: DetailHomeDao,
     private val requestMapper: BaseMapper<GamesResultRequest, GamesResultEntity>,
     private val responseMapper: BaseMapper<GamesResultEntity, GamesResultRequest>
-) : DetailLocalData {
+) : DetailHomeLocalData {
 
     companion object {
         private const val ERROR_INSERT_TO_DB = "Error insert to DB"

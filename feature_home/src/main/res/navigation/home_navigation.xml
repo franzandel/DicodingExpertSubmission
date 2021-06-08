@@ -11,14 +11,14 @@
         android:label="@string/navigation_title_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_navigation_home_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            android:id="@+id/action_navigation_home_to_detailHomeFragment"
+            app:destination="@id/detailHomeFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.franzandel.feature_home.presentation.fragment.DetailFragment"
-        android:label="DetailFragment"
+        android:id="@+id/detailHomeFragment"
+        android:name="com.franzandel.feature_home.presentation.fragment.DetailHomeFragment"
+        android:label="DetailHomeFragment"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="gamesResult"

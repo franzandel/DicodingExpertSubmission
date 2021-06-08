@@ -1,4 +1,4 @@
-package com.franzandel.feature_home.presentation.fragment
+package com.franzandel.feature_favorite.presentation.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,31 +10,33 @@ import com.franzandel.core.extension.observe
 import com.franzandel.core.extension.toMultiLineString
 import com.franzandel.core.presentation.fragment.BaseFragmentVM
 import com.franzandel.dicodingexpertsubmission.di.AppComponent
-import com.franzandel.feature_home.R
-import com.franzandel.feature_home.databinding.FragmentDetailBinding
-import com.franzandel.feature_home.di.DaggerHomeComponent
-import com.franzandel.feature_home.presentation.adapter.DetailAdapter
-import com.franzandel.feature_home.presentation.vm.DetailViewModel
+import com.franzandel.feature_favorite.R
+import com.franzandel.feature_favorite.databinding.FragmentDetailFavoriteBinding
+import com.franzandel.feature_favorite.di.DaggerFavoriteComponent
+import com.franzandel.feature_favorite.presentation.adapter.DetailFavoriteAdapter
+import com.franzandel.feature_favorite.presentation.vm.DetailFavoriteViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.EntryPointAccessors
 import com.franzandel.dicodingexpertsubmission.R as AppR
 
-class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() {
+class DetailFavoriteFragment :
+    BaseFragmentVM<DetailFavoriteViewModel, FragmentDetailFavoriteBinding>() {
 
-    private val viewModel: DetailViewModel by viewModels { viewModelFactory }
+    private val viewModel: DetailFavoriteViewModel by viewModels { viewModelFactory }
 
-    private val detailFragmentArgs: DetailFragmentArgs by navArgs()
+    private val detailFavoriteFragmentArgs: DetailFavoriteFragmentArgs by navArgs()
 
     private val gamesResult by lazy {
-        detailFragmentArgs.gamesResult
+        detailFavoriteFragmentArgs.gamesResult
     }
 
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentDetailBinding = FragmentDetailBinding.inflate(layoutInflater, container, false)
+    ): FragmentDetailFavoriteBinding =
+        FragmentDetailFavoriteBinding.inflate(layoutInflater, container, false)
 
     override fun onFragmentCreated() {
         setupUI()
@@ -56,7 +58,7 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
     }
 
     private fun setupViewPager2() {
-        val adapter = DetailAdapter()
+        val adapter = DetailFavoriteAdapter()
         viewBinding.vpDetail.adapter = adapter
         adapter.submitList(gamesResult.shortScreenshots)
     }
@@ -121,10 +123,10 @@ class DetailFragment : BaseFragmentVM<DetailViewModel, FragmentDetailBinding>() 
         }
     }
 
-    override fun getVM(): DetailViewModel = viewModel
+    override fun getVM(): DetailFavoriteViewModel = viewModel
 
     override fun injectDependencies() {
-        DaggerHomeComponent.builder()
+        DaggerFavoriteComponent.builder()
             .context(requireContext())
             .appComponent(
                 EntryPointAccessors.fromApplication(

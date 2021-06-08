@@ -1,11 +1,8 @@
-package com.franzandel.feature_home.domain.usecase
+package com.franzandel.feature_home.data.repository
 
-import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.core.wrapper.Result
-import com.franzandel.feature_home.domain.model.local.request.GamesResultRequest
-import com.franzandel.feature_home.domain.repository.DetailRepository
-import com.franzandel.feature_home.presentation.mapper.GamesResultsRequestMapper
-import com.franzandel.feature_home.presentation.model.GamesResultUI
+import com.franzandel.feature_home.data.local.DetailHomeLocalData
+import com.franzandel.feature_home.domain.repository.DetailHomeRepository
 import com.franzandel.feature_home.utils.RoomUtils
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -22,31 +19,28 @@ import org.junit.Test
  */
 
 @ExperimentalCoroutinesApi
-class DetailUseCaseImplTest {
+class DetailHomeRepositoryImplTest {
 
-    private val repository: DetailRepository = mockk(relaxed = true)
+    private val localData: DetailHomeLocalData = mockk(relaxed = true)
 
-    private lateinit var useCase: DetailUseCase
-
-    private val mapper: BaseMapper<GamesResultUI, GamesResultRequest> = GamesResultsRequestMapper()
+    private lateinit var repository: DetailHomeRepository
 
     @Before
     fun setUp() {
-        useCase = DetailUseCaseImpl(repository, mapper)
+        repository = DetailHomeRepositoryImpl(localData)
     }
 
     @Test
     fun `insert games results success`() {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
-            val gamesResultUI = RoomUtils.getGamesResultUI()
             val fakeInsertResponse = Unit
 
-            coEvery { repository.insertGamesResults(gamesResultRequest) } returns Result.Success(
+            coEvery { localData.insertGamesResults(gamesResultRequest) } returns Result.Success(
                 fakeInsertResponse
             )
 
-            val insertGamesResults = useCase.insertGamesResults(gamesResultUI)
+            val insertGamesResults = repository.insertGamesResults(gamesResultRequest)
             val result = insertGamesResults as Result.Success
             assertNotNull(insertGamesResults)
             assertEquals(fakeInsertResponse, result.data)
@@ -57,14 +51,13 @@ class DetailUseCaseImplTest {
     fun `insert games results failed`() {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
-            val gamesResultUI = RoomUtils.getGamesResultUI()
             val failedResponse = RoomUtils.ERROR_INSERT_TO_DB
 
-            coEvery { repository.insertGamesResults(gamesResultRequest) } returns Result.Error(
+            coEvery { localData.insertGamesResults(gamesResultRequest) } returns Result.Error(
                 Exception(failedResponse)
             )
 
-            val insertGamesResults = useCase.insertGamesResults(gamesResultUI)
+            val insertGamesResults = repository.insertGamesResults(gamesResultRequest)
             val result = insertGamesResults as Result.Error
             assertNotNull(insertGamesResults)
             assertEquals(failedResponse, result.error.message)
@@ -75,14 +68,13 @@ class DetailUseCaseImplTest {
     fun `delete games results success`() {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
-            val gamesResultUI = RoomUtils.getGamesResultUI()
             val fakeSuccessResponse = Unit
 
-            coEvery { repository.deleteGamesResults(gamesResultRequest) } returns Result.Success(
+            coEvery { localData.deleteGamesResults(gamesResultRequest) } returns Result.Success(
                 fakeSuccessResponse
             )
 
-            val deleteGamesResults = useCase.deleteGamesResults(gamesResultUI)
+            val deleteGamesResults = repository.deleteGamesResults(gamesResultRequest)
             val result = deleteGamesResults as Result.Success
             assertNotNull(deleteGamesResults)
             assertEquals(fakeSuccessResponse, result.data)
@@ -93,14 +85,13 @@ class DetailUseCaseImplTest {
     fun `delete games results failed`() {
         runBlockingTest {
             val gamesResultRequest = RoomUtils.getGamesResultRequest()
-            val gamesResultUI = RoomUtils.getGamesResultUI()
             val fakeFailedResponse = RoomUtils.ERROR_DELETE_FROM_DB
 
             coEvery {
-                repository.deleteGamesResults(gamesResultRequest)
+                localData.deleteGamesResults(gamesResultRequest)
             } returns Result.Error(Exception(fakeFailedResponse))
 
-            val deleteGamesResults = useCase.deleteGamesResults(gamesResultUI)
+            val deleteGamesResults = repository.deleteGamesResults(gamesResultRequest)
             val result = deleteGamesResults as Result.Error
             assertNotNull(deleteGamesResults)
             assertEquals(fakeFailedResponse, result.error.message)
@@ -113,9 +104,9 @@ class DetailUseCaseImplTest {
             val gameName = "Devil May Cry"
             val fakeGamesResult = RoomUtils.getGamesResultRequest()
 
-            coEvery { repository.getGamesResult(gameName) } returns Result.Success(fakeGamesResult)
+            coEvery { localData.getGamesResults(gameName) } returns Result.Success(fakeGamesResult)
 
-            val gamesResult = useCase.getGamesResult(gameName)
+            val gamesResult = repository.getGamesResult(gameName)
             val result = gamesResult as Result.Success
             assertNotNull(gamesResult)
             assertEquals(fakeGamesResult, result.data)
@@ -128,13 +119,13 @@ class DetailUseCaseImplTest {
             val gameName = "Devil May Cry"
             val fakeFailedResponse = RoomUtils.NO_DATA_FOUND
 
-            coEvery { repository.getGamesResult(gameName) } returns Result.Error(
+            coEvery { localData.getGamesResults(gameName) } returns Result.Error(
                 Exception(
                     fakeFailedResponse
                 )
             )
 
-            val gamesResult = useCase.getGamesResult(gameName)
+            val gamesResult = repository.getGamesResult(gameName)
             val result = gamesResult as Result.Error
             assertNotNull(gamesResult)
             assertEquals(fakeFailedResponse, result.error.message)

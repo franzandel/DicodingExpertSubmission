@@ -30,7 +30,7 @@ class HomeVH(private val itemHomeBinding: ItemHomeBinding) :
 
             cvHome.setOnClickListener {
                 val navDirections =
-                    HomeFragmentDirections.actionNavigationHomeToDetailFragment(gamesResult)
+                    HomeFragmentDirections.actionNavigationHomeToDetailHomeFragment(gamesResult)
                 findNavController(root).navigate(navDirections)
             }
         }

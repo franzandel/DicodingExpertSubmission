@@ -7,10 +7,10 @@ import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.presentation.vm.ViewModelKey
 import com.franzandel.dicodingexpertsubmission.BuildConfig
 import com.franzandel.dicodingexpertsubmission.data.consts.DatabaseConst
-import com.franzandel.feature_home.data.local.dao.DetailDao
-import com.franzandel.feature_home.data.local.db.DetailDatabase
-import com.franzandel.feature_home.domain.usecase.DetailUseCase
-import com.franzandel.feature_home.presentation.vm.DetailViewModel
+import com.franzandel.feature_home.data.local.dao.DetailHomeDao
+import com.franzandel.feature_home.data.local.db.DetailHomeDatabase
+import com.franzandel.feature_home.domain.usecase.DetailHomeUseCase
+import com.franzandel.feature_home.presentation.vm.DetailHomeViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,26 +27,26 @@ import net.sqlcipher.database.SupportFactory
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object DetailVMModule {
+object DetailHomeVMModule {
 
     @Provides
     @IntoMap
-    @ViewModelKey(DetailViewModel::class)
-    fun provideDetailViewModel(
-        useCase: DetailUseCase,
+    @ViewModelKey(DetailHomeViewModel::class)
+    fun provideDetailHomeViewModel(
+        useCase: DetailHomeUseCase,
         thread: CoroutineThread
     ): ViewModel =
-        DetailViewModel(useCase, thread)
+        DetailHomeViewModel(useCase, thread)
 
     @Provides
     @ViewModelScoped
-    fun provideDetailDatabase(context: Context): DetailDatabase {
+    fun provideDetailHomeDatabase(context: Context): DetailHomeDatabase {
         val passphrase = SQLiteDatabase.getBytes(BuildConfig.DB_KEY.toCharArray())
         val supportFactory = SupportFactory(passphrase)
 
         return Room.databaseBuilder(
             context,
-            DetailDatabase::class.java,
+            DetailHomeDatabase::class.java,
             DatabaseConst.GAMER_DB_NAME
         ).fallbackToDestructiveMigration()
             .openHelperFactory(supportFactory)
@@ -55,6 +55,6 @@ object DetailVMModule {
 
     @Provides
     @ViewModelScoped
-    fun provideDetailDao(database: DetailDatabase): DetailDao =
+    fun provideDetailHomeDao(database: DetailHomeDatabase): DetailHomeDao =
         database.detailDao()
 }
