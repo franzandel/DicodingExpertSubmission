@@ -1,20 +1,20 @@
-package com.franzandel.feature_home.presentation.vh
+package com.franzandel.feature_favorite.presentation.vh
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.franzandel.dicodingexpertsubmission.R
-import com.franzandel.feature_home.databinding.ItemDetailBinding
+import com.franzandel.feature_favorite.databinding.ItemDetailFavoriteBinding
 
 /**
  * Created by Franz Andel on 09/05/21.
  * Android Engineer
  */
 
-class DetailVH(private val itemDetailBinding: ItemDetailBinding) :
-    RecyclerView.ViewHolder(itemDetailBinding.root) {
+class DetailFavoriteVH(private val itemDetailFavoriteBinding: ItemDetailFavoriteBinding) :
+    RecyclerView.ViewHolder(itemDetailFavoriteBinding.root) {
 
     fun bind(gamesResult: String) {
-        with(itemDetailBinding) {
+        with(itemDetailFavoriteBinding) {
             Glide.with(itemView.context)
                 .load(gamesResult)
                 .centerCrop()

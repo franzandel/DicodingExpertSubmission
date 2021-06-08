@@ -1,4 +1,4 @@
-package com.franzandel.feature_home.presentation.diffcallback
+package com.franzandel.feature_favorite.presentation.diffcallback
 
 import androidx.recyclerview.widget.DiffUtil
 
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
  * Android Engineer
  */
 
-class DetailDiffCallback : DiffUtil.ItemCallback<String>() {
+class DetailFavoriteDiffCallback : DiffUtil.ItemCallback<String>() {
 
     override fun areItemsTheSame(oldItem: String, newItem: String): Boolean =
         oldItem == newItem

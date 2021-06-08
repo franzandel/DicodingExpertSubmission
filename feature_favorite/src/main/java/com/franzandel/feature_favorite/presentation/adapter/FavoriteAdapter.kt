@@ -14,6 +14,7 @@ import com.franzandel.feature_favorite.presentation.vh.FavoriteVH
  */
 
 class FavoriteAdapter(
+    private val onItemClick: (gamesResult: GamesResultUI) -> Unit,
     private val onDeleteClick: (gamesResult: GamesResultUI) -> Unit
 ) : PagingDataAdapter<GamesResultUI, FavoriteVH>(FavoriteDiffCallback()) {
 
@@ -28,7 +29,7 @@ class FavoriteAdapter(
 
     override fun onBindViewHolder(holder: FavoriteVH, position: Int) {
         getItem(position)?.let {
-            holder.bind(it, onDeleteClick)
+            holder.bind(it, onItemClick, onDeleteClick)
         }
     }
 }

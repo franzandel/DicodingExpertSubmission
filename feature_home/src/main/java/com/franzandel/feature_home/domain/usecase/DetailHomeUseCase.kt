@@ -9,7 +9,7 @@ import com.franzandel.feature_home.presentation.model.GamesResultUI
  * Android Engineer
  */
 
-interface DetailUseCase {
+interface DetailHomeUseCase {
     suspend fun insertGamesResults(gamesResultUI: GamesResultUI): Result<Unit>
     suspend fun deleteGamesResults(gamesResultUI: GamesResultUI): Result<Unit>
     suspend fun getGamesResult(name: String): Result<GamesResultRequest>

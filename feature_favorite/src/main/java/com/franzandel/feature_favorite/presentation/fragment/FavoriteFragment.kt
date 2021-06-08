@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.extension.observe
 import com.franzandel.core.extension.show
@@ -32,10 +33,7 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
 
     private val viewModel: FavoriteViewModel by viewModels { viewModelFactory }
 
-    private val adapter =
-        FavoriteAdapter { gamesResult ->
-            showDeleteConfirmationDialog(gamesResult)
-        }
+    private val adapter get() = viewBinding.rvFavorite.adapter as FavoriteAdapter
 
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -57,7 +55,19 @@ class FavoriteFragment : BaseFragmentVM<FavoriteViewModel, FragmentFavoriteBindi
     }
 
     private fun setupAdapter() {
-        viewBinding.rvFavorite.adapter = adapter
+        viewBinding.rvFavorite.adapter =
+            FavoriteAdapter(
+                onItemClick = { gamesResult ->
+                    val navDirections =
+                        FavoriteFragmentDirections.actionNavigationFavoriteToDetailFavoriteFragment(
+                            gamesResult
+                        )
+                    findNavController().navigate(navDirections)
+                },
+                onDeleteClick = { gamesResult ->
+                    showDeleteConfirmationDialog(gamesResult)
+                }
+            )
     }
 
     private fun setupListeners() {

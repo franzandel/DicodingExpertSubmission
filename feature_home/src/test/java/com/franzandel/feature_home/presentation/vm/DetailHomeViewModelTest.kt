@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.wrapper.Result
-import com.franzandel.feature_home.domain.usecase.DetailUseCase
+import com.franzandel.feature_home.domain.usecase.DetailHomeUseCase
 import com.franzandel.feature_home.utils.RoomUtils
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -25,24 +25,24 @@ import org.junit.*
 
 @ObsoleteCoroutinesApi
 @ExperimentalCoroutinesApi
-class DetailViewModelTest {
+class DetailHomeViewModelTest {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val useCase: DetailUseCase = mockk(relaxed = true)
+    private val useCase: DetailHomeUseCase = mockk(relaxed = true)
     private val coroutineThread: CoroutineThread = mockk(relaxed = true)
     private val successObserver: Observer<Unit> = mockk(relaxed = true)
     private val failedObserver: Observer<String> = mockk(relaxed = true)
     private val getFoundObserver: Observer<Boolean> = mockk(relaxed = true)
 
-    private lateinit var viewModel: DetailViewModel
+    private lateinit var viewModel: DetailHomeViewModel
 
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
     @Before
     fun setUp() {
-        viewModel = DetailViewModel(useCase, coroutineThread)
+        viewModel = DetailHomeViewModel(useCase, coroutineThread)
         Dispatchers.setMain(mainThreadSurrogate)
     }
 

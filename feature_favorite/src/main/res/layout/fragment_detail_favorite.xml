@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.franzandel.feature_home.presentation.fragment.DetailHomeFragment">
+    tools:context="com.franzandel.feature_favorite.presentation.fragment.DetailFavoriteFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_8"
                     android:layout_marginTop="@dimen/margin_8"
-                    android:text="@string/detail_released_title"
+                    android:text="@string/detail_favorite_released_title"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/text_size_16"
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_8"
                     android:layout_marginTop="@dimen/margin_16"
-                    android:text="@string/detail_platforms_title"
+                    android:text="@string/detail_favorite_platforms_title"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/text_size_16"
@@ -116,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_8"
                     android:layout_marginStart="@dimen/margin_8"
-                    android:text="@string/detail_genres_title"
+                    android:text="@string/detail_favorite_genres_title"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/text_size_16"
@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_8"
                     android:layout_marginStart="@dimen/margin_8"
-                    android:text="@string/detail_stores_title"
+                    android:text="@string/detail_favorite_stores_title"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/text_size_16"
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_8"
                     android:layout_marginStart="@dimen/margin_8"
-                    android:text="@string/detail_tags_title"
+                    android:text="@string/detail_favorite_tags_title"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/text_size_16"

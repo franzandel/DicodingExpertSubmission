@@ -1,4 +1,4 @@
-package com.franzandel.feature_home.presentation.vm
+package com.franzandel.feature_favorite.presentation.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,8 +7,8 @@ import com.franzandel.core.coroutine.CoroutineThread
 import com.franzandel.core.presentation.vm.BaseViewModel
 import com.franzandel.core.wrapper.Result
 import com.franzandel.core.wrapper.result
-import com.franzandel.feature_home.domain.usecase.DetailUseCase
-import com.franzandel.feature_home.presentation.model.GamesResultUI
+import com.franzandel.feature_favorite.domain.usecase.DetailFavoriteUseCase
+import com.franzandel.feature_favorite.presentation.model.GamesResultUI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,8 +19,8 @@ import javax.inject.Inject
  */
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(
-    private val useCase: DetailUseCase,
+class DetailFavoriteViewModel @Inject constructor(
+    private val useCase: DetailFavoriteUseCase,
     private val thread: CoroutineThread
 ) : BaseViewModel() {
 

@@ -9,5 +9,19 @@
         android:id="@+id/navigation_favorite"
         android:name="com.franzandel.feature_favorite.presentation.fragment.FavoriteFragment"
         android:label="@string/navigation_title_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_navigation_favorite_to_detailFavoriteFragment"
+            app:destination="@id/detailFavoriteFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFavoriteFragment"
+        android:name="com.franzandel.feature_favorite.presentation.fragment.DetailFavoriteFragment"
+        android:label="DetailFavoriteFragment"
+        tools:layout="@layout/fragment_detail_favorite">
+        <argument
+            android:name="gamesResult"
+            app:argType="com.franzandel.feature_favorite.presentation.model.GamesResultUI" />
+    </fragment>
 </navigation>

@@ -1,18 +1,18 @@
-package com.franzandel.feature_home.domain.usecase
+package com.franzandel.feature_favorite.domain.usecase
 
 import com.franzandel.core.mapper.BaseMapper
 import com.franzandel.core.wrapper.Result
-import com.franzandel.feature_home.domain.model.local.request.GamesResultRequest
-import com.franzandel.feature_home.domain.repository.DetailRepository
-import com.franzandel.feature_home.presentation.model.GamesResultUI
+import com.franzandel.feature_favorite.domain.model.local.request.GamesResultRequest
+import com.franzandel.feature_favorite.domain.repository.DetailFavoriteRepository
+import com.franzandel.feature_favorite.presentation.model.GamesResultUI
 import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class DetailUseCaseImpl @Inject constructor(
-    private val repository: DetailRepository,
+class DetailFavoriteUseCaseImpl @Inject constructor(
+    private val repository: DetailFavoriteRepository,
     private val requestMapper: BaseMapper<GamesResultUI, GamesResultRequest>
-) : DetailUseCase {
+) : DetailFavoriteUseCase {
 
     override suspend fun insertGamesResults(gamesResultUI: GamesResultUI): Result<Unit> {
         val gamesResultRequest = requestMapper.map(gamesResultUI)
